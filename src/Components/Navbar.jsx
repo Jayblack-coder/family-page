@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <AppBar position="sticky" elevation={4} sx={{ bgcolor: "#1a1a1a" }}>
+    <AppBar position="sticky" elevation={4} sx={{ bgcolor: "#1a1a1a", width: '100%' }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Typography
           variant="h6"
@@ -13,14 +13,14 @@ const Navbar = () => {
           to="/"
           style={{ textDecoration: "none", color: "white" }}
         >
-          Family Legacy
+          Nmelonye Family Legacy
         </Typography>
         <Box>
           <Button color="inherit" component={Link} to="/family1">
-            Family One
+            About us
           </Button>
           <Button color="inherit" component={Link} to="/family2">
-            Family Two
+            Lineage
           </Button>
           <Button color="inherit" component={Link} to="/family3">
             Family Three
