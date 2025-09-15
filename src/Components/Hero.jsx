@@ -42,7 +42,7 @@ export default function Hero() {
               variant="contained"
               size="large"
               component={Link}
-              to="/family1"
+              to="/nwankwo"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
               Nwankwo Family

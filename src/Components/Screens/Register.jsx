@@ -24,6 +24,7 @@ const Register = () => {
   const [spouse, setSpouse] = useState("");
   const [cityOfResidence, setCityOfResidence] = useState("");
   const [offspring, setOffspring] = useState("");
+   const [image, setImage] = useState("");
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -74,6 +75,7 @@ const Register = () => {
       setSpouse("");
       setCityOfResidence("");
       setOffspring("");
+      setImage("");
     } catch (err) {
       setError(err.message || 'Registration failed. Please try again');
       setSuccess('');
