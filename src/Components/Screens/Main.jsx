@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
+import {Typography, Container } from "@mui/material";
 //import getnwankwoApi from './Api/Api.jsx'
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -18,8 +19,18 @@ const Main = () => {
     .catch(err =>console.log(err));
   })
   return (
+    
     <div >
       <h3 className="text-center text-primary">Nwankwo Nmelonye Family Tree</h3>
+      <Container sx={{ py: 5 }}>
+      <Typography variant="h4" fontWeight="bold" gutterBottom>
+        Family One
+      </Typography>
+      <Typography variant="body1">
+        This section captures the history, traditions, and achievements of Family One. 
+        Explore their journey across generations and their contributions to our legacy.
+      </Typography>
+    </Container>
       <table className='table table-bordered table-striped mt-3 '>
         <thead>
           <tr>
