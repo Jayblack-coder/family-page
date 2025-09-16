@@ -3,10 +3,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Box, Button, Card, CardContent, Stack, TextField, Typography } from '@mui/material';
 import { ClipLoader } from 'react-spinners';
+//import {URL} from '../Screens/Register.jsx';
 
-
-
-const Member = import.meta.env.Member;
+const API_URL = import.meta.env.VITE_API_URL
+//const Member = import.meta.env.Member;
+const LOGIN_URL=`${API_URL}/register/login`
 
 const Login = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const Login = () => {
 
     try {
       const res = await axios.post(
-        Member,
+        LOGIN_URL,
         { userName, password }
       );
       console.log(res)
