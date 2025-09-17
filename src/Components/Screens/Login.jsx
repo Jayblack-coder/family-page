@@ -20,17 +20,20 @@ const Login = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
     setLoading(true);
 
     try {
       const res = await axios.post(LOGIN_URL, { userName, password });
       console.log(res);
       if (res.status === 200) {
+        setSuccess("Login successful! Redirecting...");
         setTimeout(() => navigate("/home"), 2000);
       }
     } catch (err) {
