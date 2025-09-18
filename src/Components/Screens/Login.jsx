@@ -34,9 +34,13 @@ const Login = () => {
 
     try {
       const res = await API.post("/register/login", {
+         method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
   userName,
   password,
-});
+})
+      });
 console.log("API Base URL:", import.meta.env.VITE_API_URL);
 
       console.log(res);
