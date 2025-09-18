@@ -14,7 +14,7 @@ import { ClipLoader } from "react-spinners";
 
 // Setup axios instance with base URL from .env
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL
 });
 
 const Login = () => {
