@@ -43,7 +43,7 @@ const Register = () => {
     //         body: JSON.stringify
 
     try {
-      const res = await API.post("/register", {
+      const res = await API.post("/api/user/register", {
         method: "POST",
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
