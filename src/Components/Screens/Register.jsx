@@ -37,17 +37,12 @@ const Register = () => {
       setSuccess("");
       return;
     }
-    // const res = await fetch(API_URL, {
-    //         method: "POST",
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify
+    setError("");
 
     try {
+      // ✅ axios handles headers + JSON automatically
       const res = await API.post("/api/user/register", {
-        method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              surname,
+        surname,
         firstName,
         middleName,
         userName,
@@ -60,8 +55,7 @@ const Register = () => {
         cityOfResidence,
         offspring,
         image,
-      })
-    });
+      });
 
       console.log(res.data);
 

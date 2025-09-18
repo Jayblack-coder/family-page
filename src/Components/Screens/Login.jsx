@@ -12,40 +12,34 @@ import {
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
 
+// Setup axios instance with base URL from .env
 const API = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
-
-// const LOGIN_URL = `${API_URL}/register/login`;
 
 const Login = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  // const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    // setSuccess("");
     setLoading(true);
 
     try {
+      // ✅ Correct Axios POST usage
       const res = await API.post("/api/user/register/login", {
-         method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-  userName,
-  password,
-})
+        userName,
+        password,
       });
-console.log("API Base URL:", import.meta.env.VITE_API_URL);
 
-      console.log(res);
+      console.log("API Base URL:", import.meta.env.VITE_API_URL);
+      console.log("Login response:", res.data);
+
       if (res.status === 200) {
-        // setSuccess("Login successful! Redirecting...");
         setTimeout(() => navigate("/home"), 2000);
       }
     } catch (err) {
@@ -103,7 +97,6 @@ console.log("API Base URL:", import.meta.env.VITE_API_URL);
 
           <form onSubmit={handleSubmit}>
             <Stack spacing={4}>
-              {/* Responsive fields */}
               <Stack
                 direction={{ xs: "column", sm: "row" }}
                 spacing={2}
