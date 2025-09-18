@@ -37,10 +37,17 @@ const Register = () => {
       setSuccess("");
       return;
     }
+    // const res = await fetch(API_URL, {
+    //         method: "POST",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify
 
     try {
       const res = await API.post("/register", {
-        surname,
+        method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              surname,
         firstName,
         middleName,
         userName,
@@ -53,7 +60,8 @@ const Register = () => {
         cityOfResidence,
         offspring,
         image,
-      });
+      })
+    });
 
       console.log(res.data);
 
