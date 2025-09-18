@@ -18,7 +18,7 @@ import { ClipLoader } from "react-spinners";
 // });
 
 const API = import.meta.env.VITE_API_URL 
-const Login_URL =`${API}/register`
+const Login_URL ='https://nmelonye-backend.onrender.com/api/user/login'
 
 const Login = () => {
   const navigate = useNavigate();
