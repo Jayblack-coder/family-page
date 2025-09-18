@@ -31,7 +31,7 @@ const Login = () => {
 
     try {
       // ✅ Correct Axios POST usage
-      const res = await API.post("/api/user/register/login", {
+      const res = await API.post("/api/user/login", {
         userName,
         password,
       });
