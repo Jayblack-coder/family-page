@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Box, TextField, Button, Typography, Alert, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { API } from "./api";
+// import axios from "axios";
 
 // Setup axios instance with base URL from .env
 // const API = axios.create({
 //   baseURL: import.meta.env.VITE_API_URL
 // });
-const API = import.meta.env.VITE_API_URL 
-const Base_URL =`${API}/register`
+// const API = import.meta.env.VITE_API_URL 
+// const Base_URL =`${API}/register`
 const allowedSurnames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
 
 const Register = () => {
@@ -42,8 +43,8 @@ const Register = () => {
 
     try {
       // ✅ axios handles headers + JSON automatically
-      const res = await axios.post(Base_URL, {
-        surname,
+
+      const res = await API.post("/register", {surname,
         firstName,
         middleName,
         userName,
@@ -55,8 +56,22 @@ const Register = () => {
         spouse,
         cityOfResidence,
         offspring,
-        image,
-      });
+        image,});
+      // const res = await axios.post(Base_URL, {
+      //   surname,
+      //   firstName,
+      //   middleName,
+      //   userName,
+      //   password,
+      //   parents,
+      //   familyStatus,
+      //   generation,
+      //   dateOfBirth,
+      //   spouse,
+      //   cityOfResidence,
+      //   offspring,
+      //   image,
+      // });
 
       console.log(res.data);
 

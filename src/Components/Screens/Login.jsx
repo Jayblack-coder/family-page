@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
+import { API } from "./api";
 import {
   Box,
   Button,
@@ -17,8 +18,8 @@ import { ClipLoader } from "react-spinners";
 //   baseURL: import.meta.env.VITE_API_URL
 // });
 
-const API = import.meta.env.VITE_API_URL 
-const Login_URL ='https://nmelonye-backend.onrender.com/api/user/login'
+// const API = import.meta.env.VITE_API_URL 
+// const Login_URL ='https://nmelonye-backend.onrender.com/api/user/login'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,11 +35,11 @@ const Login = () => {
 
     try {
       // ✅ Correct Axios POST usage
-      const res = await axios.post(Login_URL, {
-        userName,
-        password,
-      });
-
+      // const res = await axios.post(Login_URL, {
+      //   userName,
+      //   password,
+      // });
+const res = await API.post("/login", { userName, password });
       console.log("API Base URL:", import.meta.env.VITE_API_URL);
       console.log("Login response:", res.data);
 
