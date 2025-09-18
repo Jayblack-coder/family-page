@@ -33,10 +33,12 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = API.post("/register/login", {
+      const res = await API.post("/register/login", {
   userName,
   password,
 });
+console.log("API Base URL:", import.meta.env.VITE_API_URL);
+
       console.log(res);
       if (res.status === 200) {
         // setSuccess("Login successful! Redirecting...");
