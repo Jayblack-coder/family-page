@@ -3,10 +3,13 @@ import { Box, TextField, Button, Typography, Alert, Stack } from "@mui/material"
 import{useNavigate} from 'react-router-dom'
 
 
-const API_URL = import.meta.env.VITE_API_URL;
-console.log(API_URL)
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
 
-const URL=`${API_URL}/register`
+console.log(API)
+
+// const URL=`${API_URL}/register`
 
 const allowedSurnames = ['Nwankwo', 'Asouzu', 'Udorji', 'Okoli', 'Anyaga'];
 
@@ -39,7 +42,7 @@ const Register = () => {
     }
 
     try {
-      const res = await fetch(URL, {
+      const res = await fetch(API, {
         method: "POST",
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

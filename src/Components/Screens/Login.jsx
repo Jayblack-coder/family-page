@@ -12,8 +12,11 @@ import {
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
 
-const API_URL = import.meta.env.VITE_API_URLL;
-const LOGIN_URL = `${API_URL}/register/login`;
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+});
+
+// const LOGIN_URL = `${API_URL}/register/login`;
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,7 +33,10 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await axios.post(LOGIN_URL, { userName, password });
+      const res = API.post("/register/login", {
+  userName,
+  password,
+});
       console.log(res);
       if (res.status === 200) {
         // setSuccess("Login successful! Redirecting...");
