@@ -4,10 +4,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // Setup axios instance with base URL from .env
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
-});
-
+// const API = axios.create({
+//   baseURL: import.meta.env.VITE_API_URL
+// });
+const API = import.meta.env.VITE_API_URL 
+const Base_URL =`${API}/register`
 const allowedSurnames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
 
 const Register = () => {
@@ -41,7 +42,7 @@ const Register = () => {
 
     try {
       // ✅ axios handles headers + JSON automatically
-      const res = await API.post("/api/user/register", {
+      const res = await axios.post(Base_URL, {
         surname,
         firstName,
         middleName,

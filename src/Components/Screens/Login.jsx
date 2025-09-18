@@ -13,9 +13,12 @@ import {
 import { ClipLoader } from "react-spinners";
 
 // Setup axios instance with base URL from .env
-const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL
-});
+// const API = axios.create({
+//   baseURL: import.meta.env.VITE_API_URL
+// });
+
+const API = import.meta.env.VITE_API_URL 
+const Login_URL =`${API}/register`
 
 const Login = () => {
   const navigate = useNavigate();
@@ -31,7 +34,7 @@ const Login = () => {
 
     try {
       // ✅ Correct Axios POST usage
-      const res = await API.post("/api/user/login", {
+      const res = await axios.post(Login_URL, {
         userName,
         password,
       });
