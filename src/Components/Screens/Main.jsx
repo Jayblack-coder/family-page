@@ -1,120 +1,81 @@
-import { useEffect, useState } from "react";
-import { 
-  Typography, 
-  Container, 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableContainer, 
-  TableHead, 
-  TableRow, 
-  Paper, 
-  Box 
+import { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  Box,
+  Button,
 } from "@mui/material";
-import API from "./api.jsx";
+import MenuIcon from "@mui/icons-material/Menu";
 
-const Main = () => {
-  const [data, setData] = useState([]);
+const Navbar = () => {
+  const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    API.get("/api/user")
-      .then((res) => {
-        console.log("API response:", res.data);
+  const toggleDrawer = (state) => () => {
+    setOpen(state);
+  };
 
-        if (Array.isArray(res.data)) {
-          setData(res.data);
-        } else if (Array.isArray(res.data.users)) {
-          setData(res.data.users);
-        } else if (Array.isArray(res.data.data)) {
-          setData(res.data.data);
-        } else {
-          setData([]);
-        }
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const menuItems = [
+    { label: "Home", link: "/" },
+    { label: "Family One", link: "/family-one" },
+    { label: "Family Two", link: "/family-two" },
+    { label: "About", link: "/about" },
+  ];
 
   return (
-    <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: { xs: 2, md: 5 } }}>
-      <Container maxWidth="lg">
-        <Typography 
-          variant="h4" 
-          fontWeight="bold" 
-          gutterBottom 
-          textAlign="center"
-          sx={{ color: "#0d6efd", mb: 3 }}
-        >
-          Nwankwo Nmelonye Family Tree
-        </Typography>
+    <>
+      <AppBar position="sticky" sx={{ bgcolor: "#0d6efd" }}>
+        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+          {/* Logo / Title */}
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ fontWeight: "bold", cursor: "pointer" }}
+          >
+            Nwankwo Nmelonye
+          </Typography>
 
-        <Typography 
-          variant="h5" 
-          fontWeight="bold" 
-          gutterBottom
-          sx={{ textAlign: { xs: "center", md: "left" } }}
-        >
-          Family One
-        </Typography>
-        <Typography 
-          variant="body1" 
-          sx={{ mb: 4, textAlign: { xs: "center", md: "left" } }}
-        >
-          This section captures the history, traditions, and achievements of Family One. 
-          Explore their journey across generations and their contributions to our legacy.
-        </Typography>
+          {/* Desktop Menu */}
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+            {menuItems.map((item, i) => (
+              <Button key={i} href={item.link} sx={{ color: "#fff" }}>
+                {item.label}
+              </Button>
+            ))}
+          </Box>
 
-        {/* Responsive Table with sticky headers */}
-        <TableContainer 
-          component={Paper} 
-          elevation={3} 
-          sx={{ overflowX: "auto", maxHeight: "70vh" }} // max height to allow vertical scroll
-        >
-          <Table stickyHeader sx={{ minWidth: 650, border: "1px solid #ddd" }}>
-            <TableHead>
-              <TableRow>
-                {[
-                  "SURNAME","FIRSTNAME","MIDDLENAME","USERNAME","PARENTS",
-                  "FAMILY STATUS","GENERATION","DATE OF BIRTH","SPOUSE",
-                  "CITY OF RESIDENCE","OFFSPRING"
-                ].map((header, i) => (
-                  <TableCell 
-                    key={i} 
-                    align="center"
-                    sx={{ 
-                      fontWeight: "bold", 
-                      color: "#fff", 
-                      backgroundColor: "#0d6efd", 
-                      top: 0, 
-                      zIndex: 1 
-                    }}
-                  >
-                    {header}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((d, i) => (
-                <TableRow key={i} hover>
-                  <TableCell align="center">{d.surname}</TableCell>
-                  <TableCell align="center">{d.firstName}</TableCell>
-                  <TableCell align="center">{d.middleName}</TableCell>
-                  <TableCell align="center">{d.userName}</TableCell>
-                  <TableCell align="center">{d.parents}</TableCell>
-                  <TableCell align="center">{d.familyStatus}</TableCell>
-                  <TableCell align="center">{d.generation}</TableCell>
-                  <TableCell align="center">{d.dateOfBirth}</TableCell>
-                  <TableCell align="center">{d.spouse}</TableCell>
-                  <TableCell align="center">{d.cityOfResidence}</TableCell>
-                  <TableCell align="center">{d.offspring}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Container>
-    </Box>
+          {/* Mobile Toggle */}
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            sx={{ display: { xs: "flex", md: "none" } }}
+            onClick={toggleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        </Toolbar>
+      </AppBar>
+
+      {/* Drawer for Mobile */}
+      <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+        <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+          <List>
+            {menuItems.map((item, i) => (
+              <ListItem button key={i} component="a" href={item.link}>
+                <ListItemText primary={item.label} />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
+    </>
   );
 };
 
-export default Main;
+export default Navbar;
