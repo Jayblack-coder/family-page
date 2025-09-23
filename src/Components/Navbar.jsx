@@ -26,8 +26,8 @@ const Navbar = () => {
   const navLinks = [
     { label: "About Us", path: "/family1" },
     { label: "Lineage", path: "/family2" },
-    { label: "Family Three", path: "/family3" },
-    { label: "Family Four", path: "/family4" },
+    { label: "Family Gallery", path: "/family3" },
+    { label: "Family Events", path: "/family4" },
   ];
 
   return (
