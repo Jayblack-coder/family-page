@@ -9,7 +9,7 @@ import API  from "./api.jsx";
 const Main = () => {
   const [data, setData] = useState([])
   useEffect(()=>{
-    axios.get(`${API}/login`, {
+    axios.get(`${API}/api/user`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
