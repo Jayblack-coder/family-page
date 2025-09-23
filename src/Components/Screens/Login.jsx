@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import axios from "axios";
-import { API } from "./api";
+import API  from "./api";
 import {
   Box,
   Button,
@@ -39,8 +39,10 @@ const Login = () => {
       //   userName,
       //   password,
       // });
-const res = await API.post("/login", { userName, password });
-      console.log("API Base URL:", import.meta.env.VITE_API_URL);
+const res = await API.post("https://nmelonye-backend.onrender.com/api/user/login", { userName, password },
+ { headers: { "Content-Type": "application/json" }}
+);
+      // console.log("API Base URL:", import.meta.env.VITE_API_URL);
       console.log("Login response:", res.data);
 
       if (res.status === 200) {
@@ -60,6 +62,7 @@ const res = await API.post("/login", { userName, password });
   return (
     <Box
       sx={{
+        
         width: "100vw",
         height: "100vh",
         display: "flex",

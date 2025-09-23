@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Box, TextField, Button, Typography, Alert, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { API } from "./api";
+import API  from "./api.jsx";
+
 // import axios from "axios";
 
 // Setup axios instance with base URL from .env
@@ -44,7 +45,7 @@ const Register = () => {
     try {
       // ✅ axios handles headers + JSON automatically
 
-      const res = await API.post("/register", {surname,
+      const res = await API.post("hh/register", {surname,
         firstName,
         middleName,
         userName,
