@@ -49,46 +49,40 @@ const Main = () => {
         Explore their journey across generations and their contributions to our legacy.
       </Typography>
     </Container>
-      <table className='table table-bordered table-striped mt-3 '>
-        <thead>
-          <tr>
-            <th>SURNAME</th>
-            <th>FIRSTNAME</th>
-            <th>MIDDLENAME</th>
-            <th>USERNAME</th>
-            <th>PARENTS</th>
-            <th>FAMILY STATUS</th>
-            <th>GENERATION</th>
-            <th>DATE OF BIRTH</th>
-            <th>SPOUSE</th>
-            <th>CITY OF RESIDENCE</th>
-            <th>OFFSPRING</th>
-          </tr>
-           
-        </thead>
-         <tbody>
-          
-            {
-              data.map((d, i)=>{
-                return <tr key={i}>
-              <td>{d.surname}</td>
-              <td>{d.firstName}</td>
-              <td>{d.middleName}</td>
-              <td>{d.userName}</td>
-              <td>{d.parents}</td>
-              <td>{d.familyStatus}</td>
-              <td>{d.generation}</td>
-              <td>{d.dateOfBirth}</td>
-              <td>{d.spouse}</td>
-              <td>{d.cityOfResidence}</td>
-              <td>{d.offspring}</td>
-                       </tr>
-              })
-             
-            }
-          
-        </tbody>
-      </table>
+      <TableContainer component={Paper} elevation={3}>
+  <Table sx={{ minWidth: 650, border: "1px solid #ddd" }}>
+    <TableHead>
+      <TableRow sx={{ backgroundColor: "#0d6efd" }}>
+        {[
+          "SURNAME","FIRSTNAME","MIDDLENAME","USERNAME","PARENTS",
+          "FAMILY STATUS","GENERATION","DATE OF BIRTH","SPOUSE",
+          "CITY OF RESIDENCE","OFFSPRING"
+        ].map((header, i) => (
+          <TableCell key={i} sx={{ fontWeight: "bold", color: "#fff" }} align="center">
+            {header}
+          </TableCell>
+        ))}
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {data.map((d, i) => (
+        <TableRow key={i} hover>
+          <TableCell align="center">{d.surname}</TableCell>
+          <TableCell align="center">{d.firstName}</TableCell>
+          <TableCell align="center">{d.middleName}</TableCell>
+          <TableCell align="center">{d.userName}</TableCell>
+          <TableCell align="center">{d.parents}</TableCell>
+          <TableCell align="center">{d.familyStatus}</TableCell>
+          <TableCell align="center">{d.generation}</TableCell>
+          <TableCell align="center">{d.dateOfBirth}</TableCell>
+          <TableCell align="center">{d.spouse}</TableCell>
+          <TableCell align="center">{d.cityOfResidence}</TableCell>
+          <TableCell align="center">{d.offspring}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
     </div>
   )
 }
