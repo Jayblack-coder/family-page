@@ -4,7 +4,7 @@ import { useState } from 'react'
 import {Typography, Container } from "@mui/material";
 //import getnwankwoApi from './Api/Api.jsx'
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Main = () => {
   const [data, setData] = useState([])
@@ -53,7 +53,7 @@ const Main = () => {
             {
               data.map((d, i)=>{
                 return <tr key={i}>
-                      <td>{d.surname}</td>
+              <td>{d.surname}</td>
               <td>{d.firstName}</td>
               <td>{d.middleName}</td>
               <td>{d.userName}</td>
