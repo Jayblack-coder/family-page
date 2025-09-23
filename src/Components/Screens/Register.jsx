@@ -45,7 +45,7 @@ const Register = () => {
     try {
       // ✅ axios handles headers + JSON automatically
 
-      const res = await API.post("http://localhost:8000/api/user/register", {surname,
+      const res = await API.post("api/user/register", {surname,
         firstName,
         middleName,
         userName,

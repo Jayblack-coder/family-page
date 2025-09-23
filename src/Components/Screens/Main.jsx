@@ -15,7 +15,7 @@ const Main = () => {
         "Content-Type": "application/json",
       }
     })
-    .then(res =>setData(res.data))
+    .then(res =>setData(res.user))
     .catch(err =>console.log(err));
   })
   return (
