@@ -3,13 +3,14 @@ import axios from 'axios'
 import { useState } from 'react'
 import {Typography, Container } from "@mui/material";
 //import getnwankwoApi from './Api/Api.jsx'
+import API  from "./api";
 
-const API_URL = import.meta.env.VITE_API_BASE_URL;
+// const API_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Main = () => {
   const [data, setData] = useState([])
   useEffect(()=>{
-    axios.get(API_URL, {
+    axios.get(API, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
