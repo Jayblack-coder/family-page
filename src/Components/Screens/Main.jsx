@@ -15,7 +15,20 @@ const Main = () => {
         "Content-Type": "application/json",
       }
     })
-    .then(res =>setData(res.data))
+    // .then(res =>setData(res.data))
+    .then((res) => {
+        console.log("API response:", res.data); // 👀 check structure
+        // adjust depending on your API shape
+        if (Array.isArray(res.data)) {
+          setData(res.data);
+        } else if (Array.isArray(res.data.users)) {
+          setData(res.data.users);
+        } else if (Array.isArray(res.data.data)) {
+          setData(res.data.data);
+        } else {
+          setData([]); // fallback
+        }
+      })
     .catch(err =>console.log(err));
   })
   return (
