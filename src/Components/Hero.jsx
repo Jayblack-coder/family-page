@@ -57,7 +57,7 @@ export default function Hero() {
               to="/family2"
               sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
-              Family Two
+              Asouzu Family
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -69,7 +69,7 @@ export default function Hero() {
               to="/family3"
               sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
             >
-              Family Three
+              Udorji Family
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -81,7 +81,7 @@ export default function Hero() {
               to="/family4"
               sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
             >
-              Family Four
+              Okoli Family
             </Button>
           </Grid>
         </Grid>
