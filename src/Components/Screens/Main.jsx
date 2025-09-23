@@ -48,12 +48,12 @@ const Main = () => {
           </tr>
            
         </thead>
-        <tbody>
+         <tbody>
           
             {
               data.map((d, i)=>{
                 return <tr key={i}>
-                       <td>{d.surname}</td>
+                      <td>{d.surname}</td>
               <td>{d.firstName}</td>
               <td>{d.middleName}</td>
               <td>{d.userName}</td>
@@ -63,13 +63,34 @@ const Main = () => {
               <td>{d.dateOfBirth}</td>
               <td>{d.spouse}</td>
               <td>{d.cityOfResidence}</td>
-              <td>{Array.isArray(d.offspring) ? d.offspring.join(', ') : d.offspring}</td>
+              <td>{d.offspring}</td>
                        </tr>
               })
              
             }
           
         </tbody>
+         {/* <tbody>
+          
+            {
+              data.map((d, i)=>{
+                return <tr key={i}>
+                      <td>{d.surname}</td>
+              <td>{d.firstName}</td>
+              <td>{d.middleName}</td>
+              <td>{d.userName}</td>
+              <td>{d.parents}</td>
+              <td>{d.familyStatus}</td>
+              <td>{d.generation}</td>
+              <td>{d.dateOfBirth}</td>
+              <td>{d.spouse}</td>
+              <td>{d.cityOfResidence}</td>
+                       </tr>
+              })
+             
+            }
+          
+        </tbody> */}
       </table>
     </div>
   )
