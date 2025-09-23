@@ -45,13 +45,17 @@ const Navbar = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            px: { xs: 2, sm: 3, md: 5 },
           }}
         >
           {/* Brand / Logo */}
           <Typography
             variant="h6"
             fontWeight="bold"
-            sx={{ letterSpacing: 1 }}
+            sx={{
+              letterSpacing: 1,
+              fontSize: { xs: "1rem", sm: "1.2rem", md: "1.4rem" },
+            }}
             component={Link}
             to="/"
             style={{ textDecoration: "none", color: "white" }}
@@ -60,7 +64,7 @@ const Navbar = () => {
           </Typography>
 
           {/* Desktop Menu */}
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 2 }}>
+          <Box sx={{ display: { xs: "none", md: "flex" }, gap: { md: 2, lg: 3 } }}>
             {navLinks.map((link) => (
               <Button
                 key={link.label}
@@ -70,6 +74,7 @@ const Navbar = () => {
                 sx={{
                   fontWeight: "bold",
                   textTransform: "none",
+                  fontSize: { md: "0.95rem", lg: "1rem" },
                   ":hover": { bgcolor: "#333", borderRadius: 2 },
                 }}
               >
@@ -89,17 +94,26 @@ const Navbar = () => {
       </AppBar>
 
       {/* Drawer for Mobile */}
-      <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="right"
+        open={open}
+        onClose={toggleDrawer(false)}
+        PaperProps={{
+          sx: {
+            width: { xs: "70%", sm: 300 }, // adaptive drawer width
+            bgcolor: "#1a1a1a",
+          },
+        }}
+      >
         <Box
           sx={{
-            width: 250,
-            bgcolor: "#1a1a1a",
             height: "100%",
             color: "white",
             display: "flex",
             flexDirection: "column",
           }}
         >
+          {/* Drawer Header */}
           <Box
             sx={{
               display: "flex",
@@ -111,6 +125,8 @@ const Navbar = () => {
               <CloseIcon />
             </IconButton>
           </Box>
+
+          {/* Drawer Links */}
           <List>
             {navLinks.map((link) => (
               <ListItem key={link.label} disablePadding>
@@ -123,7 +139,13 @@ const Navbar = () => {
                     "&:hover": { bgcolor: "#333" },
                   }}
                 >
-                  <ListItemText primary={link.label} />
+                  <ListItemText
+                    primary={link.label}
+                    primaryTypographyProps={{
+                      fontSize: { xs: "0.9rem", sm: "1rem" },
+                      fontWeight: "bold",
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             ))}
