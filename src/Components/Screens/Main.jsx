@@ -1,9 +1,16 @@
 import { useEffect } from 'react'
 // import axios from 'axios'
 import { useState } from 'react'
-import {
-  Table, TableBody, TableCell, TableContainer, Container,
-  TableHead, TableRow, Paper
+import { 
+  Typography, 
+  Container, 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer, 
+  TableHead, 
+  TableRow, 
+  Paper 
 } from "@mui/material";
 import API  from "./api.jsx";
 
