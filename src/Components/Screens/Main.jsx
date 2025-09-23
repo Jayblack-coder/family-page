@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 // import axios from 'axios'
 import { useState } from 'react'
-import {Typography, Container } from "@mui/material";
+import {
+  Table, TableBody, TableCell, TableContainer,
+  TableHead, TableRow, Paper
+} from "@mui/material";
 import API  from "./api.jsx";
 
 // const API_URL = import.meta.env.VITE_API_BASE_URL;
