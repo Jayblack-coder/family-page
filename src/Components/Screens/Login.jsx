@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom"; 
 // import axios from "axios";
 import API  from "./api";
 import {
@@ -39,7 +40,7 @@ const Login = () => {
       //   userName,
       //   password,
       // });
-const res = await API.post("https://nmelonye-backend.onrender.com/api/user/login", { userName, password },
+const res = await API.post("api/user/login", { userName, password },
  { headers: { "Content-Type": "application/json" }}
 );
       // console.log("API Base URL:", import.meta.env.VITE_API_URL);
