@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import axios from 'axios'
 import { useState } from 'react'
 import {Typography, Container } from "@mui/material";
-//import getnwankwoApi from './Api/Api.jsx'
 import API  from "./api.jsx";
 
 // const API_URL = import.meta.env.VITE_API_BASE_URL;
@@ -10,7 +9,7 @@ import API  from "./api.jsx";
 const Main = () => {
   const [data, setData] = useState([])
   useEffect(()=>{
-    axios.get(API, {
+    axios.get(`${API}/login`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -71,27 +70,6 @@ const Main = () => {
             }
           
         </tbody>
-         {/* <tbody>
-          
-            {
-              data.map((d, i)=>{
-                return <tr key={i}>
-                      <td>{d.surname}</td>
-              <td>{d.firstName}</td>
-              <td>{d.middleName}</td>
-              <td>{d.userName}</td>
-              <td>{d.parents}</td>
-              <td>{d.familyStatus}</td>
-              <td>{d.generation}</td>
-              <td>{d.dateOfBirth}</td>
-              <td>{d.spouse}</td>
-              <td>{d.cityOfResidence}</td>
-                       </tr>
-              })
-             
-            }
-          
-        </tbody> */}
       </table>
     </div>
   )
