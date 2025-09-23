@@ -8,34 +8,34 @@ import API  from "./api.jsx";
 
 const Main = () => {
   const [data, setData] = useState([])
-  // useEffect(()=>{
-  //   axios.get(`${API}/api/user`, {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     }
-  //   })
-  //   .then(res =>setData(res.data.user))
-  //   .catch(err =>console.log(err));
-  useEffect(() => {
-  API.get("/api/user")
-    .then((res) => {
-      console.log("API response:", res.data); // 👀 check this in console
-
-      if (Array.isArray(res.data)) {
-        setData(res.data);              // case: backend sends array
-      } else if (Array.isArray(res.data.users)) {
-        setData(res.data.users);        // case: backend sends { users: [...] }
-      } else if (Array.isArray(res.data.data)) {
-        setData(res.data.data);         // case: backend sends { data: [...] }
-      } else {
-        setData([]);                    // fallback
+  useEffect(()=>{
+    API.get("/api/user", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
       }
     })
-    .catch((err) => console.error(err));
-}, []);
+    .then(res =>setData(res.data))
+    .catch(err =>console.log(err));
+//   useEffect(() => {
+//   API.get("/api/user")
+//     .then((res) => {
+//       console.log("API response:", res.data); // 👀 check this in console
 
-  // })
+//       if (Array.isArray(res.data)) {
+//         setData(res.data);              // case: backend sends array
+//       } else if (Array.isArray(res.data.users)) {
+//         setData(res.data.users);        // case: backend sends { users: [...] }
+//       } else if (Array.isArray(res.data.data)) {
+//         setData(res.data.data);         // case: backend sends { data: [...] }
+//       } else {
+//         setData([]);                    // fallback
+//       }
+//     })
+//     .catch((err) => console.error(err));
+// }, []);
+
+  })
   return (
     
     <div >
