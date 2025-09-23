@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
 import { useState } from 'react'
 import {Typography, Container } from "@mui/material";
 import API  from "./api.jsx";
@@ -8,16 +8,34 @@ import API  from "./api.jsx";
 
 const Main = () => {
   const [data, setData] = useState([])
-  useEffect(()=>{
-    axios.get(`${API}/api/user`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
+  // useEffect(()=>{
+  //   axios.get(`${API}/api/user`, {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     }
+  //   })
+  //   .then(res =>setData(res.data.user))
+  //   .catch(err =>console.log(err));
+  useEffect(() => {
+  API.get("/api/user")
+    .then((res) => {
+      console.log("API response:", res.data); // 👀 check this in console
+
+      if (Array.isArray(res.data)) {
+        setData(res.data);              // case: backend sends array
+      } else if (Array.isArray(res.data.users)) {
+        setData(res.data.users);        // case: backend sends { users: [...] }
+      } else if (Array.isArray(res.data.data)) {
+        setData(res.data.data);         // case: backend sends { data: [...] }
+      } else {
+        setData([]);                    // fallback
       }
     })
-    .then(res =>setData(res.user))
-    .catch(err =>console.log(err));
-  })
+    .catch((err) => console.error(err));
+}, []);
+
+  // })
   return (
     
     <div >
