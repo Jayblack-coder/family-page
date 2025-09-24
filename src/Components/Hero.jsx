@@ -66,7 +66,7 @@ export default function Hero() {
               variant="contained"
               size="large"
               component={Link}
-              to="/family3"
+              to="/asouzu"
               sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
             >
               Udorji Family
@@ -78,7 +78,7 @@ export default function Hero() {
               variant="contained"
               size="large"
               component={Link}
-              to="/family4"
+              to="/udorji"
               sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
             >
               Okoli Family
