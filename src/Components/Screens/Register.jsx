@@ -194,10 +194,10 @@ const Register = () => {
           required
           fullWidth
         >
-          <MenuItem value="1st">1st</MenuItem>
-          <MenuItem value="2nd">2nd</MenuItem>
-          <MenuItem value="3rd">3rd</MenuItem>
-          <MenuItem value="4th">4th</MenuItem>
+          <MenuItem value="1">1</MenuItem>
+          <MenuItem value="2">2</MenuItem>
+          <MenuItem value="3">3</MenuItem>
+          <MenuItem value="4">4</MenuItem>
         </TextField>
        <LocalizationProvider dateAdapter={AdapterDayjs}>
   <DatePicker
