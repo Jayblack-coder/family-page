@@ -183,12 +183,19 @@ const Register = () => {
           required
         />
         <TextField
+          select
           label="Generation"
           name="generation"
           value={generation}
           onChange={(e) => setGeneration(e.target.value)}
           required
-        />
+          fullWidth
+        >
+          <MenuItem value="1st">1st</MenuItem>
+          <MenuItem value="2nd">2nd</MenuItem>
+          <MenuItem value="3rd">3rd</MenuItem>
+          <MenuItem value="4th">4th</MenuItem>
+        </TextField>
         <TextField
           label="Date of Birth"
           name="dateOfBirth"
