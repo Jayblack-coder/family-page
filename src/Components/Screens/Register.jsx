@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Box, TextField, Button, Typography, Alert, Stack } from "@mui/material";
+import { Box, TextField, Button, Typography, Alert, Stack, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API  from "./api.jsx";
 
@@ -27,7 +27,7 @@ const Register = () => {
   const [spouse, setSpouse] = useState("");
   const [cityOfResidence, setCityOfResidence] = useState("");
   const [offspring, setOffspring] = useState("");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
