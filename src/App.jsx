@@ -4,7 +4,7 @@ import Hero from "./Components/Hero";
 //import Nwankwo from "./Components/Screens/Nwankwo";
 import Register from "./Components/Screens/Register";
 import Login from "./Components/Screens/Login";
-import Main from "./Components/Screens/Main";
+// import Main from "./Components/Screens/Main";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
 
 // import Family2 from "./pages/Family2";
@@ -15,12 +15,12 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <NwankwoHome />
+      
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Hero />} />
-        <Route path="/nwankwo" element={<Main />} />
+        <Route path="/nwankwo" element={<NwankwoHome />} />
         {/* <Route path="/family3" element={<Family3 />} />
         <Route path="/family4" element={<Family4 />} />  */}
       </Routes>
