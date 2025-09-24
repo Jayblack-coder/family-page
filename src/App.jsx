@@ -16,8 +16,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
+         <Route path="/register" element={<Register />} />
         <Route element={<ProtectedRoutes/>}>
-                <Route path="/register" element={<Register />} />
                 <Route path="/home" element={<Hero />} />
                 <Route path="/nwankwo" element={<NwankwoHome />} />
                 <Route path="/asouzu" element={<AsouzuHome />} />
