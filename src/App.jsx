@@ -5,6 +5,7 @@ import Hero from "./Components/Hero";
 import Register from "./Components/Screens/Register";
 import Login from "./Components/Screens/Login";
 import Main from "./Components/Screens/Main";
+import NwankwoHome from "./Components/Screens/NwankwoHome";
 
 // import Family2 from "./pages/Family2";
 // import Family3 from "./pages/Family3";
@@ -14,6 +15,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <NwankwoHome />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
