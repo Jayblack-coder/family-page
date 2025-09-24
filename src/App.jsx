@@ -7,7 +7,7 @@ import Login from "./Components/Screens/Login";
 // import Main from "./Components/Screens/Main";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
-// import Family3 from "./pages/Family3";
+import UdorjiHome from "./Components/Screens/UdorjiHome";
 // import Family4 from "./pages/Family4";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         <Route path="/home" element={<Hero />} />
         <Route path="/nwankwo" element={<NwankwoHome />} />
        <Route path="/asouzu" element={<AsouzuHome />} />
-        {/* <Route path="/family4" element={<Family4 />} />  */}
+        <Route path="/udorji" element={<UdorjiHome />} /> 
       </Routes>
     </Router>
   );
