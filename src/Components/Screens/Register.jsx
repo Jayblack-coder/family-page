@@ -56,8 +56,8 @@ const Register = () => {
         dateOfBirth,
         spouse,
         cityOfResidence,
-        offspring,
-        image,});
+        offspring
+       });
       // const res = await axios.post(Base_URL, {
       //   surname,
       //   firstName,
