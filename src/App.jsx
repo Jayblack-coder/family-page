@@ -16,14 +16,14 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Routes element={<ProtectedRoutes/>}>
+        <Route element={<ProtectedRoutes/>}>
                 <Route path="/register" element={<Register />} />
                 <Route path="/home" element={<Hero />} />
                 <Route path="/nwankwo" element={<NwankwoHome />} />
                 <Route path="/asouzu" element={<AsouzuHome />} />
                 <Route path="/udorji" element={<UdorjiHome />} /> 
                 <Route path="/okoli" element={<OkoliHome />} /> 
-        </Routes>
+        </Route>
         
         
       </Routes>
