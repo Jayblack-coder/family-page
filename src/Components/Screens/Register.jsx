@@ -147,13 +147,19 @@ const Register = () => {
           value={middleName}
           onChange={(e) => setMiddleName(e.target.value)}
         />
-        <TextField
+         <TextField
+          select
           label="Family Status"
           name="familyStatus"
           value={familyStatus}
           onChange={(e) => setFamilyStatus(e.target.value)}
           required
-        />
+          fullWidth
+        >
+          <MenuItem value="Son">Son</MenuItem>
+          <MenuItem value="Daughter">Daughter</MenuItem>
+          <MenuItem value="Wife">Wife</MenuItem>
+        </TextField>
         <TextField
           label="Username"
           name="userName"

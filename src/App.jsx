@@ -8,6 +8,7 @@ import Login from "./Components/Screens/Login";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
+import OkoliHome from "./Components/Screens/OkoliHome";
 // import Family4 from "./pages/Family4";
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/nwankwo" element={<NwankwoHome />} />
        <Route path="/asouzu" element={<AsouzuHome />} />
         <Route path="/udorji" element={<UdorjiHome />} /> 
+        <Route path="/okoli" element={<OkoliHome />} /> 
       </Routes>
     </Router>
   );
