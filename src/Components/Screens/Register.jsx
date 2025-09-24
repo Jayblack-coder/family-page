@@ -26,7 +26,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [parents, setParents] = useState("");
   const [generation, setGeneration] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(null);
   const [spouse, setSpouse] = useState("");
   const [cityOfResidence, setCityOfResidence] = useState("");
   const [offspring, setOffspring] = useState("");
@@ -56,7 +56,7 @@ const Register = () => {
         parents,
         familyStatus,
         generation,
-        dateOfBirth,
+        dateOfBirth: dateOfBirth ? dateOfBirth.format("YYYY-MM-DD") : "",
         spouse,
         cityOfResidence,
         offspring
@@ -92,7 +92,7 @@ const Register = () => {
       setPassword("");
       setParents("");
       setGeneration("");
-      setDateOfBirth("");
+      setDateOfBirth(null);
       setSpouse("");
       setCityOfResidence("");
       setOffspring("");
@@ -199,14 +199,17 @@ const Register = () => {
           <MenuItem value="3rd">3rd</MenuItem>
           <MenuItem value="4th">4th</MenuItem>
         </TextField>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
+       <LocalizationProvider dateAdapter={AdapterDayjs}>
   <DatePicker
     label="Date of Birth"
     value={dateOfBirth}
     onChange={(newValue) => setDateOfBirth(newValue)}
-    renderInput={(params) => <TextField {...params} fullWidth required />}
+    disableFuture   // ✅ prevents selecting future dates
+    slotProps={{ textField: { fullWidth: true, required: true } }}
   />
 </LocalizationProvider>
+
+
         <TextField
           label="Spouse"
           name="spouse"
