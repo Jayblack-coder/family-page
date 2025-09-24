@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import API from "./api.jsx";
 
-const Main = () => {
+const AsouzuHome = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -161,4 +161,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default AsouzuHome;

@@ -54,7 +54,7 @@ export default function Hero() {
               variant="contained"
               size="large"
               component={Link}
-              to="/family2"
+              to="/asouzu"
               sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
               Asouzu Family
