@@ -2,6 +2,9 @@ import { useState } from "react";
 import { Box, TextField, Button, Typography, Alert, Stack, MenuItem } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import API  from "./api.jsx";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 // import axios from "axios";
 
@@ -196,13 +199,14 @@ const Register = () => {
           <MenuItem value="3rd">3rd</MenuItem>
           <MenuItem value="4th">4th</MenuItem>
         </TextField>
-        <TextField
-          label="Date of Birth"
-          name="dateOfBirth"
-          value={dateOfBirth}
-          onChange={(e) => setDateOfBirth(e.target.value)}
-          required
-        />
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+  <DatePicker
+    label="Date of Birth"
+    value={dateOfBirth}
+    onChange={(newValue) => setDateOfBirth(newValue)}
+    renderInput={(params) => <TextField {...params} fullWidth required />}
+  />
+</LocalizationProvider>
         <TextField
           label="Spouse"
           name="spouse"
