@@ -18,21 +18,23 @@ const Main = () => {
 
   useEffect(() => {
     API.get("/api/user")
-      .then((res) => {
-        console.log("API response:", res.data);
+    .then(res =>setData(res.data))
+      // .then((res) => {
+      //   console.log("API response:", res.data);
 
-        if (Array.isArray(res.data)) {
-          setData(res.data);
-        } else if (Array.isArray(res.data.users)) {
-          setData(res.data.users);
-        } else if (Array.isArray(res.data.data)) {
-          setData(res.data.data);
-        } else {
-          setData([]);
-        }
-      })
+      //   if (Array.isArray(res.data)) {
+      //     setData(res.data);
+      //   } else if (Array.isArray(res.data.users)) {
+      //     setData(res.data.users);
+      //   } else if (Array.isArray(res.data.data)) {
+      //     setData(res.data.data);
+      //   } else {
+      //     setData([]);
+      //   }
+      // })
       .catch((err) => console.error(err));
-  }, []);
+})
+  // }, []);
 
   return (
     <Box
