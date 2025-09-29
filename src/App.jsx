@@ -7,7 +7,8 @@ import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
-// import ProtectedRoutes from "./Utils/ProtectedRoutes";
+import ProtectedRoute from "./ProtectedRoute";
+
 
 
 function App() {
@@ -17,14 +18,26 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
          <Route path="/register" element={<Register />} />
-         <Route path="/home" element={<Hero />} />
+          <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Routes>
+          <ProtectedRoute>
                 <Route path="/nwankwo" element={<NwankwoHome />} />
                 <Route path="/asouzu" element={<AsouzuHome />} />
                 <Route path="/udorji" element={<UdorjiHome />} /> 
                 <Route path="/okoli" element={<OkoliHome />} /> 
-        {/* <Route element={<ProtectedRoutes/>}>
+          </ProtectedRoute>
+        </Routes>
+        {/* Default redirect */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
                 
-        </Route> */}
+        
         
         
       </Routes>

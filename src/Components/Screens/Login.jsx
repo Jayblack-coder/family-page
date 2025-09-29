@@ -50,8 +50,15 @@ const res = await API.post("api/user/login", { userName, password },
       console.log("Login response:", res.data);
 
       if (res.status === 200) {
-        setTimeout(() => navigate("/home"), 2000);
-      }
+  // ✅ Save token from backend to localStorage
+  localStorage.setItem("token", res.data.token);
+
+  // Optionally save username
+  localStorage.setItem("userName", res.data.userName);
+
+  // Redirect to home
+  setTimeout(() => navigate("/home"), 2000);
+}
     } catch (err) {
       setError(
         err.response?.data?.message ||
