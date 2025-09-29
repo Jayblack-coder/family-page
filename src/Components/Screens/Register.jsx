@@ -508,6 +508,7 @@ const Register = () => {
 
         <TextField
           type="file"
+          label="Upload Profile Image"
           accept="image/*"
           onChange={(e) => setImage(e.target.files[0])}
           InputLabelProps={{ shrink: true }}
