@@ -22,7 +22,7 @@ function App() {
           path="/home"
           element={
             <ProtectedRoute>
-              <Home />
+              <Hero />
             </ProtectedRoute>
           }
         />
