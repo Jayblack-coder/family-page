@@ -5,7 +5,8 @@ import API  from "./api.jsx";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
+import { IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 // import axios from "axios";
 
 // Setup axios instance with base URL from .env
@@ -31,7 +32,7 @@ const Register = () => {
   const [cityOfResidence, setCityOfResidence] = useState("");
   const [offspring, setOffspring] = useState("");
   // const [image, setImage] = useState("");
-
+const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -171,13 +172,26 @@ const Register = () => {
           required
         />
         <TextField
-          label="Password"
-          name="password"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+  label="Password"
+  name="password"
+  type={showPassword ? "text" : "password"}
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  required
+  InputProps={{
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton
+          onClick={() => setShowPassword(!showPassword)}
+          edge="end"
+        >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+        </IconButton>
+      </InputAdornment>
+    ),
+  }}
+/>
+
         <TextField
           label="Parents"
           name="parents"
