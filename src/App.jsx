@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Register from "./Components/Screens/Register";
@@ -9,16 +9,18 @@ import UdorjiHome from "./Components/Screens/UdorjiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
 import ProtectedRoute from "./ProtectedRoute";
 
-
-
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
+        {/* Public routes */}
         <Route path="/" element={<Login />} />
-         <Route path="/register" element={<Register />} />
-          <Route
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* Protected routes */}
+        <Route
           path="/home"
           element={
             <ProtectedRoute>
@@ -26,20 +28,41 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Routes>
-          <ProtectedRoute>
-                <Route path="/nwankwo" element={<NwankwoHome />} />
-                <Route path="/asouzu" element={<AsouzuHome />} />
-                <Route path="/udorji" element={<UdorjiHome />} /> 
-                <Route path="/okoli" element={<OkoliHome />} /> 
-          </ProtectedRoute>
-        </Routes>
-        {/* Default redirect */}
+        <Route
+          path="/nwankwo"
+          element={
+            <ProtectedRoute>
+              <NwankwoHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu"
+          element={
+            <ProtectedRoute>
+              <AsouzuHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji"
+          element={
+            <ProtectedRoute>
+              <UdorjiHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli"
+          element={
+            <ProtectedRoute>
+              <OkoliHome />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/login" replace />} />
-                
-        
-        
-        
       </Routes>
     </Router>
   );
