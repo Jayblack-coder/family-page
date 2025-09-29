@@ -7,7 +7,7 @@ import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
-import ProtectedRoute from "./ProtectedRoute";
+import ProtectedRoute from "./Components/ProtectedRoute";
 
 function App() {
   return (
