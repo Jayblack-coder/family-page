@@ -13,6 +13,8 @@ import {
   Typography,
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { InputAdornment, IconButton } from "@mui/material";
 
 // Setup axios instance with base URL from .env
 // const API = axios.create({
@@ -26,6 +28,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -120,14 +123,25 @@ const res = await API.post("api/user/login", { userName, password },
                   required
                 />
                 <TextField
-                  label="Password"
-                  type="password"
-                  variant="outlined"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  fullWidth
-                  required
-                />
+  label="Password"
+  name="password"
+  type={showPassword ? "text" : "password"}   // 👈 toggle password visibility
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  required
+  InputProps={{
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton
+          onClick={() => setShowPassword(!showPassword)}
+          edge="end"
+        >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+        </IconButton>
+      </InputAdornment>
+    ),
+  }}
+/>
               </Stack>
 
               <Button
