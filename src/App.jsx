@@ -8,7 +8,11 @@ import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import NwankwoGenOneProfiles from "./Components/Screens/NwankwoFirst";
+import NwankwoGenOneProfiles from "./Components/Screens/NwankwoFourth";
+import NwankwoGenTwoProfiles from "./Components/Screens/NwankwoSecond";
+import NwankwoGenThreeProfiles from "./Components/Screens/NwankwoThird";
+import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFirst";
+import NwankwoGenFiveProfiles from "./Components/Screens/NwankwoFifth";
 
 function App() {
   return (
@@ -63,10 +67,42 @@ function App() {
           }
         />
         <Route
-          path="/generation-four"
+          path="/generation-one"
           element={
             <ProtectedRoute>
               <NwankwoGenOneProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generation-two"
+          element={
+            <ProtectedRoute>
+              <NwankwoGenTwoProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generation-three"
+          element={
+            <ProtectedRoute>
+              <NwankwoGenThreeProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generation-four"
+          element={
+            <ProtectedRoute>
+              <NwankwoGenFourProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generation-five"
+          element={
+            <ProtectedRoute>
+              <NwankwoGenFiveProfiles />
             </ProtectedRoute>
           }
         />

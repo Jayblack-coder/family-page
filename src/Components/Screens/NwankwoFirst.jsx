@@ -37,7 +37,7 @@ const NwankwoGenOneProfiles = () => {
   useEffect(() => {
     const newFilteredData = originalData.filter(
      (item) => item.surname === "Nwankwo" &&
-        String(item.generation) === "4th"
+        String(item.generation) === "1st"
     );
     setFilteredData(newFilteredData);
   }, [originalData]);

@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import API from "./api.jsx";
 
-const NwankwoGenTwoProfiles = () => {
+const NwankwoGenFiveProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -37,7 +37,7 @@ const NwankwoGenTwoProfiles = () => {
   useEffect(() => {
     const newFilteredData = originalData.filter(
      (item) => item.surname === "Nwankwo" &&
-        String(item.generation) === "2nd"
+        String(item.generation) === "5th"
     );
     setFilteredData(newFilteredData);
   }, [originalData]);
@@ -131,5 +131,5 @@ const NwankwoGenTwoProfiles = () => {
   );
 };
 
-export default NwankwoGenTwoProfiles;
+export default NwankwoGenFiveProfiles;
 
