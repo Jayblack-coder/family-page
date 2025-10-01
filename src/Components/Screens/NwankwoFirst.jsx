@@ -18,6 +18,8 @@ const NwankwoGenOneProfiles = () => {
   useEffect(() => {
     API.get("/api/user")
       .then((res) => {
+          console.log("API Response:", res.data);
+        // Handle different possible API shapes
         let data = [];
         if (Array.isArray(res.data)) {
           data = res.data;
