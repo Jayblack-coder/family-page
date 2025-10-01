@@ -53,7 +53,7 @@ const NwankwoGenFiveProfiles = () => {
           gutterBottom
           sx={{ color: "#0d6efd", mb: 4 }}
         >
-          Nwankwo Family (Generation 1)
+          Nwankwo Family (Generation 5)
         </Typography>
 
         {/* Grid of Cards */}
