@@ -8,13 +8,13 @@ import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
 import ProtectedRoute from "./Components/ProtectedRoute";
-import NwankwoFirst from "./Components/Screens/NwankwoFirst";
+import NwankwoGenOneProfiles from "./Components/Screens/NwankwoFirst";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <NwankwoFirst />
+      <NwankwoGenOneProfiles />
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Login />} />

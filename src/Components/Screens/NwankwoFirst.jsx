@@ -132,3 +132,124 @@ const NwankwoGenOneProfiles = () => {
 };
 
 export default NwankwoGenOneProfiles;
+// import { useEffect, useState } from "react";
+// import {
+//   Typography,
+//   Container,
+//   Grid,
+//   Card,
+//   CardContent,
+//   CardMedia,
+//   Box,
+// } from "@mui/material";
+// import API from "./api.jsx";
+
+// const NwankwoProfiles = () => {
+//   const [originalData, setOriginalData] = useState([]);
+//   const [filteredData, setFilteredData] = useState([]);
+
+//   // ✅ Fetch data
+//   useEffect(() => {
+//     API.get("/api/user")
+//       .then((res) => {
+//         let data = [];
+//         if (Array.isArray(res.data)) {
+//           data = res.data;
+//         } else if (Array.isArray(res.data.users)) {
+//           data = res.data.users;
+//         } else if (Array.isArray(res.data.data)) {
+//           data = res.data.data;
+//         }
+//         setOriginalData(data);
+//       })
+//       .catch((err) => console.error("API Error:", err));
+//   }, []);
+
+//   // ✅ Filter by surname
+//   useEffect(() => {
+//     const newFilteredData = originalData.filter(
+//       (item) => item.surname === "Nwankwo"
+//     );
+//     setFilteredData(newFilteredData);
+//   }, [originalData]);
+
+//   return (
+//     <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: 5 }}>
+//       <Container maxWidth="xl">
+//         {/* Page Title */}
+//         <Typography
+//           variant="h4"
+//           fontWeight="bold"
+//           textAlign="center"
+//           gutterBottom
+//           sx={{ color: "#0d6efd", mb: 4 }}
+//         >
+//           Nwankwo Family Members
+//         </Typography>
+
+//         {/* Grid of Cards */}
+//         <Grid container spacing={3}>
+//           {filteredData.map((member, i) => (
+//             <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
+//               <Card
+//                 sx={{
+//                   borderRadius: 3,
+//                   boxShadow: 3,
+//                   transition: "0.3s",
+//                   "&:hover": { boxShadow: 6 },
+//                 }}
+//               >
+//                 {/* Profile Image */}
+//                 <CardMedia
+//                   component="img"
+//                   height="200"
+//                   image={member.image || "https://via.placeholder.com/200"}
+//                   alt={`${member.firstName} ${member.surname}`}
+//                   sx={{ objectFit: "cover" }}
+//                 />
+
+//                 <CardContent>
+//                   <Typography
+//                     variant="h6"
+//                     fontWeight="bold"
+//                     textAlign="center"
+//                     gutterBottom
+//                   >
+//                     {member.firstName} {member.middleName} {member.surname}
+//                   </Typography>
+
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Username:</strong> {member.userName}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Parents:</strong> {member.parents}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Status:</strong> {member.familyStatus}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Generation:</strong> {member.generation}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Date of Birth:</strong> {member.dateOfBirth}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Spouse:</strong> {member.spouse}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>City:</strong> {member.cityOfResidence}
+//                   </Typography>
+//                   <Typography variant="body2" color="text.secondary">
+//                     <strong>Offspring:</strong> {member.offspring}
+//                   </Typography>
+//                 </CardContent>
+//               </Card>
+//             </Grid>
+//           ))}
+//         </Grid>
+//       </Container>
+//     </Box>
+//   );
+// };
+
+// export default NwankwoProfiles;
