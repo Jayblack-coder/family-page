@@ -156,6 +156,56 @@ const NwankwoHome = () => {
             </TableBody>
           </Table>
         </TableContainer>
+         <Grid container spacing={3} justifyContent="center" mt={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-four"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+            >
+              Generation 4
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/asouzu"
+              sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
+            >
+              Asouzu Family
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/asouzu"
+              sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
+            >
+              Udorji Family
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/udorji"
+              sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
+            >
+              Okoli Family
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

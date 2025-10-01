@@ -14,7 +14,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <NwankwoGenOneProfiles />
+      
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Login />} />
@@ -59,6 +59,14 @@ function App() {
           element={
             <ProtectedRoute>
               <OkoliHome />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/generation-four"
+          element={
+            <ProtectedRoute>
+              <NwankwoGenOneProfiles />
             </ProtectedRoute>
           }
         />
