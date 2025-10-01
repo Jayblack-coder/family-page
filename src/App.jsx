@@ -11,7 +11,7 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import NwankwoGenOneProfiles from "./Components/Screens/NwankwoFirst";
 import NwankwoGenTwoProfiles from "./Components/Screens/NwankwoSecond";
 import NwankwoGenThreeProfiles from "./Components/Screens/NwankwoThird";
-import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFirst";
+import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFourth";
 import NwankwoGenFiveProfiles from "./Components/Screens/NwankwoFifth";
 
 function App() {
