@@ -215,7 +215,7 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-five"
-              sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
             generation Five
             </Button>
