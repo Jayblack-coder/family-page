@@ -97,9 +97,9 @@ const NwankwoGenOneProfiles = () => {
                   <Typography variant="body2" color="text.secondary">
                     <strong>MIDDLENAME:</strong> {member.middleName}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  {/* <Typography variant="body2" color="text.secondary">
                     <strong>USERNAME:</strong> {member.userName}
-                  </Typography>
+                  </Typography> */}
                   <Typography variant="body2" color="text.secondary">
                     <strong>PARENTS:</strong> {member.parents}
                   </Typography>
