@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Typography,
   Container,
@@ -10,6 +11,8 @@ import {
   TableRow,
   Paper,
   Box,
+  Grid,
+  Button,
 } from "@mui/material";
 import API from "./api.jsx";
 
@@ -156,6 +159,68 @@ const AsouzuHome = () => {
             </TableBody>
           </Table>
         </TableContainer>
+         <Grid container spacing={3} justifyContent="center" mt={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-one"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+            >
+              generation One
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-two"
+              sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
+            >
+            generation Two
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-three"
+              sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
+            >
+            generation Three
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-four"
+              sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
+            >
+            generation Four
+            </Button>
+          </Grid>
+           <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/generation-five"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+            >
+            generation Five
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );
