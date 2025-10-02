@@ -67,7 +67,7 @@ const OkoliHome = () => {
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
         >
-          Nwankwo Nmelonye Family Tree
+          Okoli Nmelonye Family Tree
         </Typography>
 
         {/* Section Title */}
