@@ -53,7 +53,7 @@ const UdorjiGenThreeProfiles = () => {
           gutterBottom
           sx={{ color: "#0d6efd", mb: 4 }}
         >
-          Asouzu Family (Generation 1)
+          Udorji Family (Generation 3)
         </Typography>
 
         {/* Grid of Cards */}
