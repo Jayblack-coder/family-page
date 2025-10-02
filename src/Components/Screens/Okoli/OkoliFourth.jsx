@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import API from "./api.jsx";
 
-const AsouzuGenOneProfiles = () => {
+const OkoliGenFourProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -36,8 +36,8 @@ const AsouzuGenOneProfiles = () => {
   // ✅ Apply filters: surname = Nwankwo && generation = 1
   useEffect(() => {
     const newFilteredData = originalData.filter(
-     (item) => item.surname === "Asouzu" &&
-        String(item.generation) === "1st"
+     (item) => item.surname === "Okoli" &&
+        String(item.generation) === "4th"
     );
     setFilteredData(newFilteredData);
   }, [originalData]);
@@ -53,7 +53,7 @@ const AsouzuGenOneProfiles = () => {
           gutterBottom
           sx={{ color: "#0d6efd", mb: 4 }}
         >
-          Asouzu Family (Generation 1)
+          Okoli Family (Generation 4)
         </Typography>
 
         {/* Grid of Cards */}
@@ -131,5 +131,5 @@ const AsouzuGenOneProfiles = () => {
   );
 };
 
-export default AsouzuGenOneProfiles;
+export default OkoliGenFourProfiles;
 
