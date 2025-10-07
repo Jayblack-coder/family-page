@@ -1,6 +1,6 @@
 import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import { Link } from "react-router-dom";
-// import "./Hero.css";
+import "./Hero.css";
 
 
 export default function Hero() {
@@ -8,18 +8,18 @@ export default function Hero() {
     <>
       {/* Hero Section */}
       <Box className="hero-section"
-        sx={{
-          minHeight: "80vh",
-          backgroundImage: "url('../assets/family tree.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          textAlign: "center",
-          px: 3,
-        }}
+        // sx={{
+        //   minHeight: "80vh",
+        //   backgroundImage: "url('../assets/family tree.jpg')",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        //   display: "flex",
+        //   alignItems: "center",
+        //   justifyContent: "center",
+        //   color: "white",
+        //   textAlign: "center",
+        //   px: 3,
+        // }}
       >
         <Container>
           <Typography variant="h3" fontWeight="bold" gutterBottom sx={{ textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
