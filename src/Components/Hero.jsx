@@ -1,6 +1,6 @@
 import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import { Link } from "react-router-dom";
-import "Hero.css";
+import "../Components/Hero.css";
 
 
 
