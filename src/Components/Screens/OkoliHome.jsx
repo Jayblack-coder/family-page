@@ -156,6 +156,68 @@ const OkoliHome = () => {
             </TableBody>
           </Table>
         </TableContainer>
+         <Grid container spacing={3} justifyContent="center" mt={2}>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/okoli-one"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+            >
+              generation One
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/okoli-two"
+              sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
+            >
+            generation Two
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/okoli-three"
+              sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
+            >
+            generation Three
+            </Button>
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/okoli-four"
+              sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
+            >
+            generation Four
+            </Button>
+          </Grid>
+           <Grid item xs={12} sm={6} md={3}>
+            <Button
+              fullWidth
+              variant="contained"
+              size="large"
+              component={Link}
+              to="/okoli-five"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+            >
+            generation Five
+            </Button>
+          </Grid>
+        </Grid>
       </Container>
     </Box>
   );

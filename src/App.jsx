@@ -22,6 +22,16 @@ import AsouzuGenFiveProfiles from "./Components/Screens/Asouzu/AsouzuFifth";
 import AsouzuGenFourProfiles from "./Components/Screens/Asouzu/AsouzuFourth";
 import AsouzuGenThreeProfiles from "./Components/Screens/Asouzu/AsouzuThird";
 import AsouzuGenTwoProfiles from "./Components/Screens/Asouzu/AsouzuSecond";
+import OkoliGenFiveProfiles from "./Components/Screens/Okoli/OkoliFifth";
+import OkoliGenFourProfiles from "./Components/Screens/Okoli/OkoliFourth";
+import OkoliGenThreeProfiles from "./Components/Screens/Okoli/OkoliThird";
+import OkoliGenTwoProfiles from "./Components/Screens/Okoli/OkoliSecond";
+import OkoliGenOneProfiles from "./Components/Screens/Okoli/OkoliFirst";
+import UdorjiGenFiveProfiles from "./Components/Screens/Udorji/UdorjiFifth";
+import UdorjiGenFourProfiles from "./Components/Screens/Udorji/UdorjiFourth";
+import UdorjiGenThreeProfiles from "./Components/Screens/Udorji/UdorjiThird";
+import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
+import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
 
 function App() {
   return (
@@ -152,6 +162,86 @@ function App() {
           element={
             <ProtectedRoute>
               <AsouzuGenFiveProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji-one"
+          element={
+            <ProtectedRoute>
+              <UdorjiGenOneProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji-two"
+          element={
+            <ProtectedRoute>
+              <UdorjiGenTwoProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji-three"
+          element={
+            <ProtectedRoute>
+              <UdorjiGenThreeProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji-four"
+          element={
+            <ProtectedRoute>
+              <UdorjiGenFourProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/udorji-five"
+          element={
+            <ProtectedRoute>
+              <UdorjiGenFiveProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli-one"
+          element={
+            <ProtectedRoute>
+              <OkoliGenOneProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli-two"
+          element={
+            <ProtectedRoute>
+              <OkoliGenTwoProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli-three"
+          element={
+            <ProtectedRoute>
+              <OkoliGenThreeProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli-four"
+          element={
+            <ProtectedRoute>
+              <OkoliGenFourProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/okoli-five"
+          element={
+            <ProtectedRoute>
+              <OkoliGenFiveProfiles />
             </ProtectedRoute>
           }
         />
