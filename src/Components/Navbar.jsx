@@ -223,7 +223,7 @@ const Navbar = () => {
               fontSize: { xs: "1rem", sm: "1.2rem", md: "1.4rem" },
             }}
             component={Link}
-            to="/"
+            to="/home"
             style={{ textDecoration: "none", color: "white" }}
           >
             Nmelonye Family Legacy
