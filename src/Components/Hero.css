@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(14, 99, 211, 0.808);
+  color: wheat;
   text-align: center;
   padding: 0 24px; /* px: 3 equivalent in MUI */
 }
