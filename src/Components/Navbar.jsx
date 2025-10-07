@@ -197,7 +197,7 @@ const Navbar = () => {
   const isLoggedIn = Boolean(localStorage.getItem("token")); // ✅ check login status
 
   const navLinks = [
-    { label: "About Us", path: "/family1" },
+    { label: "About", path: "/family1" },
     { label: "Lineage", path: "/family2" },
     { label: "Family Gallery", path: "/family3" },
     { label: "Family Events", path: "/family4" },
