@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <Box className="hero-section"
+      <Box 
         sx={{
           minHeight: "80vh",
           backgroundImage: "url('../assets/tree.jpg')",
