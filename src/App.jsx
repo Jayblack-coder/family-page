@@ -13,6 +13,7 @@ import NwankwoGenTwoProfiles from "./Components/Screens/NwankwoSecond";
 import NwankwoGenThreeProfiles from "./Components/Screens/NwankwoThird";
 import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFourth";
 import NwankwoGenFiveProfiles from "./Components/Screens/NwankwoFifth";
+import About from "./Components/Screens/Asouzu/About";
 
 function App() {
   return (
@@ -106,7 +107,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+<Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          }
+        />
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
