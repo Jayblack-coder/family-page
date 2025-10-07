@@ -11,7 +11,6 @@ export default function Hero() {
           backgroundImage: "url('../assets/tree.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-          display: "flex",
           alignItems: "center",
           justifyContent: "center",
           color: "white",
@@ -35,11 +34,13 @@ export default function Hero() {
         </Container>
      </Box>
       {/* Buttons Section */}
-      <Container sx={{ py: 6 }}>
+      <Container sx={{ py: 6,
+        flexDirection: "column", alignItems: "center"
+       }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
           Explore Family Branches
         </Typography>
-        <Grid container spacing={3} justifyContent="center" mt={2}>
+        <Grid sx={{ display: "flex", }}container spacing={3}  justifyContent="center" mt={2}>
           <Grid item xs={12} sm={6} md={3}>
             <Button
               fullWidth
