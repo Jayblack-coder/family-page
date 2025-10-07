@@ -14,6 +14,9 @@ import NwankwoGenThreeProfiles from "./Components/Screens/NwankwoThird";
 import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFourth";
 import NwankwoGenFiveProfiles from "./Components/Screens/NwankwoFifth";
 import About from "./Components/Screens/About";
+import Lineage from "./Components/Screens/Lineage";
+import Gallery from "./Components/Screens/Gallery";
+import Events from "./Components/Screens/Events";
 
 function App() {
   return (
@@ -112,6 +115,30 @@ function App() {
           element={
             <ProtectedRoute>
               <About />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/lineage"
+          element={
+            <ProtectedRoute>
+              <Lineage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/gallery"
+          element={
+            <ProtectedRoute>
+              <Gallery />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/events"
+          element={
+            <ProtectedRoute>
+              <Events />
             </ProtectedRoute>
           }
         />
