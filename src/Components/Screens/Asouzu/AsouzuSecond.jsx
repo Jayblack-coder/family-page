@@ -8,7 +8,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import API from "../api.";
+import API from "../api.jsx";
 
 const AsouzuGenTwoProfiles = () => {
   const [originalData, setOriginalData] = useState([]);

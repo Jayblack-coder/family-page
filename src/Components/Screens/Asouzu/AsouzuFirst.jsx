@@ -8,7 +8,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import API from "../Screens/api.jsx";
+import API from "../api.jsx";
 
 const AsouzuGenOneProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
