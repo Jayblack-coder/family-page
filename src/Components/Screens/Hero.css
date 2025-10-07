@@ -1,6 +1,6 @@
 .hero-section {
   min-height: 80vh;
-  background-image: url("https://source.unsplash.com/1600x900/?heritage,family");
+  background-image: "url('../assets/family tree.jpg')";
   background-size: cover;
   background-position: center;
   display: flex;
