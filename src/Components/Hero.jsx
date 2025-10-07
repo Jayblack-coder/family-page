@@ -17,7 +17,7 @@ export default function Hero() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          // color: "white",
+          color: "white",
           textAlign: "center",
           px: 3,
         }}
@@ -31,8 +31,7 @@ export default function Hero() {
             celebrating the strength of our family roots.
           </Typography>
         </Container>
-      </Box>
-
+     
       {/* Buttons Section */}
       <Container sx={{ py: 6 }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
@@ -89,6 +88,7 @@ export default function Hero() {
           </Grid>
         </Grid>
       </Container>
+      </Box>
     </>
   );
 }
