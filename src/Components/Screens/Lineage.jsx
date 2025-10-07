@@ -3,7 +3,7 @@ import React from 'react'
 const Lineage = () => {
   return (
     <div>
-      Family Lineage
+      <h1>Family Lineage</h1>
     </div>
   )
 }
