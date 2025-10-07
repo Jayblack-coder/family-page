@@ -13,7 +13,7 @@ import NwankwoGenTwoProfiles from "./Components/Screens/NwankwoSecond";
 import NwankwoGenThreeProfiles from "./Components/Screens/NwankwoThird";
 import NwankwoGenFourProfiles from "./Components/Screens/NwankwoFourth";
 import NwankwoGenFiveProfiles from "./Components/Screens/NwankwoFifth";
-import About from "./Components/Screens/Asouzu/About";
+import About from "./Components/Screens/About";
 
 function App() {
   return (
