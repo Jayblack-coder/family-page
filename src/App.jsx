@@ -17,6 +17,11 @@ import About from "./Components/Screens/About";
 import Lineage from "./Components/Screens/Lineage";
 import Gallery from "./Components/Screens/Gallery";
 import Events from "./Components/Screens/Events";
+import AsouzuGenOneProfiles from "./Components/Screens/Asouzu/AsouzuFirst";
+import AsouzuGenFiveProfiles from "./Components/Screens/Asouzu/AsouzuFifth";
+import AsouzuGenFourProfiles from "./Components/Screens/Asouzu/AsouzuFourth";
+import AsouzuGenThreeProfiles from "./Components/Screens/Asouzu/AsouzuThird";
+import AsouzuGenTwoProfiles from "./Components/Screens/Asouzu/AsouzuSecond";
 
 function App() {
   return (
@@ -107,6 +112,46 @@ function App() {
           element={
             <ProtectedRoute>
               <NwankwoGenFiveProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu-one"
+          element={
+            <ProtectedRoute>
+              <AsouzuGenOneProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu-two"
+          element={
+            <ProtectedRoute>
+              <AsouzuGenTwoProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu-three"
+          element={
+            <ProtectedRoute>
+              <AsouzuGenThreeProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu-four"
+          element={
+            <ProtectedRoute>
+              <AsouzuGenFourProfiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/asouzu-five"
+          element={
+            <ProtectedRoute>
+              <AsouzuGenFiveProfiles />
             </ProtectedRoute>
           }
         />

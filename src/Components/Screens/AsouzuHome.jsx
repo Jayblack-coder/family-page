@@ -166,7 +166,7 @@ const AsouzuHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-one"
+              to="/asouzu-one"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
               generation One
@@ -178,7 +178,7 @@ const AsouzuHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-two"
+              to="/asouzu-two"
               sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
             generation Two
@@ -190,7 +190,7 @@ const AsouzuHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-three"
+              to="/asouzu-three"
               sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
             >
             generation Three
@@ -202,7 +202,7 @@ const AsouzuHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-four"
+              to="/asouzu-four"
               sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
             >
             generation Four
@@ -214,7 +214,7 @@ const AsouzuHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-five"
+              to="/asouzu-five"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
             generation Five
