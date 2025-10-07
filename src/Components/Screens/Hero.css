@@ -1,0 +1,17 @@
+.hero-section {
+  min-height: 80vh;
+  background-image: url("https://source.unsplash.com/1600x900/?heritage,family");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  padding: 0 24px; /* px: 3 equivalent in MUI */
+}
+.hero-content {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better text visibility */
+  padding: 24px; /* p: 3 equivalent in MUI */
+  border-radius: 8px;
+}

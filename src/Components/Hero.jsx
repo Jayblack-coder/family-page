@@ -1,14 +1,16 @@
 import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import { Link } from "react-router-dom";
+// import "./Hero.css";
+
 
 export default function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <Box
+      <Box className="hero-section"
         sx={{
           minHeight: "80vh",
-          backgroundImage: "url('https://source.unsplash.com/1600x900/?heritage,family')",
+          backgroundImage: url("../assets/family tree.jpg"),
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
