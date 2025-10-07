@@ -169,7 +169,7 @@ const AsouzuHome = () => {
               to="/asouzu-one"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
-              generation One
+              First generation
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -181,7 +181,7 @@ const AsouzuHome = () => {
               to="/asouzu-two"
               sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
-            generation Two
+            Second generation
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -193,7 +193,7 @@ const AsouzuHome = () => {
               to="/asouzu-three"
               sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
             >
-            generation Three
+            Third generation
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} md={3}>
@@ -205,7 +205,7 @@ const AsouzuHome = () => {
               to="/asouzu-four"
               sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
             >
-            generation Four
+            Fourth generation 
             </Button>
           </Grid>
            <Grid item xs={12} sm={6} md={3}>
@@ -217,7 +217,7 @@ const AsouzuHome = () => {
               to="/asouzu-five"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
-            generation Five
+            Fifth generation 
             </Button>
           </Grid>
         </Grid>
