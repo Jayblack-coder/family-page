@@ -10,7 +10,7 @@ export default function Hero() {
       <Box className="hero-section"
         sx={{
           minHeight: "80vh",
-          backgroundImage: url("../assets/family tree.jpg"),
+          backgroundImage: "url('../assets/family tree.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
