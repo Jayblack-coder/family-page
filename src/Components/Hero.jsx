@@ -1,27 +1,26 @@
 import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import { Link } from "react-router-dom";
-// import "../Components/Hero.css";
+import "./Hero.css";
 
 
 
 export default function Hero() {
   return (
-    <Box sx={{ flexGrow: 1,
-      minHeight: "80vh",
-          backgroundImage: "url('../assets/tree.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "white",
-          textAlign: "center",
-          px: 3,
-     }}>
+    <>
       {/* Hero Section */}
-      <Box 
-        sx={{
-          
-        }}
+      <Box className="hero-section"
+        // sx={{
+        //   minHeight: "80vh",
+        //   backgroundImage: "url('../assets/family tree.jpg')",
+        //   backgroundSize: "cover",
+        //   backgroundPosition: "center",
+        //   display: "flex",
+        //   alignItems: "center",
+        //   justifyContent: "center",
+        //   color: "white",
+        //   textAlign: "center",
+        //   px: 3,
+        // }}
       >
         <Container>
           <Typography variant="h3" fontWeight="bold" gutterBottom sx={{ textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}>
@@ -32,15 +31,14 @@ export default function Hero() {
             celebrating the strength of our family roots.
           </Typography>
         </Container>
-     </Box>
+      </Box>
+
       {/* Buttons Section */}
-      <Container sx={{ py: 6,
-        flexDirection: "column", alignItems: "center"
-       }}>
+      <Container sx={{ py: 6 }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
           Explore Family Branches
         </Typography>
-        <Grid sx={{ display: "flex", }}container spacing={3}  justifyContent="center" mt={2}>
+        <Grid container spacing={3} justifyContent="center" mt={2}>
           <Grid item xs={12} sm={6} md={3}>
             <Button
               fullWidth
@@ -91,7 +89,6 @@ export default function Hero() {
           </Grid>
         </Grid>
       </Container>
-      </Box>
-    
+    </>
   );
 }
