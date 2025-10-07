@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: blue;
   text-align: center;
   padding: 0 24px; /* px: 3 equivalent in MUI */
 }
