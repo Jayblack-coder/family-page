@@ -6,11 +6,8 @@ import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
-    <>
-      {/* Hero Section */}
-      <Box 
-        sx={{
-          minHeight: "80vh",
+    <Box sx={{ flexGrow: 1,
+      minHeight: "80vh",
           backgroundImage: "url('../assets/tree.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -20,6 +17,11 @@ export default function Hero() {
           color: "white",
           textAlign: "center",
           px: 3,
+     }}>
+      {/* Hero Section */}
+      <Box 
+        sx={{
+          
         }}
       >
         <Container>
@@ -31,7 +33,7 @@ export default function Hero() {
             celebrating the strength of our family roots.
           </Typography>
         </Container>
-     
+     </Box>
       {/* Buttons Section */}
       <Container sx={{ py: 6 }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
@@ -89,6 +91,6 @@ export default function Hero() {
         </Grid>
       </Container>
       </Box>
-    </>
+    
   );
 }
