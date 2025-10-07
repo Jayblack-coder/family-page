@@ -8,7 +8,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import API from "./api.jsx";
+import API from "../api.jsx";
 
 const OkoliGenTwoProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
