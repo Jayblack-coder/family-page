@@ -8,7 +8,7 @@ import {
   CardMedia,
   Box,
 } from "@mui/material";
-import API from "./api.jsx";
+import API from "../Screens/api.jsx";
 
 const NwankwoGenFiveProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
