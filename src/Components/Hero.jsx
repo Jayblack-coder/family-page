@@ -17,7 +17,7 @@ export default function Hero() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "white",
+          // color: "white",
           textAlign: "center",
           px: 3,
         }}
