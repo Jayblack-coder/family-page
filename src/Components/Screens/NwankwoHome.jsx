@@ -153,7 +153,20 @@ const NwankwoHome = () => {
                   <TableCell align="center">{d.dateOfBirth}</TableCell>
                   <TableCell align="center">{d.spouse}</TableCell>
                   <TableCell align="center">{d.cityOfResidence}</TableCell>
-                  <TableCell align="center">{d.offspring}</TableCell>
+                  <TableCell align="center">
+  {Array.isArray(d.offspring)
+    ? d.offspring.join(", ")
+    : d.offspring
+    ? d.offspring.split(",").map((child, i) => (
+        <span key={i}>
+          {child.trim()}
+          {i < d.offspring.split(",").length - 1 && ", "}
+        </span>
+      ))
+    : ""}
+</TableCell>
+
+                  {/* <TableCell align="center">{d.offspring}</TableCell> */}
                 </TableRow>
               ))}
             </TableBody>
