@@ -305,7 +305,8 @@ const Register = () => {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [spouse, setSpouse] = useState("");
   const [cityOfResidence, setCityOfResidence] = useState("");
-  const [offspring, setOffspring] = useState("");
+  const [offspring, setOffspring] = useState([""]);
+ // const [offspring, setOffspring] = useState("");
   const [image, setImage] = useState(null); // ✅ new state for image
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -335,7 +336,9 @@ const Register = () => {
       formData.append("dateOfBirth", dateOfBirth ? dateOfBirth.format("YYYY-MM-DD") : "");
       formData.append("spouse", spouse);
       formData.append("cityOfResidence", cityOfResidence);
-      formData.append("offspring", offspring);
+      formData.append("offspring", JSON.stringify(offspring.filter(name => name.trim() !== "")));
+
+      // formData.append("offspring", offspring);
       if (image) formData.append("image", image);
 
       const res = await API.post("api/user/register", formData, {
@@ -499,12 +502,50 @@ const Register = () => {
           onChange={(e) => setCityOfResidence(e.target.value)}
           required
         />
-        <TextField
+        <Typography variant="subtitle1" fontWeight="bold">
+  Offspring
+</Typography>
+
+{offspring.map((child, index) => (
+  <Box key={index} sx={{ display: "flex", alignItems: "center", mb: 1 }}>
+    <TextField
+      fullWidth
+      label={`Offspring ${index + 1}`}
+      value={child}
+      onChange={(e) => {
+        const newList = [...offspring];
+        newList[index] = e.target.value;
+        setOffspring(newList);
+      }}
+    />
+    {index > 0 && (
+      <Button
+        color="error"
+        onClick={() => {
+          const newList = offspring.filter((_, i) => i !== index);
+          setOffspring(newList);
+        }}
+        sx={{ ml: 1 }}
+      >
+        Remove
+      </Button>
+    )}
+  </Box>
+))}
+
+<Button
+  variant="outlined"
+  onClick={() => setOffspring([...offspring, ""])}
+>
+  + Add Offspring
+</Button>
+
+        {/* <TextField
           label="Offspring"
           name="offspring"
           value={offspring}
           onChange={(e) => setOffspring(e.target.value)}
-        />
+        /> */}
 
         <TextField
           type="file"
