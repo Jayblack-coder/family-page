@@ -70,7 +70,7 @@ const AsouzuHome = () => {
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
         >
-          Asouzu Nmelonye Family Tree
+          Asouzu Nmelonye Family Members
         </Typography>
 
         {/* Section Title */}

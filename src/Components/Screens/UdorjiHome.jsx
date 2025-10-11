@@ -70,7 +70,7 @@ const UdorjiHome = () => {
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
         >
-          Udorji  Nmelonye Family Tree
+          Udorji  Nmelonye Family Members
         </Typography>
 
         {/* Section Title */}
