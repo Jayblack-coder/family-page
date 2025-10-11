@@ -95,9 +95,7 @@ const NwankwoHome = () => {
             fontSize: { xs: "0.9rem", md: "1rem" },
           }}
         >
-          This section captures the history, traditions, and achievements of Family
-          One. Explore their journey across generations and their contributions to
-          our legacy.
+          This section captures the entire genealogy of Nwankwo Nmelonye's lineage.
         </Typography>
 
         {/* Responsive Table */}
