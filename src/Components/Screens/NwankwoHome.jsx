@@ -109,7 +109,16 @@ const NwankwoHome = () => {
         >
           <Table stickyHeader sx={{ minWidth: 800, border: "1px solid #ddd" }}>
             <TableHead>
-              <TableRow>
+              <TableRow
+  key={i}
+  hover
+  sx={{
+    "&:nth-of-type(odd)": { backgroundColor: "#fafafa" },
+    "&:hover": { backgroundColor: "rgba(25, 118, 210, 0.08)" },
+    transition: "background-color 0.2s ease-in-out",
+  }}
+>
+
                 {[
                   "SURNAME",
                   "FIRSTNAME",
@@ -123,16 +132,29 @@ const NwankwoHome = () => {
                   "CITY OF RESIDENCE",
                   "OFFSPRING",
                 ].map((header, i) => (
+                  // <TableCell
+                  //   key={i}
+                  //   align="center"
+                  //   sx={{
+                  //     fontWeight: "bold",
+                  //     color: "#fff",
+                  //     backgroundColor: "#0d6efd",
+                  //     fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
+                  //   }}
+                  // >
                   <TableCell
-                    key={i}
-                    align="center"
-                    sx={{
-                      fontWeight: "bold",
-                      color: "#fff",
-                      backgroundColor: "#0d6efd",
-                      fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
-                    }}
-                  >
+  key={i}
+  align="center"
+  sx={{
+    fontWeight: "bold",
+    color: "#fff",
+    backgroundColor: "#004aad",
+    letterSpacing: "0.05em",
+    textTransform: "uppercase",
+    fontSize: { xs: "0.75rem", sm: "0.9rem", md: "1rem" },
+  }}
+>
+
                     {header}
                   </TableCell>
                 ))}
@@ -178,7 +200,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-one"
-              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+             sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2)",
+  color: "white",
+  "&:hover": {
+    background: "linear-gradient(135deg, #003580, #1565c0)",
+  },
+  borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+}}
+
             >
               generation One
             </Button>
@@ -190,7 +222,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-two"
-              sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
+             sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2)",
+  color: "white",
+  "&:hover": {
+    background: "linear-gradient(135deg, #003580, #1565c0)",
+  },
+  borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+}}
+
             >
             generation Two
             </Button>
@@ -202,7 +244,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-three"
-              sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
+             sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2)",
+  color: "white",
+  "&:hover": {
+    background: "linear-gradient(135deg, #003580, #1565c0)",
+  },
+  borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+}}
+
             >
             generation Three
             </Button>
@@ -214,7 +266,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-four"
-              sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
+              sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2)",
+  color: "white",
+  "&:hover": {
+    background: "linear-gradient(135deg, #003580, #1565c0)",
+  },
+  borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+}}
+
             >
             generation Four
             </Button>
@@ -226,7 +288,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-five"
-              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+              sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2)",
+  color: "white",
+  "&:hover": {
+    background: "linear-gradient(135deg, #003580, #1565c0)",
+  },
+  borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+}}
+
             >
             generation Five
             </Button>
