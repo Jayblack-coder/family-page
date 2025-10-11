@@ -290,7 +290,7 @@ const NwankwoHome = () => {
               to="/generation-five"
               sx={{
   background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+  color: "black",
   "&:hover": {
     background: "linear-gradient(135deg, #003580, #1565c0)",
   },
