@@ -228,12 +228,7 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-three"
              sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
-  color: "white !important",
-  "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0) !important",
-  },
-  borderRadius: 2,
+  bgcolor: "#1976d2", py: 2, borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
@@ -251,12 +246,7 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-four"
              sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
-  color: "white !important",
-  "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0) !important",
-  },
-  borderRadius: 2,
+  bgcolor: "#1976d2", py: 2, borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
@@ -274,12 +264,7 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-five"
               sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
-  color: "white !important",
-  "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0) !important",
-  },
-  borderRadius: 2,
+ bgcolor: "#1976d2", py: 2, borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}

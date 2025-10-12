@@ -177,7 +177,7 @@ const AsouzuHome = () => {
               size="large"
               component={Link}
               to="/asouzu-two"
-              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+              sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
             Second generation
             </Button>
