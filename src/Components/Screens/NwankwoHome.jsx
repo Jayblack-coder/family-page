@@ -201,15 +201,16 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-one"
              sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
+  color: "white !important",
   "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0)",
+    background: "linear-gradient(135deg, #003580, #1565c0) !important",
   },
   borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
+
 
             >
               generation One
@@ -222,16 +223,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-two"
-             sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+            sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
+  color: "white !important",
   "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0)",
+    background: "linear-gradient(135deg, #003580, #1565c0) !important",
   },
   borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
+
 
             >
             generation Two
@@ -245,15 +247,16 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-three"
              sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
+  color: "white !important",
   "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0)",
+    background: "linear-gradient(135deg, #003580, #1565c0) !important",
   },
   borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
+
 
             >
             generation Three
@@ -266,16 +269,17 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-four"
-              sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+             sx={{
+  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
+  color: "white !important",
   "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0)",
+    background: "linear-gradient(135deg, #003580, #1565c0) !important",
   },
   borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
+
 
             >
             generation Four
@@ -289,10 +293,10 @@ const NwankwoHome = () => {
               component={Link}
               to="/generation-five"
               sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2)",
-  color: "white",
+  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
+  color: "white !important",
   "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0)",
+    background: "linear-gradient(135deg, #003580, #1565c0) !important",
   },
   borderRadius: 2,
   fontWeight: "bold",
