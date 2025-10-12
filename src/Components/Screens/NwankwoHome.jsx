@@ -65,7 +65,7 @@ const NwankwoHome = () => {
           gutterBottom
           textAlign="center"
           sx={{
-            color: "#0d6efd",
+            color: "#004aad",
             mb: { xs: 2, md: 4 },
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
@@ -215,18 +215,7 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-two"
-            sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
-  color: "white !important",
-  "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0) !important",
-  },
-  borderRadius: 2,
-  fontWeight: "bold",
-  letterSpacing: "0.02em",
-}}
-
-
+              sx={{ bgcolor: "#004aad", py: 2, borderRadius: 2 }}
             >
             generation Two
             </Button>
