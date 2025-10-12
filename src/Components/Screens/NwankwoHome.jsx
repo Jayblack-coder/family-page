@@ -109,15 +109,7 @@ const NwankwoHome = () => {
         >
           <Table stickyHeader sx={{ minWidth: 800, border: "1px solid #ddd" }}>
             <TableHead>
-              <TableRow
-  key={i}
-  hover
-  sx={{
-    "&:nth-of-type(odd)": { backgroundColor: "#fafafa" },
-    "&:hover": { backgroundColor: "rgba(25, 118, 210, 0.08)" },
-    transition: "background-color 0.2s ease-in-out",
-  }}
->
+              <TableRow>
 
                 {[
                   "SURNAME",
@@ -138,8 +130,8 @@ const NwankwoHome = () => {
                   //   sx={{
                   //     fontWeight: "bold",
                   //     color: "#fff",
-                  //     backgroundColor: "#0d6efd",
-                  //     fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
+                  //     backgroundColor: "#004aad",
+                  //     fontSize: { xs: "0.7rem", sm: "0.9rem", md: "1rem" },
                   //   }}
                   // >
                   <TableCell
