@@ -205,7 +205,17 @@ const Navbar = () => {
 
   return (
     <>
-      <AppBar position="sticky" elevation={6} sx={{ bgcolor: "#1a1a1a", width: "100%" }}>
+      <AppBar
+  position="fixed"
+   elevation={0}
+   sx={{
+     backgroundColor: "rgba(26, 26, 26, 0.2)", // translucent black
+     backdropFilter: "blur(10px)", // nice glass effect
+    boxShadow: "none",
+     width: "100%",
+     zIndex: 1100, // ensures it stays above content
+   }}
+>
         <Toolbar
           sx={{
             display: "flex",
