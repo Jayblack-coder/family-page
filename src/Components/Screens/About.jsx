@@ -20,6 +20,22 @@ export default function About() {
     >
       {/* 🔹 Hero Section with background image and gradient overlay */}
       <Box
+  sx={{
+    position: "relative",
+    backgroundImage: `linear-gradient(rgba(10,61,98,0.7), rgba(10,61,98,0.7)), url(${tree})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    color: "white",
+    textAlign: "center",
+    py: { xs: 10, md: 14 },
+    px: 2,
+    mt: "-64px",   // ✅ pull the hero up under the navbar
+    zIndex: 0,
+  }}
+>
+
+      {/* <Box
         sx={{
           position: "relative",
           backgroundImage: `url(${tree})`,
@@ -32,7 +48,7 @@ export default function About() {
           borderRadius: 0,
           boxShadow: "inset 0 0 80px rgba(0,0,0,0.3)",
         }}
-      >
+      > */}
         <Typography
           variant="h3"
           fontWeight="bold"
