@@ -699,7 +699,6 @@ const Register = () => {
         fontFamily: "'Poppins', sans-serif",
         overflowY: "auto",
         py: 5,
-        maxWidth: 400, mx: "auto", mt: 12, p: 2
       }}
     >
       <Card
