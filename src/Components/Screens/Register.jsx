@@ -699,6 +699,7 @@ const Register = () => {
         fontFamily: "'Poppins', sans-serif",
         overflowY: "auto",
         py: 5,
+        maxWidth: 400, mx: "auto", mt: 12, p: 2
       }}
     >
       <Card
@@ -724,10 +725,7 @@ const Register = () => {
           {error && <Alert severity="error">{error}</Alert>}
           {success && <Alert severity="success">{success}</Alert>}
 
-          <Box component="form" onSubmit={handleSubmit} sx={{  maxWidth: 400,
-    mx: "auto",
-    mt: 12, // 👈 increase this (was 4)
-    p: 2, }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Stack spacing={2}>
               <TextField
                 label="Surname"
