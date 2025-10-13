@@ -71,7 +71,7 @@ const NwankwoGenFourProfiles = () => {
                 {/* Profile Image */}
                 <CardMedia
                   component="img"
-                  height="200"
+                  height="250"
                   image={member.image || "https://via.placeholder.com/200"}
                   alt={`${member.firstName} ${member.surname}`}
                   sx={{ objectFit: "cover" }}
