@@ -418,7 +418,7 @@ const Register = () => {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh",
+        height: "80vh",
         backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tree})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
