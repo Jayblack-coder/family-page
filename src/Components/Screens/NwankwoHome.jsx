@@ -191,7 +191,7 @@ const NwankwoHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-two"
+              to="/generation-one"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2,
   fontWeight: "bold",
   letterSpacing: "0.02em",
