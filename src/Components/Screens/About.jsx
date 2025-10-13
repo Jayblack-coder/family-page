@@ -7,7 +7,7 @@ import {
   Paper,
   Divider,
 } from "@mui/material";
-import tree from "../assets/tree.jpg";
+import tree from "../../assets/tree.jpg"; // ✅ import the image
 
 export default function About() {
   return (
