@@ -192,7 +192,10 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-two"
-              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+               }}
 >
               generation One
             </Button>
@@ -204,7 +207,10 @@ const NwankwoHome = () => {
               size="large"
               component={Link}
               to="/generation-two"
-              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2,
+  fontWeight: "bold",
+  letterSpacing: "0.02em",
+               }}
             >
             generation Two
             </Button>
