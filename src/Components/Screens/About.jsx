@@ -22,10 +22,7 @@ export default function About() {
       <Box
         sx={{
           position: "relative",
-          backgroundImage: `
-            linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)),
-            url(${tree}),
-          `,
+          backgroundImage: `url(${tree})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           color: "white",
