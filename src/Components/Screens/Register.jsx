@@ -432,6 +432,7 @@ const Register = () => {
     >
       <Card
         sx={{
+          height: "80px" ,
           width: { xs: "90%", sm: "80%", md: "60%", lg: "45%" },
           backgroundColor: "rgba(255, 255, 255, 0.92)",
           borderRadius: 4,
@@ -453,7 +454,7 @@ const Register = () => {
           {error && <Alert severity="error">{error}</Alert>}
           {success && <Alert severity="success">{success}</Alert>}
 
-          <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400, height: "80px" , mx: "auto", mt: 12, p: 2  }}>
+          <Box component="form" onSubmit={handleSubmit} sx={{ maxWidth: 400,  mx: "auto", mt: 12, p: 2  }}>
             <Stack spacing={2}>
               <TextField
                 label="Surname"
