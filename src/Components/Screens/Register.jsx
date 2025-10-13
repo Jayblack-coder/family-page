@@ -351,7 +351,12 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!allowedSurnames.includes(surname.trim())) {
+    if (
+  !allowedSurnames.some(
+    (name) => name.toLowerCase() === surname.trim().toLowerCase()
+  )
+) {
+
       setError("Surname not recognized. Please contact admin");
       setSuccess("");
       return;
