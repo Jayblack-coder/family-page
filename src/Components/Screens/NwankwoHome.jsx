@@ -191,20 +191,9 @@ const NwankwoHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/generation-one"
-             sx={{
-  background: "linear-gradient(135deg, #004aad, #1976d2) !important",
-  color: "white !important",
-  "&:hover": {
-    background: "linear-gradient(135deg, #003580, #1565c0) !important",
-  },
-  borderRadius: 2,
-  fontWeight: "bold",
-  letterSpacing: "0.02em",
-}}
-
-
-            >
+              to="/generation-two"
+              sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
+>
               generation One
             </Button>
           </Grid>
