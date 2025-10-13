@@ -42,12 +42,12 @@ const OkoliHome = () => {
   }, []);
 
   // Filter whenever originalData changes
-  useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) => item.surname === "Okoli"
-    );
-    setFilteredData(newFilteredData);
-  }, [originalData]);
+   useEffect(() => {
+  const newFilteredData = originalData.filter(
+    (item) => item.surname?.toLowerCase() === "okoli"
+  );
+  setFilteredData(newFilteredData);
+}, [originalData]);
 
   return (
     <Box

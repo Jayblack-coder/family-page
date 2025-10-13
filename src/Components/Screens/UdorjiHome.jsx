@@ -42,12 +42,12 @@ const UdorjiHome = () => {
   }, []);
 
   // Filter whenever originalData changes
-  useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) => item.surname === "Udorji"
-    );
-    setFilteredData(newFilteredData);
-  }, [originalData]);
+   useEffect(() => {
+  const newFilteredData = originalData.filter(
+    (item) => item.surname?.toLowerCase() === "udorji"
+  );
+  setFilteredData(newFilteredData);
+}, [originalData]);
 
   return (
     <Box
