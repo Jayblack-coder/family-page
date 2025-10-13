@@ -36,7 +36,7 @@ const NwankwoGenThreeProfiles = () => {
   // ✅ Apply filters: surname = Nwankwo && generation = 1
   useEffect(() => {
     const newFilteredData = originalData.filter(
-     (item) => item.surname === "Nwankwo" &&
+      (item) => item.surname?.toLowerCase() === "nwankwo" &&
         String(item.generation) === "3rd"
     );
     setFilteredData(newFilteredData);
