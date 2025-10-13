@@ -219,7 +219,7 @@ const OkoliHome = () => {
             </Button>
           </Grid>
         </Grid>
-      </Container>
+        </Container>
     </Box>
   );
 };

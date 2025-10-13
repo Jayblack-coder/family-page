@@ -19,6 +19,8 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import tree from "../../assets/tree.jpg"; // ✅ same background as login
+import { ClipLoader } from "react-spinners";
+
 
 const allowedSurnames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
 
@@ -40,21 +42,23 @@ const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (
+    !allowedSurnames.some(
+      (name) => name.toLowerCase() === surname.trim().toLowerCase()
+    )
+  ) {
+    setError("Surname not recognized. Please contact admin");
+    setSuccess("");
+    return;
+  }
 
-    if (
-  !allowedSurnames.some(
-    (name) => name.toLowerCase() === surname.trim().toLowerCase()
-  )
-) {
+  setError("");
+  setLoading(true); // ✅ start loader
 
-      setError("Surname not recognized. Please contact admin");
-      setSuccess("");
-      return;
-    }
-    setError("");
 
     try {
       const formData = new FormData();
@@ -102,15 +106,17 @@ const Register = () => {
       setCityOfResidence("");
       setOffspring([""]);
       setImage(null);
-    } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          err.response?.data?.error ||
-          "Registration failed. Please try again"
-      );
-      setSuccess("");
-    }
-  };
+    }catch (err) {
+    setError(
+      err.response?.data?.message ||
+        err.response?.data?.error ||
+        "Registration failed. Please try again"
+    );
+    setSuccess("");
+  } finally {
+    setLoading(false); // ✅ stop loader
+  }
+};
 
   return (
    <Box
@@ -358,6 +364,25 @@ const Register = () => {
               </Button>
             </Stack>
           </Box>
+          {loading && (
+  <Box
+    sx={{
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
+      backgroundColor: "rgba(0,0,0,0.5)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      zIndex: 9999,
+    }}
+  >
+    <ClipLoader color="#ffffff" size={80} />
+  </Box>
+)}
+
         </CardContent>
       </Card>
     </Box>
