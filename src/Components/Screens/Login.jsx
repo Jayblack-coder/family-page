@@ -203,7 +203,7 @@ import {
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import bg from "../assets/tree.jpg"; // ✅ Use same background as hero page
+import tree from "../../assets/tree.jpg"; // ✅ Use same background as hero page
 
 const Login = () => {
   const navigate = useNavigate();
@@ -246,7 +246,7 @@ const Login = () => {
       sx={{
         width: "100vw",
         height: "100vh",
-        backgroundImage: `linear-gradient(rgba(10,61,98,0.55), rgba(10,61,98,0.75)), url(${bg})`,
+        backgroundImage: `linear-gradient(rgba(10,61,98,0.55), rgba(10,61,98,0.75)), url(${tree})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
