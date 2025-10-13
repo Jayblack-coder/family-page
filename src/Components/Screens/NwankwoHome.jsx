@@ -228,9 +228,7 @@ const NwankwoHome = () => {
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
-
-
-            >
+>
             generation Three
             </Button>
           </Grid>
@@ -246,9 +244,7 @@ const NwankwoHome = () => {
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
-
-
-            >
+>
             generation Four
             </Button>
           </Grid>
@@ -264,8 +260,7 @@ const NwankwoHome = () => {
   fontWeight: "bold",
   letterSpacing: "0.02em",
 }}
-
-            >
+ >
             generation Five
             </Button>
           </Grid>
