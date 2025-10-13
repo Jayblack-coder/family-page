@@ -7,6 +7,7 @@ import {
   Paper,
   Divider,
 } from "@mui/material";
+import tree from "../assets/tree.jpg";
 
 export default function About() {
   return (
@@ -23,7 +24,7 @@ export default function About() {
           position: "relative",
           backgroundImage: `
             linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)),
-            url('/assets/family-tree-banner.jpg')
+            url(${tree}),
           `,
           backgroundSize: "cover",
           backgroundPosition: "center",
