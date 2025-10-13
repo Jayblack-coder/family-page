@@ -43,11 +43,11 @@ const NwankwoHome = () => {
 
   // Filter whenever originalData changes
   useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) => item.surname === "Nwankwo"
-    );
-    setFilteredData(newFilteredData);
-  }, [originalData]);
+  const newFilteredData = originalData.filter(
+    (item) => item.surname?.toLowerCase() === "nwankwo"
+  );
+  setFilteredData(newFilteredData);
+}, [originalData]);
 
   return (
     <Box
