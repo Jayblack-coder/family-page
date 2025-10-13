@@ -415,21 +415,23 @@ const Register = () => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tree})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "'Poppins', sans-serif",
-        overflowY: "auto",
-        py: 5,
-      }}
-    >
+   <Box
+  sx={{
+    width: "100vw",
+    minHeight: "100vh", // ✅ allow scroll if needed
+    pt: "100px", // ✅ creates space below navbar
+    pb: 5,
+    backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tree})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-start", // ✅ start below navbar
+    fontFamily: "'Poppins', sans-serif",
+    overflowY: "auto",
+  }}
+>
+
       <Card
         sx={{
           width: { xs: "90%", sm: "80%", md: "60%", lg: "45%" },
