@@ -84,7 +84,7 @@
 import { Box, Typography, Button, Grid, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 // import "./Hero.css";
-import familyTree from "../assets/family-tree.jpg"; // ✅ import the image
+import tree from "../assets/tree.jpg"; // ✅ import the image
 
 export default function Hero() {
   return (
@@ -94,7 +94,7 @@ export default function Hero() {
         className="hero-section"
         sx={{
           minHeight: "80vh",
-          backgroundImage: `url(${familyTree})`, // ✅ use the imported image
+          backgroundImage: `url(${tree})`, // ✅ use the imported image
           backgroundSize: "cover",
           backgroundPosition: "center",
           display: "flex",
