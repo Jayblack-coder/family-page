@@ -418,7 +418,7 @@ const Register = () => {
     <Box
       sx={{
         width: "100vw",
-        height: "80vh",
+        height: "100vh",
         backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tree})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -428,7 +428,7 @@ const Register = () => {
         fontFamily: "'Poppins', sans-serif",
         overflowY: "auto",
         py: 5,
-        mt: 12,
+
       }}
     >
       <Card
