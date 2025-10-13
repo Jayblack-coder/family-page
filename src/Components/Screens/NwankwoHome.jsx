@@ -55,6 +55,7 @@ const NwankwoHome = () => {
         bgcolor: "#f9f9f9",
         minHeight: "100vh",
         py: { xs: 2, sm: 3, md: 5 },
+         pt: "100px",
       }}
     >
       <Container maxWidth="xl">
