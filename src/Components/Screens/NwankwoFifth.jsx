@@ -39,7 +39,7 @@ const NwankwoGenFiveProfiles = () => {
       (item) =>
         item.surname &&
         item.surname.toLowerCase().includes("nwankwo") &&
-        String(item.generation)?.toLowerCase() === "4th"
+        String(item.generation)?.toLowerCase() === "5th"
     );
     setFilteredData(newFilteredData);
   }, [originalData]);
