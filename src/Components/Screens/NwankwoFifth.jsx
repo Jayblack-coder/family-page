@@ -35,9 +35,11 @@ const NwankwoGenFiveProfiles = () => {
 
   // ✅ Apply filters: surname = Nwankwo && generation = 1
   useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) => item.surname?.toLowerCase() === "nwankwo" &&
-        String(item.generation) === "5th"
+     const newFilteredData = originalData.filter(
+      (item) =>
+        item.surname &&
+        item.surname.toLowerCase().includes("nwankwo") &&
+        String(item.generation)?.toLowerCase() === "4th"
     );
     setFilteredData(newFilteredData);
   }, [originalData]);
