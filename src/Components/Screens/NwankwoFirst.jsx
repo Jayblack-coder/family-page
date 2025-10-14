@@ -34,9 +34,11 @@ const NwankwoGenOneProfiles = () => {
   }, []);
 
   // ✅ Apply filters: surname = Nwankwo && generation = 1
-  useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) => item.surname?.toLowerCase() === "nwankwo" &&
+ useEffect(() => {
+     const newFilteredData = originalData.filter(
+      (item) =>
+        item.surname &&
+        item.surname.toLowerCase().includes("nwankwo") &&
         String(item.generation) === "1st"
     );
     setFilteredData(newFilteredData);
