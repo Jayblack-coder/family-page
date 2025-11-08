@@ -32,6 +32,7 @@ import UdorjiGenFourProfiles from "./Components/Screens/Udorji/UdorjiFourth";
 import UdorjiGenThreeProfiles from "./Components/Screens/Udorji/UdorjiThird";
 import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
 import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
+import AdminDashboard from "./components/AdminDashboard.jsx";
 
 function App() {
   return (
@@ -43,6 +44,15 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+         {/* ✅ Protected admin route */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute adminOnly={true}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
 
         {/* Protected routes */}
         <Route

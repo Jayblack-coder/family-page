@@ -6,7 +6,7 @@ import EventsManager from "./EventsManager";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
-
+const { logout } = useAuth();
   const renderContent = () => {
     switch (activeTab) {
       case "gallery":
@@ -52,6 +52,9 @@ const AdminDashboard = () => {
           >
             Post Events
           </Button>
+          <Button variant="outlined" color="error" onClick={logout}>
+  Logout
+</Button>;
         </Stack>
 
         {renderContent()}
