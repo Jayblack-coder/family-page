@@ -1,0 +1,92 @@
+import { useState, useEffect } from "react";
+import { Box, Typography, TextField, Button, Grid, Card, CardContent } from "@mui/material";
+import API from "./api.jsx";
+
+const EventsManager = () => {
+  const [events, setEvents] = useState([]);
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
+
+  const fetchEvents = async () => {
+    const res = await API.get("/api/events");
+    setEvents(res.data.events || res.data || []);
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
+
+  const handlePostEvent = async () => {
+    if (!title || !date) return alert("Title and Date are required.");
+
+    try {
+      await API.post("/api/events", { title, date, description });
+      alert("Event posted!");
+      setTitle("");
+      setDate("");
+      setDescription("");
+      fetchEvents();
+    } catch (err) {
+      console.error("Error posting event:", err);
+    }
+  };
+
+  return (
+    <Box>
+      <Typography variant="h5" fontWeight="bold" gutterBottom>
+        Post Family Events
+      </Typography>
+
+      <Box mb={3}>
+        <TextField
+          label="Event Title"
+          fullWidth
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          type="date"
+          fullWidth
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+        <TextField
+          label="Description"
+          multiline
+          rows={4}
+          fullWidth
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          sx={{ mb: 2 }}
+        />
+        <Button variant="contained" onClick={handlePostEvent}>
+          Post Event
+        </Button>
+      </Box>
+
+      {/* Events List */}
+      <Grid container spacing={2}>
+        {events.map((evt, i) => (
+          <Grid item xs={12} sm={6} md={4} key={i}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6" fontWeight="bold">
+                  {evt.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {evt.date}
+                </Typography>
+                <Typography variant="body2">{evt.description}</Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Box>
+  );
+};
+
+export default EventsManager;
