@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-import Hero from "./Components/Hero";
+// import Hero from "./Components/Hero";
 import Register from "./Components/Screens/Register";
 import Login from "./Components/Screens/Login";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
