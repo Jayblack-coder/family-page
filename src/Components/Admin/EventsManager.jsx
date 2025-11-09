@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, TextField, Button, Grid, Card, CardContent } from "@mui/material";
-import API from "./api.jsx";
+import API from "../Screens/api.jsx";
 
 const EventsManager = () => {
   const [events, setEvents] = useState([]);

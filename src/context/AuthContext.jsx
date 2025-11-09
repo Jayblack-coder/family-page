@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import API from "../components/api.jsx"; // adjust path if needed
+import API from "../Components/Screens/api.jsx"; // adjust path if needed
 
 const AuthContext = createContext();
 

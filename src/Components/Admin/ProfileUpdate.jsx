@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Box, Typography, Grid, Button, Card, CardMedia } from "@mui/material";
-import API from "./api.jsx";
+import API from "../Screens/api.jsx";
 
 const ProfilePictureUpdate = () => {
   const [users, setUsers] = useState([]);

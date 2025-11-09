@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Container, Typography, Box, Button, Stack } from "@mui/material";
 import GalleryUpload from "./GalleryUpload";
-import ProfilePictureUpdate from "./ProfilePictureUpdate";
-import EventsManager from "./EventsManager";
+import ProfilePictureUpdate from "./ProfileUpdate.jsx";
+import EventsManager from "./EventsManager.jsx";
+import { useAuth } from "../../context/AuthContext";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");

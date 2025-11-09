@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Box, Button, Typography, TextField, Grid, Card, CardMedia } from "@mui/material";
-import API from "./api.jsx";
+import API from "../Screens/api.jsx";
 
 const GalleryUpload = () => {
   const [image, setImage] = useState(null);
