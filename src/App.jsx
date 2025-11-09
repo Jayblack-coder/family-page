@@ -33,6 +33,7 @@ import UdorjiGenThreeProfiles from "./Components/Screens/Udorji/UdorjiThird";
 import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
 import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
 import AdminDashboard from "./components/AdminDashboard.jsx";
+import AdminLogin from "./Components/AdminLogin.jsx";
 
 function App() {
   return (
@@ -60,7 +61,8 @@ function App() {
           path="/nwankwo"
           element={
             <ProtectedRoute>
-              <NwankwoHome />
+              <AdminLogin />
+              {/* <NwankwoHome /> */}
             </ProtectedRoute>
           }
         />
