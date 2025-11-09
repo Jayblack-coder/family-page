@@ -52,8 +52,8 @@ function App() {
           path="/home"
           element={
             <ProtectedRoute>
-              <AdminDashboard />
-              {/* <Hero /> */}
+              {/* <AdminDashboard /> */}
+              <Hero />
             </ProtectedRoute>
           }
         />
