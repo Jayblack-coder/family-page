@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Components/Navbar";
-// import Hero from "./Components/Hero";
+import Hero from "./Components/Hero";
 import Register from "./Components/Screens/Register";
 import Login from "./Components/Screens/Login";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
@@ -41,18 +41,17 @@ function App() {
       
       <Routes>
         {/* Public routes */}
-        {/* <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} /> */}
-        {/* <Route path="/register" element={<Register />} /> */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
          {/* ✅ Protected admin route */}
-         <Route path="/admin" element={<AdminDashboard />} />  
+         <Route path="/admin" element={<AdminDashboard />} />  {/* 👈 new admin route */}
 
         {/* Protected routes */}
         <Route
           path="/home"
           element={
             <ProtectedRoute>
-              {/* <AdminDashboard /> */}
               <Hero />
             </ProtectedRoute>
           }
