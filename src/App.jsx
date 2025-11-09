@@ -41,11 +41,11 @@ function App() {
       
       <Routes>
         {/* Public routes */}
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} /> */}
+        {/* <Route path="/register" element={<Register />} /> */}
          {/* ✅ Protected admin route */}
-         <Route path="/admin" element={<AdminDashboard />} />  {/* 👈 new admin route */}
+         <Route path="/admin" element={<AdminDashboard />} />  
 
         {/* Protected routes */}
         <Route
