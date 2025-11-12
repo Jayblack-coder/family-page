@@ -5,16 +5,23 @@ import ProfilePictureUpdate from "./ProfileUpdate.jsx";
 import EventsManager from "./EventsManager.jsx";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom"; // ✅ import navigate
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
   const { logout } = useAuth();
   const navigate = useNavigate(); // ✅ initialize navigate
 
-  const handleLogout = () => {
-    logout(); // clears user + token
-    navigate("/login"); // ✅ redirect to login page
+   const handleLogout = () => {
+    logout();
+    toast.success("✅ You’ve been logged out successfully!");
+    setTimeout(() => navigate("/login"), 2000); // redirect after 2 seconds
   };
+
+  // const handleLogout = () => {
+  //   logout(); // clears user + token
+  //   navigate("/login"); // ✅ redirect to login page
+  // };
 
   const renderContent = () => {
     switch (activeTab) {
