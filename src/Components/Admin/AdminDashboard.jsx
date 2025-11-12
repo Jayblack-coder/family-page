@@ -4,10 +4,18 @@ import GalleryUpload from "./GalleryUpload";
 import ProfilePictureUpdate from "./ProfileUpdate.jsx";
 import EventsManager from "./EventsManager.jsx";
 import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom"; // ✅ import navigate
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
-const { logout } = useAuth();
+  const { logout } = useAuth();
+  const navigate = useNavigate(); // ✅ initialize navigate
+
+  const handleLogout = () => {
+    logout(); // clears user + token
+    navigate("/login"); // ✅ redirect to login page
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "gallery":
@@ -53,9 +61,9 @@ const { logout } = useAuth();
           >
             Post Events
           </Button>
-          <Button variant="outlined" color="error" onClick={logout}>
-  Logout
-</Button>;
+          <Button variant="outlined" color="error" onClick={handleLogout}>
+            Logout
+          </Button>
         </Stack>
 
         {renderContent()}
