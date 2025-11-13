@@ -42,42 +42,41 @@ const Login = () => {
       localStorage.setItem("user", JSON.stringify(res.data.user)); // store full user object
 
       const user = res.data.user;
-      }
 
-//       // ✅ Redirect logic
-//       if (user.familyStatus.toLowerCase() === "admin") {
-//         alert(`Welcome back, Admin ${user.firstName}!`);
-//         navigate("/admin");
-//       } else {
-//         navigate("/home");
-//       }
-//     }
-//   } catch (err) {
-//     setError(
-//       err.response?.data?.message ||
-//         err.response?.data?.error ||
-//         "Login failed. Please try again."
-//     );
-//   } finally {
-//     setLoading(false);
-//   }
-// };
-
-      if (res.status === 200) {
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("userName", res.data.userName);
-        setTimeout(() => navigate("/home"), 2000);
+      // ✅ Redirect logic
+      if (user.familyStatus.toLowerCase() === "admin") {
+        alert(`Welcome back, Admin ${user.firstName}!`);
+        navigate("/admin");
+      } else {
+        navigate("/home");
       }
-    } catch (err) {
-      setError(
-        err.response?.data?.message ||
-          err.response?.data?.error ||
-          "Login failed. Please try again."
-      );
-    } finally {
-      setLoading(false);
     }
-  };
+  } catch (err) {
+    setError(
+      err.response?.data?.message ||
+        err.response?.data?.error ||
+        "Login failed. Please try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
+
+  //     if (res.status === 200) {
+  //       localStorage.setItem("token", res.data.token);
+  //       localStorage.setItem("userName", res.data.userName);
+  //       setTimeout(() => navigate("/home"), 2000);
+  //     }
+  //   } catch (err) {
+  //     setError(
+  //       err.response?.data?.message ||
+  //         err.response?.data?.error ||
+  //         "Login failed. Please try again."
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <Box
