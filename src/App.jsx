@@ -39,7 +39,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <h1>Login Bar</h1>
+      {/* <h1>Login Bar</h1> */}
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Login />} />
