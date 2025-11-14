@@ -1,30 +1,21 @@
 import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext.jsx"; 
 
 const ProtectedRoute = ({ children, adminOnly = false }) => {
-  const { user, token } = useAuth();
+  const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user"));
 
+  // 🚫 No login → redirect
   if (!token || !user) {
     return <Navigate to="/login" replace />;
   }
 
-  if (adminOnly && user.familyStatus.toLowerCase() !== "admin") {
-    return <Navigate to="/" replace />;
+  // 🚫 Admin-only page but user is NOT admin
+  if (adminOnly && user.isAdmin !== true) {
+    return <Navigate to="/home" replace />;
   }
 
+  // ✅ Access granted
   return children;
 };
-
-// const ProtectedRoute = ({ children }) => {
-//   const token = localStorage.getItem("token"); // check if user is logged in
-
-//   if (!token) {
-//     // 🚫 not logged in → redirect to login
-//     return <Navigate to="/login" replace />;
-//   }
-
-//   // ✅ logged in → show page
-//   return children;
-// };
 
 export default ProtectedRoute;
