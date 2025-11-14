@@ -44,7 +44,7 @@ const Login = () => {
       const user = res.data.user;
 
       // ✅ Redirect logic
-      if (user.familyStatus.toLowerCase() === "admin") {
+      if (user.isAdmin === true ) {
         alert(`Welcome back, Admin ${user.firstName}!`);
         navigate("/admin");
       } else {
