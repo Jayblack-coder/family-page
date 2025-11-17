@@ -42,7 +42,7 @@ const Gallery = () => {
     if (!window.confirm("Delete this image?")) return;
 
     try {
-      await axios.delete(`https://your-backend.com/api/gallery/${id}`, {
+      await axios.delete(`/api/gallery/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
