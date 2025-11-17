@@ -11,7 +11,7 @@ import {
   CircularProgress
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../../context/AuthContext";
 import axios from "axios";
 
 const Gallery = () => {
