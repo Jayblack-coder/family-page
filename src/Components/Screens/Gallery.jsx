@@ -25,7 +25,7 @@ const Gallery = () => {
   // Load images from backend
   const fetchImages = async () => {
     try {
-      const res = await axios.get("https://your-backend.com/api/gallery");
+      const res = await axios.get("/api/gallery");
       setImages(res.data);
     } catch (err) {
       console.error("Failed to load images", err);
