@@ -36,9 +36,17 @@ const Gallery = () => {
 };
 
 
-  useEffect(() => {
-    fetchImages();
-  }, []);
+  // useEffect(() => {
+  //   fetchImages();
+  // }, []);
+useEffect(() => {
+  fetchImages();
+
+  const refresh = () => fetchImages();
+  window.addEventListener("gallery-updated", refresh);
+
+  return () => window.removeEventListener("gallery-updated", refresh);
+}, []);
 
   const deleteImage = async (id) => {
     if (!window.confirm("Delete this image?")) return;
