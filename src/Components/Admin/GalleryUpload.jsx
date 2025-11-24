@@ -106,12 +106,13 @@ const GalleryUpload = () => {
       //     },
       //   }
       // );
-      await API.post("/gallery/upload", formData, {
+      await API.post("/api/gallery/upload", formData, {
   headers: {
     Authorization: `Bearer ${token}`,
     "Content-Type": "multipart/form-data"
   }
 });
+
 
 
 
