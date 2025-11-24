@@ -106,8 +106,14 @@ const GalleryUpload = () => {
         }
       );
 
+      // toast.success("Image uploaded!");
+      // setFile(null);
       toast.success("Image uploaded!");
-      setFile(null);
+setFile(null);
+
+// FORCE gallery to update for admin view
+window.dispatchEvent(new Event("gallery-updated"));
+
     } catch (err) {
       toast.error("Upload failed");
     } finally {
