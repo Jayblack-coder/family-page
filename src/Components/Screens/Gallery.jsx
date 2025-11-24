@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAuth } from "../../context/AuthContext";
-import axios from "axios";
+import API from "../Screens/api.jsx";
 
 const Gallery = () => {
   const [images, setImages] = useState([]);
@@ -24,35 +24,32 @@ const Gallery = () => {
 
   // Load images from backend
   const fetchImages = async () => {
-  try {
-    const res = await axios.get("/api/gallery");
-    console.log("Gallery response:", res.data); // Debug
-    setImages(Array.isArray(res.data) ? res.data : []);
-  } catch (err) {
-    console.error("Failed to load images", err);
-  } finally {
-    setLoading(false);
-  }
-};
+    try {
+      const res = await API.get("/api/gallery");
+      console.log("Gallery response:", res.data);
 
+      setImages(Array.isArray(res.data) ? res.data : []);
+    } catch (err) {
+      console.error("Failed to load images", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  // useEffect(() => {
-  //   fetchImages();
-  // }, []);
-useEffect(() => {
-  fetchImages();
+  useEffect(() => {
+    fetchImages();
 
-  const refresh = () => fetchImages();
-  window.addEventListener("gallery-updated", refresh);
+    const refresh = () => fetchImages();
+    window.addEventListener("gallery-updated", refresh);
 
-  return () => window.removeEventListener("gallery-updated", refresh);
-}, []);
+    return () => window.removeEventListener("gallery-updated", refresh);
+  }, []);
 
   const deleteImage = async (id) => {
     if (!window.confirm("Delete this image?")) return;
 
     try {
-      await axios.delete(`/api/gallery/${id}`, {
+      await API.delete(`/api/gallery/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -85,16 +82,15 @@ useEffect(() => {
               <Box key={item._id} sx={{ position: "relative" }}>
                 <ImageListItem>
                   <img
-  src={item.imageUrl}
-  alt="Family Event"
-  loading="lazy"
-  onClick={() => setSelectedImage(item.imageUrl)}
-  style={{
-    borderRadius: "12px",
-    cursor: "pointer",
-  }}
-/>
-
+                    src={item.imageUrl}
+                    alt="Family Event"
+                    loading="lazy"
+                    onClick={() => setSelectedImage(item.imageUrl)}
+                    style={{
+                      borderRadius: "12px",
+                      cursor: "pointer",
+                    }}
+                  />
                 </ImageListItem>
 
                 {isAdmin && (
