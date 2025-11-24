@@ -24,15 +24,17 @@ const Gallery = () => {
 
   // Load images from backend
   const fetchImages = async () => {
-    try {
-      const res = await axios.get("/api/gallery");
-      setImages(res.data);
-    } catch (err) {
-      console.error("Failed to load images", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const res = await axios.get("/api/gallery");
+    console.log("Gallery response:", res.data); // Debug
+    setImages(Array.isArray(res.data) ? res.data : []);
+  } catch (err) {
+    console.error("Failed to load images", err);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   useEffect(() => {
     fetchImages();
@@ -75,15 +77,16 @@ const Gallery = () => {
               <Box key={item._id} sx={{ position: "relative" }}>
                 <ImageListItem>
                   <img
-                    src={item.url}
-                    alt="Family Event"
-                    loading="lazy"
-                    onClick={() => setSelectedImage(item.url)}
-                    style={{
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                    }}
-                  />
+  src={item.imageUrl}
+  alt="Family Event"
+  loading="lazy"
+  onClick={() => setSelectedImage(item.imageUrl)}
+  style={{
+    borderRadius: "12px",
+    cursor: "pointer",
+  }}
+/>
+
                 </ImageListItem>
 
                 {isAdmin && (
