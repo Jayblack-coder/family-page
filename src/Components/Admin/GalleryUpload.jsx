@@ -77,9 +77,10 @@
 // export default GalleryUpload;
 import React, { useState } from "react";
 import { Box, Button, Typography, LinearProgress } from "@mui/material";
-import axios from "axios";
+// import axios from "axios";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import API from "../Screens/api.jsx";
 
 const GalleryUpload = () => {
   const [file, setFile] = useState(null);
@@ -95,16 +96,23 @@ const GalleryUpload = () => {
     try {
       setUploading(true);
 
-      await axios.post(
-        "/api/gallery/upload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // await axios.post(
+      //   "/api/gallery/upload",
+      //   formData,
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+      API.post("/api/gallery/upload", formData, {
+  headers: {
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "multipart/form-data"
+  }
+});
+
 
       // toast.success("Image uploaded!");
       // setFile(null);
