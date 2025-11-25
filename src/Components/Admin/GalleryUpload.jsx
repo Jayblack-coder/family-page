@@ -18,12 +18,17 @@ const GalleryUpload = () => {
     try {
       setUploading(true);
 
-      await API.post("/api/gallery/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      // await API.post("/api/gallery/upload", formData, {
+      //   headers: {
+      //     Authorization: `Bearer ${token}`,
+      //     "Content-Type": "multipart/form-data",
+      //   },
+      // });
+await API.post("/api/gallery/upload", formData, {
+  headers: {
+    "Content-Type": "multipart/form-data"
+  }
+});
 
       toast.success("Image uploaded!");
       setFile(null);
