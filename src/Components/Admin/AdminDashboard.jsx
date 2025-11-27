@@ -33,6 +33,8 @@ const AdminDashboard = () => {
         return <EventsManager />;
         case "calendar":
         return <EventsCalendar />;
+        case "calendar":
+        return <CalendarView />;
 
       default:
         return null;
@@ -77,6 +79,13 @@ const AdminDashboard = () => {
 >
   Calendar View
 </Button>
+<Button
+  variant={activeTab === "calendar" ? "contained" : "outlined"}
+  onClick={() => setActiveTab("calendar")}
+>
+  Calendar
+</Button>
+
 
           <Button variant="outlined" color="error" onClick={handleLogout}>
             Logout
