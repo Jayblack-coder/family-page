@@ -31,6 +31,9 @@ const AdminDashboard = () => {
         return <ProfilePictureUpdate />;
       case "events":
         return <EventsManager />;
+        case "calendar":
+        return <EventsCalendar />;
+
       default:
         return null;
     }
@@ -68,6 +71,13 @@ const AdminDashboard = () => {
           >
             Post Events
           </Button>
+          <Button
+  variant={activeTab === "calendar" ? "contained" : "outlined"}
+  onClick={() => setActiveTab("calendar")}
+>
+  Calendar View
+</Button>
+
           <Button variant="outlined" color="error" onClick={handleLogout}>
             Logout
           </Button>
