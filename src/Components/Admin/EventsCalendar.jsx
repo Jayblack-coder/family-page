@@ -1,30 +1,14 @@
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
+const EventsCalendar = ({ events }) => {
+  const safeEvents = Array.isArray(events) ? events : [];
 
-import { format, parse, startOfWeek, getDay } from "date-fns";
-import enUS from "date-fns/locale/en-US/index.js";  // ✅ FIXED IMPORT
-
-const locales = {
-  "en-US": enUS,
-};
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
-  getDay,
-  locales,
-});
-
-const EventsCalendar = ({ events = [] }) => {
-  const formattedEvents = events.map((evt) => ({
+  const formattedEvents = safeEvents.map((evt) => ({
     title: evt.title,
     start: new Date(evt.date),
     end: new Date(evt.date),
   }));
 
   return (
-    <div style={{ height: "500px", background: "#fff", borderRadius: "10px" }}>
+    <div style={{ height: "500px" }}>
       <Calendar
         localizer={localizer}
         events={formattedEvents}
@@ -35,5 +19,4 @@ const EventsCalendar = ({ events = [] }) => {
     </div>
   );
 };
-
 export default EventsCalendar;
