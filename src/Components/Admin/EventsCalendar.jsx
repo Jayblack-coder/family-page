@@ -1,47 +1,37 @@
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
-import format from "date-fns/format";
-import parse from "date-fns/parse";
-import startOfWeek from "date-fns/startOfWeek";
-import getDay from "date-fns/getDay";
-import { useEffect, useState } from "react";
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import API from "../Screens/api.jsx";
 
-const locales = { "en-US": require("date-fns/locale/en-US") };
+import { format, parse, startOfWeek, getDay } from "date-fns";
+import enUS from "date-fns/locale/en-US";
+
+const locales = {
+  "en-US": enUS,
+};
 
 const localizer = dateFnsLocalizer({
   format,
   parse,
-  startOfWeek,
+  startOfWeek: () => startOfWeek(new Date(), { weekStartsOn: 1 }),
   getDay,
   locales,
 });
 
-const EventsCalendar = () => {
-  const [events, setEvents] = useState([]);
-
-  const fetchEvents = async () => {
-    const res = await API.get("/api/events");
-    setEvents(
-      res.data.map((evt) => ({
-        title: evt.title,
-        start: new Date(evt.date),
-        end: new Date(evt.date),
-      }))
-    );
-  };
-
-  useEffect(() => {
-    fetchEvents();
-  }, []);
+const EventsCalendar = ({ events }) => {
+  // Calendar needs proper Date objects
+  const formattedEvents = events.map((evt) => ({
+    title: evt.title,
+    start: new Date(evt.date),
+    end: new Date(evt.date),
+  }));
 
   return (
-    <div style={{ height: 600, background: "#fff", padding: 20, borderRadius: 12 }}>
+    <div style={{ height: "500px", background: "#fff", borderRadius: "10px" }}>
       <Calendar
         localizer={localizer}
-        events={events}
+        events={formattedEvents}
         startAccessor="start"
         endAccessor="end"
+        style={{ height: 500 }}
       />
     </div>
   );
