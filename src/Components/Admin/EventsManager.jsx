@@ -4,6 +4,7 @@ import {
   Card, CardContent, CardMedia, MenuItem, Stack
 } from "@mui/material";
 import API from "../Screens/api.jsx";
+import EventsCalendar from "./EventsCalendar.jsx";
 
 const EventsManager = () => {
   const [events, setEvents] = useState([]);
