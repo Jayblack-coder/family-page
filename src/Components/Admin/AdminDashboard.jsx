@@ -6,6 +6,8 @@ import EventsManager from "./EventsManager.jsx";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom"; // ✅ import navigate
 import { toast } from "react-toastify";
+import EventsCalendar from "./EventsCalendar.jsx";
+import CalendarView from "./CalendarView.jsx";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
