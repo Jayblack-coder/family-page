@@ -74,6 +74,14 @@ const EventsManager = () => {
         <Button variant="contained" onClick={handlePostEvent}>
           Post Event
         </Button>
+        <Box mt={4}>
+  <Typography variant="h5" fontWeight="bold" gutterBottom>
+    Family Events Calendar
+  </Typography>
+
+  <EventsCalendar events={events} />
+</Box>
+
       </Stack>
 
       <Grid container spacing={2}>
