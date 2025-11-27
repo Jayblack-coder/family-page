@@ -19,10 +19,7 @@ const AdminDashboard = () => {
     setTimeout(() => navigate("/login"), 2000); // redirect after 2 seconds
   };
 
-  // const handleLogout = () => {
-  //   logout(); // clears user + token
-  //   navigate("/login"); // ✅ redirect to login page
-  // };
+ 
 
   const renderContent = () => {
     switch (activeTab) {
