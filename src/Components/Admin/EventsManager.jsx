@@ -84,7 +84,8 @@ const fetchEvents = async () => {
     Family Events Calendar
   </Typography>
 
-  <EventsCalendar events={events} />
+  <EventsCalendar events={events || []} />
+
 
 </Box>
 
