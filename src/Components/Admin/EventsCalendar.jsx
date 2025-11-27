@@ -2,8 +2,7 @@ import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import { format, parse, startOfWeek, getDay } from "date-fns";
-import enUS from "date-fns/locale/en-US/index.js";
-
+import enUS from "date-fns/locale/en-US/index.js";  // ✅ FIXED IMPORT
 
 const locales = {
   "en-US": enUS,
@@ -17,8 +16,7 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-const EventsCalendar = ({ events }) => {
-  // Calendar needs proper Date objects
+const EventsCalendar = ({ events = [] }) => {
   const formattedEvents = events.map((evt) => ({
     title: evt.title,
     start: new Date(evt.date),
