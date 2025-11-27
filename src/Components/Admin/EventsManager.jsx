@@ -17,20 +17,52 @@ const EventsManager = () => {
     fetchEvents();
   }, []);
 
-  const handlePostEvent = async () => {
-    if (!title || !date) return alert("Title and Date are required.");
+//   const handlePostEvent = async () => {
+//     if (!title || !date) return alert("Title and Date are required.");
 
-    try {
-      await API.post("/api/events", { title, date, description });
-      alert("Event posted!");
-      setTitle("");
-      setDate("");
-      setDescription("");
-      fetchEvents();
-    } catch (err) {
-      console.error("Error posting event:", err);
-    }
-  };
+//     try {
+//       // await API.post("/api/events", { title, date, description });
+//       await API.post(
+//   "/api/events",
+//   { title, date, description },
+//   {
+//     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+//   }
+// );
+
+//       alert("Event posted!");
+//       setTitle("");
+//       setDate("");
+//       setDescription("");
+//       fetchEvents();
+//     } catch (err) {
+//       console.error("Error posting event:", err);
+//     }
+//   };
+const handlePostEvent = async () => {
+  if (!title || !date) return alert("Title and Date are required.");
+
+  try {
+    await API.post(
+      "/api/events",
+      { title, date, description },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`
+        }
+      }
+    );
+
+    alert("Event posted!");
+    setTitle("");
+    setDate("");
+    setDescription("");
+    fetchEvents();
+  } catch (err) {
+    console.error("Error posting event:", err);
+    alert("Failed to post event.");
+  }
+};
 
   return (
     <Box>
