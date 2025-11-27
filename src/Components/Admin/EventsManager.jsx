@@ -81,6 +81,7 @@ const EventsManager = () => {
   </Typography>
 
   <EventsCalendar events={events} />
+
 </Box>
 
       </Stack>
