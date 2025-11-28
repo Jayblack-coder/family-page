@@ -11,6 +11,8 @@ useEffect(() => {
   API.get("/api/events").then(res => {
     setEvents(res.data.events || res.data || []);
   });
+  console.log("EVENTS RESPONSE:", res.data);
+
 }, []);
 
   return (
