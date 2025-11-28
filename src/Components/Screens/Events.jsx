@@ -30,8 +30,9 @@
 
 // export default Events;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Box,
   Card,
   CardContent,
   CardMedia,
@@ -43,17 +44,36 @@ import {
   InputLabel,
   Button,
   Chip,
-  Box
 } from "@mui/material";
-
 import { CalendarMonth, Category, Image as ImageIcon } from "@mui/icons-material";
 import { motion } from "framer-motion";
+import API from "../Screens/api.jsx";
 
-export default function EventsPage({ events = [] }) {
+export default function Events() {
+  const [events, setEvents] = useState([]);
   const [month, setMonth] = useState("");
   const [category, setCategory] = useState("");
   const [showUpcoming, setShowUpcoming] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  // Fetch events from backend
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const res = await API.get("/api/events");
+        // normalize data: handle both { events: [...] } and [...] formats
+        setEvents(res.data.events || res.data || []);
+      } catch (err) {
+        console.error("Failed to load events:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
+  // Filter events
   const filteredEvents = events.filter((event) => {
     const eventDate = new Date(event.date);
     const now = new Date();
@@ -68,7 +88,6 @@ export default function EventsPage({ events = [] }) {
   return (
     <Box sx={{ minHeight: "100vh", background: "#f5f6fa", p: 4 }}>
       <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
-
         {/* Filters */}
         <Grid container spacing={3} sx={{ mb: 4 }}>
           <Grid item xs={12} md={4}>
@@ -88,13 +107,9 @@ export default function EventsPage({ events = [] }) {
           <Grid item xs={12} md={4}>
             <FormControl fullWidth>
               <InputLabel>Filter by Category</InputLabel>
-              <Select
-                value={category}
-                label="Filter by Category"
-                onChange={(e) => setCategory(e.target.value)}
-              >
+              <Select value={category} label="Filter by Category" onChange={(e) => setCategory(e.target.value)}>
                 <MenuItem value="">All</MenuItem>
-                <MenuItem value="birthday">Burial</MenuItem>
+                <MenuItem value="birthday">Birthday</MenuItem>
                 <MenuItem value="wedding">Wedding</MenuItem>
                 <MenuItem value="meeting">Meeting</MenuItem>
                 <MenuItem value="family">Family</MenuItem>
@@ -119,72 +134,79 @@ export default function EventsPage({ events = [] }) {
           Family Events
         </Typography>
 
-        <Grid container spacing={3}>
-          {filteredEvents.map((event, index) => (
-            <Grid item xs={12} md={6} lg={4} key={event._id || index}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: index * 0.05 }}
-              >
-                <Card sx={{ borderRadius: "20px", boxShadow: 3 }}>
-                  {event.image ? (
-                    <CardMedia
-                      component="img"
-                      height="180"
-                      image={event.image}
-                      alt={event.title}
-                    />
-                  ) : (
-                    <Box
-                      sx={{
-                        height: 180,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        background: "#eaeaea",
-                      }}
-                    >
-                      <ImageIcon sx={{ fontSize: 60, color: "#9e9e9e" }} />
-                    </Box>
-                  )}
-
-                  <CardContent>
-                    <Typography variant="h6" fontWeight={700}>
-                      {event.title}
-                    </Typography>
-
-                    <Box sx={{ display: "flex", alignItems: "center", mt: 1, color: "gray" }}>
-                      <CalendarMonth fontSize="small" />
-                      <Typography sx={{ ml: 1 }}>{event.date}</Typography>
-                    </Box>
-
-                    <Box sx={{ display: "flex", alignItems: "center", mt: 1, color: "gray" }}>
-                      <Category fontSize="small" />
-                      <Chip
-                        label={event.category}
-                        color="primary"
-                        variant="outlined"
-                        sx={{ ml: 1, textTransform: "capitalize" }}
+        {loading ? (
+          <Typography>Loading events...</Typography>
+        ) : filteredEvents.length === 0 ? (
+          <Typography>No events found.</Typography>
+        ) : (
+          <Grid container spacing={3}>
+            {filteredEvents.map((event, index) => (
+              <Grid item xs={12} md={6} lg={4} key={event._id || index}>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                >
+                  <Card sx={{ borderRadius: "20px", boxShadow: 3 }}>
+                    {event.image ? (
+                      <CardMedia
+                        component="img"
+                        height="180"
+                        image={event.image}
+                        alt={event.title}
                       />
-                    </Box>
-
-                    {event.description && (
-                      <Typography sx={{ mt: 2, color: "#444" }}>
-                        {event.description.length > 100
-                          ? event.description.substring(0, 100) + "..."
-                          : event.description}
-                      </Typography>
+                    ) : (
+                      <Box
+                        sx={{
+                          height: 180,
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          background: "#eaeaea",
+                        }}
+                      >
+                        <ImageIcon sx={{ fontSize: 60, color: "#9e9e9e" }} />
+                      </Box>
                     )}
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </Grid>
-          ))}
-        </Grid>
+
+                    <CardContent>
+                      <Typography variant="h6" fontWeight={700}>
+                        {event.title}
+                      </Typography>
+
+                      <Box sx={{ display: "flex", alignItems: "center", mt: 1, color: "gray" }}>
+                        <CalendarMonth fontSize="small" />
+                        <Typography sx={{ ml: 1 }}>{event.date}</Typography>
+                      </Box>
+
+                      <Box sx={{ display: "flex", alignItems: "center", mt: 1, color: "gray" }}>
+                        <Category fontSize="small" />
+                        <Chip
+                          label={event.category}
+                          color="primary"
+                          variant="outlined"
+                          sx={{ ml: 1, textTransform: "capitalize" }}
+                        />
+                      </Box>
+
+                      {event.description && (
+                        <Typography sx={{ mt: 2, color: "#444" }}>
+                          {event.description.length > 100
+                            ? event.description.substring(0, 100) + "..."
+                            : event.description}
+                        </Typography>
+                      )}
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        )}
       </Box>
     </Box>
   );
 }
+
 
 
