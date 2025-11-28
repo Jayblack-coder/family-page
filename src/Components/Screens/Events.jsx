@@ -94,7 +94,7 @@ export default function EventsPage({ events = [] }) {
                 onChange={(e) => setCategory(e.target.value)}
               >
                 <MenuItem value="">All</MenuItem>
-                <MenuItem value="birthday">Birthday</MenuItem>
+                <MenuItem value="birthday">Burial</MenuItem>
                 <MenuItem value="wedding">Wedding</MenuItem>
                 <MenuItem value="meeting">Meeting</MenuItem>
                 <MenuItem value="family">Family</MenuItem>
