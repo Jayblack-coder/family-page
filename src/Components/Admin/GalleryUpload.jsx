@@ -65,24 +65,23 @@
 // export default GalleryUpload;
 
 import React, { useState } from "react";
-import { Box, Button, Typography, LinearProgress, TextField } from "@mui/material";
+import { Box, Button, Typography, TextField, LinearProgress } from "@mui/material";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import API from "../Screens/api.jsx";
 
 const GalleryUpload = () => {
   const [file, setFile] = useState(null);
-  const [description, setDescription] = useState("");
+  const [caption, setCaption] = useState(""); // New state for description
   const [uploading, setUploading] = useState(false);
   const { token } = useAuth();
 
   const uploadImage = async () => {
     if (!file) return toast.error("Please choose an image");
-    if (!description.trim()) return toast.error("Please add a brief description");
 
     const formData = new FormData();
     formData.append("image", file);
-    formData.append("description", description);
+    formData.append("caption", caption); // send caption to backend
 
     try {
       setUploading(true);
@@ -90,13 +89,13 @@ const GalleryUpload = () => {
       await API.post("/api/gallery/upload", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
+          "Content-Type": "multipart/form-data"
+        }
       });
 
       toast.success("Image uploaded!");
       setFile(null);
-      setDescription("");
+      setCaption(""); // reset caption
 
       // refresh gallery page
       window.dispatchEvent(new Event("gallery-updated"));
@@ -114,18 +113,17 @@ const GalleryUpload = () => {
         Upload Family Event Picture
       </Typography>
 
-      {/* Image Picker */}
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-
-      {/* Description Input */}
       <TextField
+        label="Brief Description"
         fullWidth
-        label="Image Description"
-        placeholder="Add a short caption or description..."
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        sx={{ mt: 2 }}
+        multiline
+        rows={2}
+        value={caption}
+        onChange={(e) => setCaption(e.target.value)}
+        sx={{ mb: 2 }}
       />
+
+      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
 
       {uploading && <LinearProgress sx={{ mt: 2 }} />}
 
@@ -142,4 +140,5 @@ const GalleryUpload = () => {
 };
 
 export default GalleryUpload;
+
 
