@@ -4,9 +4,14 @@ import API from "../Screens/api.jsx";
 const Events = () => {
   const [events, setEvents] = useState([]);
 
-  useEffect(() => {
-    API.get("/api/events").then(res => setEvents(res.data));
-  }, []);
+  // useEffect(() => {
+  //   API.get("/api/events").then(res => setEvents(res.data));
+  // }, []);
+useEffect(() => {
+  API.get("/api/events").then(res => {
+    setEvents(res.data.events || res.data || []);
+  });
+}, []);
 
   return (
     <div>
