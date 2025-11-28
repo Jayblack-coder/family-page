@@ -3,12 +3,14 @@ import {
   Container,
   Typography,
   Box,
-  ImageList,
-  ImageListItem,
+  Grid,
+  Card,
+  CardMedia,
+  CardContent,
   IconButton,
   Dialog,
   DialogContent,
-  CircularProgress
+  CircularProgress,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useAuth } from "../../context/AuthContext";
@@ -22,12 +24,9 @@ const Gallery = () => {
 
   const isAdmin = user?.familyStatus?.toLowerCase() === "admin";
 
-  // Load images from backend
   const fetchImages = async () => {
     try {
       const res = await API.get("/api/gallery");
-      console.log("Gallery response:", res.data);
-
       setImages(Array.isArray(res.data) ? res.data : []);
     } catch (err) {
       console.error("Failed to load images", err);
@@ -38,10 +37,8 @@ const Gallery = () => {
 
   useEffect(() => {
     fetchImages();
-
     const refresh = () => fetchImages();
     window.addEventListener("gallery-updated", refresh);
-
     return () => window.removeEventListener("gallery-updated", refresh);
   }, []);
 
@@ -52,7 +49,6 @@ const Gallery = () => {
       await API.delete(`/api/gallery/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
       setImages(images.filter((img) => img._id !== id));
     } catch (err) {
       console.error("Delete failed", err);
@@ -67,7 +63,7 @@ const Gallery = () => {
           fontWeight="bold"
           textAlign="center"
           gutterBottom
-          sx={{ color: "#004aad", mb: 3 }}
+          sx={{ color: "#004aad", mb: 4 }}
         >
           Family Event Gallery
         </Typography>
@@ -77,44 +73,63 @@ const Gallery = () => {
             <CircularProgress />
           </Box>
         ) : (
-          <ImageList variant="masonry" cols={3} gap={16}>
+          <Grid container spacing={3}>
             {images.map((item) => (
-              <Box key={item._id} sx={{ position: "relative" }}>
-                <ImageListItem>
-                  <img
-                    src={item.imageUrl}
-                    alt="Family Event"
-                    loading="lazy"
-                    onClick={() => setSelectedImage(item.imageUrl)}
-                    style={{
-                      borderRadius: "12px",
-                      cursor: "pointer",
-                    }}
-                  />
-                </ImageListItem>
-
-                {isAdmin && (
-                  <IconButton
-                    onClick={() => deleteImage(item._id)}
-                    sx={{
-                      position: "absolute",
-                      top: 5,
-                      right: 5,
-                      bgcolor: "rgba(255,255,255,0.8)",
-                    }}
-                  >
-                    <DeleteIcon color="error" />
-                  </IconButton>
-                )}
-              </Box>
+              <Grid item xs={12} sm={6} md={4} key={item._id}>
+                <Card
+                  sx={{
+                    borderRadius: 3,
+                    overflow: "hidden",
+                    boxShadow: 3,
+                    cursor: "pointer",
+                    transition: "transform 0.2s",
+                    "&:hover": { transform: "scale(1.03)" },
+                  }}
+                >
+                  <Box sx={{ position: "relative" }}>
+                    <CardMedia
+                      component="img"
+                      height="220"
+                      image={item.imageUrl}
+                      alt={item.caption || "Family Event"}
+                      onClick={() => setSelectedImage(item.imageUrl)}
+                    />
+                    {isAdmin && (
+                      <IconButton
+                        onClick={() => deleteImage(item._id)}
+                        sx={{
+                          position: "absolute",
+                          top: 8,
+                          right: 8,
+                          bgcolor: "rgba(255,255,255,0.8)",
+                          "&:hover": { bgcolor: "rgba(255,255,255,1)" },
+                        }}
+                      >
+                        <DeleteIcon color="error" />
+                      </IconButton>
+                    )}
+                  </Box>
+                  {item.caption && (
+                    <CardContent sx={{ bgcolor: "#f1f5f9" }}>
+                      <Typography
+                        variant="body1"
+                        color="textPrimary"
+                        sx={{ textAlign: "center" }}
+                      >
+                        {item.caption}
+                      </Typography>
+                    </CardContent>
+                  )}
+                </Card>
+              </Grid>
             ))}
-          </ImageList>
+          </Grid>
         )}
 
         {/* Lightbox Viewer */}
-        <Dialog open={Boolean(selectedImage)} onClose={() => setSelectedImage(null)}>
-          <DialogContent>
-            <img src={selectedImage} alt="Full View" style={{ width: "100%" }} />
+        <Dialog open={Boolean(selectedImage)} onClose={() => setSelectedImage(null)} maxWidth="md" fullWidth>
+          <DialogContent sx={{ p: 0 }}>
+            <img src={selectedImage} alt="Full View" style={{ width: "100%", borderRadius: "8px" }} />
           </DialogContent>
         </Dialog>
       </Container>
@@ -123,3 +138,4 @@ const Gallery = () => {
 };
 
 export default Gallery;
+
