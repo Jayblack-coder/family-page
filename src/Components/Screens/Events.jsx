@@ -109,9 +109,9 @@ export default function Events() {
               <InputLabel>Filter by Category</InputLabel>
               <Select value={category} label="Filter by Category" onChange={(e) => setCategory(e.target.value)}>
                 <MenuItem value="">All</MenuItem>
-                <MenuItem value="birthday">Birthday</MenuItem>
-                <MenuItem value="wedding">Wedding</MenuItem>
                 <MenuItem value="meeting">Meeting</MenuItem>
+                <MenuItem value="wedding">Wedding</MenuItem>
+                <MenuItem value="burial">Burial</MenuItem>
                 <MenuItem value="family">Family</MenuItem>
                 <MenuItem value="other">Other</MenuItem>
               </Select>
