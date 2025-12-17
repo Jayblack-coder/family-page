@@ -147,7 +147,7 @@ export default function About() {
             fontWeight="bold"
             sx={{ mb: 2, color: "#0A3D62" }}
           >
-            The Five Pillars of the Nmelonye Dynasty
+            The Pillars of the Nmelonye Dynasty
           </Typography>
           <Typography
             variant="body1"
