@@ -1,4 +1,6 @@
-// import React, { useCallback } from "react";
+
+// import React, { useEffect, useCallback } from "react";
+// import { useNavigate } from "react-router-dom";
 // import ReactFlow, {
 //   MiniMap,
 //   Controls,
@@ -7,147 +9,91 @@
 //   useEdgesState,
 // } from "reactflow";
 // import "reactflow/dist/style.css";
+// import { fetchLineageStats } from "..Screens/lineageApi";
 
-// /* =======================
-//    NODE STYLES (DEFINE FIRST)
-// ======================= */
-// const ancestorStyle = {
-//   padding: 14,
-//   borderRadius: 14,
-//   background: "#004aad",
-//   color: "#fff",
-//   fontWeight: "bold",
-//   fontSize: 16,
-// };
-
-// const gen1Style = {
-//   padding: 12,
-//   borderRadius: 12,
-//   background: "#e3f2fd",
-//   border: "2px solid #1976d2",
-//   fontWeight: 600,
-// };
-
-// const gen2Style = {
+// const baseStyles = {
 //   padding: 10,
-//   borderRadius: 10,
-//   background: "#f1f8e9",
-//   border: "1px solid #689f38",
-//   fontSize: 13,
+//   borderRadius: 12,
+//   fontWeight: 600,
+//   cursor: "pointer",
 // };
 
-// /* =======================
-//    NODES
-// ======================= */
-// const initialNodes = [
-//   // Ancestor
-//   {
-//     id: "nmelonye",
-//     position: { x: 600, y: 0 },
-//     data: { label: "Nmelonye (Ancestor)" },
-//     style: ancestorStyle,
-//   },
-
-//   // First Generation
-//   { id: "agosi", position: { x: 0, y: 150 }, data: { label: "Agosi" }, style: gen1Style },
-//   { id: "nwankwo", position: { x: 200, y: 150 }, data: { label: "Nwankwo" }, style: gen1Style },
-//   { id: "asouzu", position: { x: 400, y: 150 }, data: { label: "Asouzu" }, style: gen1Style },
-//   { id: "udorji", position: { x: 600, y: 150 }, data: { label: "Udorji" }, style: gen1Style },
-//   { id: "okoli", position: { x: 800, y: 150 }, data: { label: "Okoli" }, style: gen1Style },
-//   { id: "anyaga", position: { x: 1000, y: 150 }, data: { label: "Anyaga" }, style: gen1Style },
-
-//   // Second / Third Generation (extra spacing)
-//   ...Array.from({ length: 6 }, (_, i) => ({
-//     id: `nwankwo-${i}`,
-//     position: { x: 200, y: 300 + i * 100 },
-//     data: { label: `Nwankwo Child ${i + 1}` },
-//     style: gen2Style,
-//   })),
-
-//   ...Array.from({ length: 8 }, (_, i) => ({
-//     id: `asouzu-${i}`,
-//     position: { x: 400, y: 300 + i * 100 },
-//     data: { label: `Asouzu Child ${i + 1}` },
-//     style: gen2Style,
-//   })),
-
-//   ...Array.from({ length: 12 }, (_, i) => ({
-//     id: `udorji-${i}`,
-//     position: { x: 600, y: 300 + i * 90 },
-//     data: { label: `Udorji Child ${i + 1}` },
-//     style: gen2Style,
-//   })),
-
-//   ...Array.from({ length: 3 }, (_, i) => ({
-//     id: `okoli-${i}`,
-//     position: { x: 800, y: 300 + i * 120 },
-//     data: { label: `Okoli Child ${i + 1}` },
-//     style: gen2Style,
-//   })),
-
-//   ...Array.from({ length: 2 }, (_, i) => ({
-//     id: `anyaga-${i}`,
-//     position: { x: 1000, y: 300 + i * 140 },
-//     data: { label: `Anyaga Child ${i + 1}` },
-//     style: gen2Style,
-//   })),
-// ];
-
-// /* =======================
-//    EDGES
-// ======================= */
-// const initialEdges = [
-//   ...["agosi", "nwankwo", "asouzu", "udorji", "okoli", "anyaga"].map((id) => ({
-//     id: `e-nmelonye-${id}`,
-//     source: "nmelonye",
-//     target: id,
-//     animated: true,
-//   })),
-
-//   ...Array.from({ length: 6 }, (_, i) => ({
-//     id: `e-nwankwo-${i}`,
-//     source: "nwankwo",
-//     target: `nwankwo-${i}`,
-//   })),
-
-//   ...Array.from({ length: 8 }, (_, i) => ({
-//     id: `e-asouzu-${i}`,
-//     source: "asouzu",
-//     target: `asouzu-${i}`,
-//   })),
-
-//   ...Array.from({ length: 12 }, (_, i) => ({
-//     id: `e-udorji-${i}`,
-//     source: "udorji",
-//     target: `udorji-${i}`,
-//   })),
-
-//   ...Array.from({ length: 3 }, (_, i) => ({
-//     id: `e-okoli-${i}`,
-//     source: "okoli",
-//     target: `okoli-${i}`,
-//   })),
-
-//   ...Array.from({ length: 2 }, (_, i) => ({
-//     id: `e-anyaga-${i}`,
-//     source: "anyaga",
-//     target: `anyaga-${i}`,
-//   })),
-// ];
-
-// /* =======================
-//    COMPONENT
-// ======================= */
 // export default function Lineage() {
-//   const [nodes, , onNodesChange] = useNodesState(initialNodes);
-//   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
+//   const navigate = useNavigate();
+//   const [nodes, setNodes, onNodesChange] = useNodesState([]);
+//   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+
+//   useEffect(() => {
+//     const load = async () => {
+//       const stats = await fetchLineageStats();
+
+//       const newNodes = [
+//         {
+//           id: "nmelonye",
+//           position: { x: 500, y: 0 },
+//           data: { label: "Nmelonye (Ancestor)" },
+//           style: {
+//             ...baseStyles,
+//             background: "#004aad",
+//             color: "#fff",
+//           },
+//         },
+
+//         {
+//           id: "nwankwo",
+//           position: { x: 100, y: 150 },
+//           data: { label: `Nwankwo (${stats.nwankwo})` },
+//           style: { ...baseStyles, background: "#e3f2fd" },
+//         },
+//         {
+//           id: "asouzu",
+//           position: { x: 300, y: 150 },
+//           data: { label: `Asouzu (${stats.asouzu})` },
+//           style: { ...baseStyles, background: "#e3f2fd" },
+//         },
+//         {
+//           id: "udorji",
+//           position: { x: 500, y: 150 },
+//           data: { label: `Udorji (${stats.udorji})` },
+//           style: { ...baseStyles, background: "#e3f2fd" },
+//         },
+//         {
+//           id: "okoli",
+//           position: { x: 700, y: 150 },
+//           data: { label: `Okoli (${stats.okoli})` },
+//           style: { ...baseStyles, background: "#e3f2fd" },
+//         },
+//         {
+//           id: "anyaga",
+//           position: { x: 900, y: 150 },
+//           data: { label: `Anyaga (${stats.anyaga})` },
+//           style: { ...baseStyles, background: "#e3f2fd" },
+//         },
+//       ];
+
+//       const newEdges = newNodes
+//         .filter((n) => n.id !== "nmelonye")
+//         .map((n) => ({
+//           id: `e-nmelonye-${n.id}`,
+//           source: "nmelonye",
+//           target: n.id,
+//         }));
+
+//       setNodes(newNodes);
+//       setEdges(newEdges);
+//     };
+
+//     load();
+//   }, [setNodes, setEdges]);
 
 //   const onNodeClick = useCallback((_, node) => {
-//     alert(node.data.label);
-//   }, []);
+//     if (node.id !== "nmelonye") {
+//       navigate(`/${node.id}`);
+//     }
+//   }, [navigate]);
 
 //   return (
-//     <div style={{ width: "100%", height: "90vh" }}>
+//     <div style={{ width: "100%", height: "100vh" }}>
 //       <ReactFlow
 //         nodes={nodes}
 //         edges={edges}
@@ -157,11 +103,10 @@
 //         fitView
 //         panOnScroll
 //         zoomOnScroll
-//         nodesDraggable
 //       >
-//         <MiniMap zoomable pannable />
+//         <MiniMap />
 //         <Controls />
-//         <Background gap={18} />
+//         <Background gap={16} />
 //       </ReactFlow>
 //     </div>
 //   );
@@ -177,7 +122,7 @@ import ReactFlow, {
   useEdgesState,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { fetchLineageStats } from "..Screens/lineageApi";
+import API from "../Screens/api.jsx"; // your axios instance
 
 const baseStyles = {
   padding: 10,
@@ -192,73 +137,87 @@ export default function Lineage() {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
 
   useEffect(() => {
-    const load = async () => {
-      const stats = await fetchLineageStats();
+    const loadFamily = async () => {
+      try {
+        const res = await API.get("/api/user");
+        const family = res.data;
 
-      const newNodes = [
-        {
-          id: "nmelonye",
-          position: { x: 500, y: 0 },
-          data: { label: "Nmelonye (Ancestor)" },
-          style: {
-            ...baseStyles,
-            background: "#004aad",
-            color: "#fff",
+        const getChildren = (parentName) =>
+          family.filter((member) => member.parents === parentName);
+
+        const firstGen = [
+          { id: "nwankwo", label: "Nwankwo", x: 100 },
+          { id: "asouzu", label: "Asouzu", x: 300 },
+          { id: "udorji", label: "Udorji", x: 500 },
+          { id: "okoli", label: "Okoli", x: 700 },
+          { id: "anyaga", label: "Anyaga", x: 900 },
+        ];
+
+        const newNodes = [
+          {
+            id: "nmelonye",
+            position: { x: 500, y: 0 },
+            data: { label: "Nmelonye (Ancestor)" },
+            style: { ...baseStyles, background: "#004aad", color: "#fff" },
           },
-        },
+          ...firstGen.map((f) => ({
+            id: f.id,
+            position: { x: f.x, y: 150 },
+            data: { label: f.label },
+            style: { ...baseStyles, background: "#e3f2fd" },
+          })),
+        ];
 
-        {
-          id: "nwankwo",
-          position: { x: 100, y: 150 },
-          data: { label: `Nwankwo (${stats.nwankwo})` },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        },
-        {
-          id: "asouzu",
-          position: { x: 300, y: 150 },
-          data: { label: `Asouzu (${stats.asouzu})` },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        },
-        {
-          id: "udorji",
-          position: { x: 500, y: 150 },
-          data: { label: `Udorji (${stats.udorji})` },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        },
-        {
-          id: "okoli",
-          position: { x: 700, y: 150 },
-          data: { label: `Okoli (${stats.okoli})` },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        },
-        {
-          id: "anyaga",
-          position: { x: 900, y: 150 },
-          data: { label: `Anyaga (${stats.anyaga})` },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        },
-      ];
-
-      const newEdges = newNodes
-        .filter((n) => n.id !== "nmelonye")
-        .map((n) => ({
-          id: `e-nmelonye-${n.id}`,
+        const newEdges = firstGen.map((f) => ({
+          id: `e-nmelonye-${f.id}`,
           source: "nmelonye",
-          target: n.id,
+          target: f.id,
         }));
 
-      setNodes(newNodes);
-      setEdges(newEdges);
+        // Dynamically space children vertically based on count
+        firstGen.forEach((parent) => {
+          const children = getChildren(parent.label);
+          if (children.length === 0) return;
+
+          const startY = 300; // top Y for first child
+          const spacing = Math.max(80, 600 / children.length); // adapt spacing to count
+          const totalHeight = spacing * (children.length - 1);
+          const offsetY = startY + totalHeight / -2 + totalHeight / 2; // center under parent
+
+          children.forEach((child, i) => {
+            newNodes.push({
+              id: child._id,
+              position: {
+                x: parent.x,
+                y: startY + i * spacing,
+              },
+              data: { label: child.firstName },
+              style: { ...baseStyles, background: "#f1f8e9" },
+            });
+            newEdges.push({
+              id: `e-${parent.id}-${child._id}`,
+              source: parent.id,
+              target: child._id,
+            });
+          });
+        });
+
+        setNodes(newNodes);
+        setEdges(newEdges);
+      } catch (err) {
+        console.error("Error loading family:", err);
+      }
     };
 
-    load();
+    loadFamily();
   }, [setNodes, setEdges]);
 
-  const onNodeClick = useCallback((_, node) => {
-    if (node.id !== "nmelonye") {
-      navigate(`/${node.id}`);
-    }
-  }, [navigate]);
+  const onNodeClick = useCallback(
+    (_, node) => {
+      if (node.id !== "nmelonye") navigate(`/${node.id}`);
+    },
+    [navigate]
+  );
 
   return (
     <div style={{ width: "100%", height: "100vh" }}>
@@ -271,6 +230,7 @@ export default function Lineage() {
         fitView
         panOnScroll
         zoomOnScroll
+        nodesDraggable
       >
         <MiniMap />
         <Controls />
