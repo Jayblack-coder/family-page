@@ -19,10 +19,11 @@ export default function About() {
       }}
     >
       {/* 🔹 Hero Section with background image and gradient overlay */}
+      {/* linear-gradient(rgba(10,61,98,0.7), rgba(10,61,98,0.7)), */}
       <Box
   sx={{
     position: "relative",
-    backgroundImage: `linear-gradient(rgba(10,61,98,0.7), rgba(10,61,98,0.7)), url(${tree})`,
+    backgroundImage: ` url(${tree})`,
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
