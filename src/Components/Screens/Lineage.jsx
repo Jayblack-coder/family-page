@@ -177,7 +177,7 @@ import ReactFlow, {
   useEdgesState,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { fetchLineageStats } from "../../api/lineageApi";
+import { fetchLineageStats } from "..Screens/lineageApi";
 
 const baseStyles = {
   padding: 10,
