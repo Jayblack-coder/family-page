@@ -157,7 +157,7 @@ export default function About() {
               color: "#333",
             }}
           >
-            From his union came five remarkable offsprings, each forming the
+            From his union came six remarkable offsprings, each forming the
             roots of the families that carry our name today:
           </Typography>
 
