@@ -1,118 +1,4 @@
-
-// import React, { useEffect, useCallback } from "react";
-// import { useNavigate } from "react-router-dom";
-// import ReactFlow, {
-//   MiniMap,
-//   Controls,
-//   Background,
-//   useNodesState,
-//   useEdgesState,
-// } from "reactflow";
-// import "reactflow/dist/style.css";
-// import { fetchLineageStats } from "..Screens/lineageApi";
-
-// const baseStyles = {
-//   padding: 10,
-//   borderRadius: 12,
-//   fontWeight: 600,
-//   cursor: "pointer",
-// };
-
-// export default function Lineage() {
-//   const navigate = useNavigate();
-//   const [nodes, setNodes, onNodesChange] = useNodesState([]);
-//   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-
-//   useEffect(() => {
-//     const load = async () => {
-//       const stats = await fetchLineageStats();
-
-//       const newNodes = [
-//         {
-//           id: "nmelonye",
-//           position: { x: 500, y: 0 },
-//           data: { label: "Nmelonye (Ancestor)" },
-//           style: {
-//             ...baseStyles,
-//             background: "#004aad",
-//             color: "#fff",
-//           },
-//         },
-
-//         {
-//           id: "nwankwo",
-//           position: { x: 100, y: 150 },
-//           data: { label: `Nwankwo (${stats.nwankwo})` },
-//           style: { ...baseStyles, background: "#e3f2fd" },
-//         },
-//         {
-//           id: "asouzu",
-//           position: { x: 300, y: 150 },
-//           data: { label: `Asouzu (${stats.asouzu})` },
-//           style: { ...baseStyles, background: "#e3f2fd" },
-//         },
-//         {
-//           id: "udorji",
-//           position: { x: 500, y: 150 },
-//           data: { label: `Udorji (${stats.udorji})` },
-//           style: { ...baseStyles, background: "#e3f2fd" },
-//         },
-//         {
-//           id: "okoli",
-//           position: { x: 700, y: 150 },
-//           data: { label: `Okoli (${stats.okoli})` },
-//           style: { ...baseStyles, background: "#e3f2fd" },
-//         },
-//         {
-//           id: "anyaga",
-//           position: { x: 900, y: 150 },
-//           data: { label: `Anyaga (${stats.anyaga})` },
-//           style: { ...baseStyles, background: "#e3f2fd" },
-//         },
-//       ];
-
-//       const newEdges = newNodes
-//         .filter((n) => n.id !== "nmelonye")
-//         .map((n) => ({
-//           id: `e-nmelonye-${n.id}`,
-//           source: "nmelonye",
-//           target: n.id,
-//         }));
-
-//       setNodes(newNodes);
-//       setEdges(newEdges);
-//     };
-
-//     load();
-//   }, [setNodes, setEdges]);
-
-//   const onNodeClick = useCallback((_, node) => {
-//     if (node.id !== "nmelonye") {
-//       navigate(`/${node.id}`);
-//     }
-//   }, [navigate]);
-
-//   return (
-//     <div style={{ width: "100%", height: "100vh" }}>
-//       <ReactFlow
-//         nodes={nodes}
-//         edges={edges}
-//         onNodesChange={onNodesChange}
-//         onEdgesChange={onEdgesChange}
-//         onNodeClick={onNodeClick}
-//         fitView
-//         panOnScroll
-//         zoomOnScroll
-//       >
-//         <MiniMap />
-//         <Controls />
-//         <Background gap={16} />
-//       </ReactFlow>
-//     </div>
-//   );
-// }
-
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactFlow, {
   MiniMap,
@@ -135,6 +21,14 @@ export default function Lineage() {
   const navigate = useNavigate();
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // Update screen width on resize
+  useEffect(() => {
+    const handleResize = () => setScreenWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     const loadFamily = async () => {
@@ -145,18 +39,22 @@ export default function Lineage() {
         const getChildren = (parentName) =>
           family.filter((member) => member.parents === parentName);
 
-        const firstGen = [
-          { id: "nwankwo", label: "Nwankwo", x: 100 },
-          { id: "asouzu", label: "Asouzu", x: 300 },
-          { id: "udorji", label: "Udorji", x: 500 },
-          { id: "okoli", label: "Okoli", x: 700 },
-          { id: "anyaga", label: "Anyaga", x: 900 },
-        ];
+        // Calculate dynamic X positions based on screen width
+        const parentNames = ["nwankwo", "asouzu", "udorji", "okoli", "anyaga"];
+        const padding = 50; // padding from edges
+        const availableWidth = screenWidth - 2 * padding;
+        const spacingX = availableWidth / (parentNames.length + 1);
+
+        const firstGen = parentNames.map((name, i) => ({
+          id: name,
+          label: name.charAt(0).toUpperCase() + name.slice(1),
+          x: padding + (i + 1) * spacingX,
+        }));
 
         const newNodes = [
           {
             id: "nmelonye",
-            position: { x: 500, y: 0 },
+            position: { x: screenWidth / 2, y: 0 },
             data: { label: "Nmelonye (Ancestor)" },
             style: { ...baseStyles, background: "#004aad", color: "#fff" },
           },
@@ -174,22 +72,20 @@ export default function Lineage() {
           target: f.id,
         }));
 
-        // Dynamically space children vertically based on count
+        // Add children with dynamic vertical spacing
         firstGen.forEach((parent) => {
           const children = getChildren(parent.label);
-          if (children.length === 0) return;
+          if (!children.length) return;
 
-          const startY = 300; // top Y for first child
-          const spacing = Math.max(80, 600 / children.length); // adapt spacing to count
-          const totalHeight = spacing * (children.length - 1);
-          const offsetY = startY + totalHeight / -2 + totalHeight / 2; // center under parent
+          const startY = 300;
+          const spacingY = Math.max(80, 600 / children.length);
 
           children.forEach((child, i) => {
             newNodes.push({
               id: child._id,
               position: {
                 x: parent.x,
-                y: startY + i * spacing,
+                y: startY + i * spacingY,
               },
               data: { label: child.firstName },
               style: { ...baseStyles, background: "#f1f8e9" },
@@ -210,7 +106,7 @@ export default function Lineage() {
     };
 
     loadFamily();
-  }, [setNodes, setEdges]);
+  }, [screenWidth, setNodes, setEdges]);
 
   const onNodeClick = useCallback(
     (_, node) => {
