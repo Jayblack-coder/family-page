@@ -1,35 +1,3 @@
-// import { useEffect, useState } from "react";
-// import API from "../Screens/api.jsx";
-
-// const Events = () => {
-//   const [events, setEvents] = useState([]);
-
-//   // useEffect(() => {
-//   //   API.get("/api/events").then(res => setEvents(res.data));
-//   // }, []);
-// useEffect(() => {
-//   API.get("/api/events").then(res => {
-//     setEvents(res.data.events || res.data || []);
-//   });
-
-// }, []);
-
-//   return (
-//     <div>
-//       <h1>Family Events</h1>
-//       {events.map(evt => (
-//         <div key={evt._id}>
-//           <h3>{evt.title}</h3>
-//           <p>{evt.date}</p>
-//           <p>{evt.description}</p>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Events;
-
 import React, { useEffect, useState } from "react";
 import {
   Box,
@@ -38,6 +6,7 @@ import {
   CardMedia,
   Typography,
   Grid,
+  Container,
   FormControl,
   Select,
   MenuItem,
@@ -56,12 +25,10 @@ export default function Events() {
   const [showUpcoming, setShowUpcoming] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  // Fetch events from backend
   useEffect(() => {
     const fetchEvents = async () => {
       try {
         const res = await API.get("/api/events");
-        // normalize data: handle both { events: [...] } and [...] formats
         setEvents(res.data.events || res.data || []);
       } catch (err) {
         console.error("Failed to load events:", err);
@@ -69,28 +36,24 @@ export default function Events() {
         setLoading(false);
       }
     };
-
     fetchEvents();
   }, []);
 
-  // Filter events
   const filteredEvents = events.filter((event) => {
     const eventDate = new Date(event.date);
     const now = new Date();
-
     const matchesMonth = month ? eventDate.getMonth() + 1 === Number(month) : true;
     const matchesCategory = category ? event.category === category : true;
     const matchesUpcoming = showUpcoming ? eventDate >= now : true;
-
     return matchesMonth && matchesCategory && matchesUpcoming;
   });
 
   return (
-    <Box sx={{ minHeight: "100vh", background: "#f5f6fa", p: 4 }}>
-      <Box sx={{ maxWidth: "1200px", mx: "auto" }}>
+    <Box sx={{ minHeight: "100vh", background: "#f5f6fa", py: 6 }}>
+      <Container maxWidth="lg">
         {/* Filters */}
-        <Grid container spacing={3} sx={{ mb: 4 }}>
-          <Grid item xs={12} md={4}>
+        <Grid container spacing={3} justifyContent="center" sx={{ mb: 5 }}>
+          <Grid item xs={12} sm={6} md={3}>
             <FormControl fullWidth>
               <InputLabel>Filter by Month</InputLabel>
               <Select value={month} label="Filter by Month" onChange={(e) => setMonth(e.target.value)}>
@@ -104,7 +67,7 @@ export default function Events() {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={6} md={3}>
             <FormControl fullWidth>
               <InputLabel>Filter by Category</InputLabel>
               <Select value={category} label="Filter by Category" onChange={(e) => setCategory(e.target.value)}>
@@ -118,30 +81,31 @@ export default function Events() {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} sm={12} md={3}>
             <Button
               fullWidth
               variant={showUpcoming ? "contained" : "outlined"}
               color="success"
               onClick={() => setShowUpcoming(!showUpcoming)}
+              sx={{ height: "100%" }}
             >
               {showUpcoming ? "Showing Upcoming" : "Show Upcoming Events"}
             </Button>
           </Grid>
         </Grid>
 
-        <Typography variant="h4" fontWeight={700} sx={{ mb: 3 }}>
+        <Typography variant="h4" fontWeight={700} textAlign="center" sx={{ mb: 4 }}>
           Family Events
         </Typography>
 
         {loading ? (
-          <Typography>Loading events...</Typography>
+          <Typography textAlign="center">Loading events...</Typography>
         ) : filteredEvents.length === 0 ? (
-          <Typography>No events found.</Typography>
+          <Typography textAlign="center">No events found.</Typography>
         ) : (
-          <Grid container spacing={3}>
+          <Grid container spacing={4} justifyContent="center">
             {filteredEvents.map((event, index) => (
-              <Grid item xs={12} md={6} lg={4} key={event._id || index}>
+              <Grid item xs={12} sm={6} md={4} key={event._id || index}>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -203,10 +167,7 @@ export default function Events() {
             ))}
           </Grid>
         )}
-      </Box>
+      </Container>
     </Box>
   );
 }
-
-
-
