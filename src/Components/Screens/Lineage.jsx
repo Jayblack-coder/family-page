@@ -1,162 +1,154 @@
-import React from "react";
+import React, { useCallback } from "react";
+import ReactFlow, {
+  MiniMap,
+  Controls,
+  Background,
+  useNodesState,
+  useEdgesState,
+} from "reactflow";
+import "reactflow/dist/style.css";
 
-const NODE_WIDTH = 140;
-const NODE_HEIGHT = 45;
+const initialNodes = [
+  // Ancestor
+  {
+    id: "nmelonye",
+    position: { x: 500, y: 0 },
+    data: { label: "Nmelonye (Ancestor)" },
+    style: ancestorStyle,
+  },
 
-const Lineage = () => {
-  // Tree data
-  const tree = {
-    name: "Nmelonye",
-    generation: 0,
-    children: [
-      { name: "Agosi", generation: 1, children: [] },
-      {
-        name: "Nwankwo",
-        generation: 1,
-        children: Array.from({ length: 6 }, (_, i) => ({
-          name: `Nwankwo Child ${i + 1}`,
-          generation: 2,
-        })),
-      },
-      {
-        name: "Asouzu",
-        generation: 1,
-        children: Array.from({ length: 8 }, (_, i) => ({
-          name: `Asouzu Child ${i + 1}`,
-          generation: 2,
-        })),
-      },
-      {
-        name: "Udorji",
-        generation: 1,
-        children: Array.from({ length: 12 }, (_, i) => ({
-          name: `Udorji Child ${i + 1}`,
-          generation: 2,
-        })),
-      },
-      {
-        name: "Okoli",
-        generation: 1,
-        children: Array.from({ length: 3 }, (_, i) => ({
-          name: `Okoli Child ${i + 1}`,
-          generation: 2,
-        })),
-      },
-      {
-        name: "Anyaga",
-        generation: 1,
-        children: Array.from({ length: 2 }, (_, i) => ({
-          name: `Anyaga Child ${i + 1}`,
-          generation: 2,
-        })),
-      },
-    ],
-  };
+  // First Generation
+  { id: "agosi", position: { x: 0, y: 150 }, data: { label: "Agosi" }, style: gen1Style },
+  { id: "nwankwo", position: { x: 200, y: 150 }, data: { label: "Nwankwo" }, style: gen1Style },
+  { id: "asouzu", position: { x: 400, y: 150 }, data: { label: "Asouzu" }, style: gen1Style },
+  { id: "udorji", position: { x: 600, y: 150 }, data: { label: "Udorji" }, style: gen1Style },
+  { id: "okoli", position: { x: 800, y: 150 }, data: { label: "Okoli" }, style: gen1Style },
+  { id: "anyaga", position: { x: 1000, y: 150 }, data: { label: "Anyaga" }, style: gen1Style },
 
-  const handleNodeClick = (name) => {
-    alert(`You clicked on ${name}`);
-    // later: open modal or navigate to profile page
-  };
+  // Second / Third Generation (spaced vertically)
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: `nwankwo-${i}`,
+    position: { x: 200, y: 300 + i * 80 },
+    data: { label: `Nwankwo Child ${i + 1}` },
+    style: gen2Style,
+  })),
 
-  const renderNode = (x, y, label, key) => (
-    <g
-      key={key}
-      onClick={() => handleNodeClick(label)}
-      style={{ cursor: "pointer" }}
-    >
-      <rect
-        x={x}
-        y={y}
-        width={NODE_WIDTH}
-        height={NODE_HEIGHT}
-        rx={12}
-        fill="#ffffff"
-        stroke="#004aad"
-        strokeWidth="2"
-      />
-      <text
-        x={x + NODE_WIDTH / 2}
-        y={y + NODE_HEIGHT / 2 + 5}
-        textAnchor="middle"
-        fontSize="14"
-        fill="#333"
-        fontWeight="600"
-      >
-        {label}
-      </text>
-    </g>
-  );
+  ...Array.from({ length: 8 }, (_, i) => ({
+    id: `asouzu-${i}`,
+    position: { x: 400, y: 300 + i * 80 },
+    data: { label: `Asouzu Child ${i + 1}` },
+    style: gen2Style,
+  })),
 
-  const renderLine = (x1, y1, x2, y2, key) => (
-    <line
-      key={key}
-      x1={x1}
-      y1={y1}
-      x2={x2}
-      y2={y2}
-      stroke="#999"
-      strokeWidth="2"
-    />
-  );
+  ...Array.from({ length: 12 }, (_, i) => ({
+    id: `udorji-${i}`,
+    position: { x: 600, y: 300 + i * 70 },
+    data: { label: `Udorji Child ${i + 1}` },
+    style: gen2Style,
+  })),
 
-  let svgWidth = 1400;
-  let svgHeight = 900;
+  ...Array.from({ length: 3 }, (_, i) => ({
+    id: `okoli-${i}`,
+    position: { x: 800, y: 300 + i * 90 },
+    data: { label: `Okoli Child ${i + 1}` },
+    style: gen2Style,
+  })),
 
-  return (
-    <div style={{ padding: 20, background: "#f5f6fa" }}>
-      <h1 style={{ textAlign: "center", color: "#004aad" }}>
-        Nmelonye Family Lineage
-      </h1>
+  ...Array.from({ length: 2 }, (_, i) => ({
+    id: `anyaga-${i}`,
+    position: { x: 1000, y: 300 + i * 120 },
+    data: { label: `Anyaga Child ${i + 1}` },
+    style: gen2Style,
+  })),
+];
 
-      <svg width="100%" height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-        {/* Ancestor */}
-        {renderNode(svgWidth / 2 - NODE_WIDTH / 2, 40, tree.name, "ancestor")}
+const initialEdges = [
+  // Ancestor to first generation
+  ...["agosi", "nwankwo", "asouzu", "udorji", "okoli", "anyaga"].map((id) => ({
+    id: `e-nmelonye-${id}`,
+    source: "nmelonye",
+    target: id,
+  })),
 
-        {/* First Generation */}
-        {tree.children.map((child, i) => {
-          const x =
-            100 + i * ((svgWidth - 200) / tree.children.length);
-          const y = 160;
+  // Parents to children
+  ...Array.from({ length: 6 }, (_, i) => ({
+    id: `e-nwankwo-${i}`,
+    source: "nwankwo",
+    target: `nwankwo-${i}`,
+  })),
 
-          return (
-            <g key={child.name}>
-              {renderLine(
-                svgWidth / 2,
-                40 + NODE_HEIGHT,
-                x + NODE_WIDTH / 2,
-                y,
-                `line-1-${i}`
-              )}
-              {renderNode(x, y, child.name, child.name)}
+  ...Array.from({ length: 8 }, (_, i) => ({
+    id: `e-asouzu-${i}`,
+    source: "asouzu",
+    target: `asouzu-${i}`,
+  })),
 
-              {/* Second Generation */}
-              {child.children?.map((grand, j) => {
-                const gx =
-                  x -
-                  (child.children.length * 60) / 2 +
-                  j * 60;
-                const gy = 300;
+  ...Array.from({ length: 12 }, (_, i) => ({
+    id: `e-udorji-${i}`,
+    source: "udorji",
+    target: `udorji-${i}`,
+  })),
 
-                return (
-                  <g key={grand.name}>
-                    {renderLine(
-                      x + NODE_WIDTH / 2,
-                      y + NODE_HEIGHT,
-                      gx + NODE_WIDTH / 2,
-                      gy,
-                      `line-2-${i}-${j}`
-                    )}
-                    {renderNode(gx, gy, grand.name, grand.name)}
-                  </g>
-                );
-              })}
-            </g>
-          );
-        })}
-      </svg>
-    </div>
-  );
+  ...Array.from({ length: 3 }, (_, i) => ({
+    id: `e-okoli-${i}`,
+    source: "okoli",
+    target: `okoli-${i}`,
+  })),
+
+  ...Array.from({ length: 2 }, (_, i) => ({
+    id: `e-anyaga-${i}`,
+    source: "anyaga",
+    target: `anyaga-${i}`,
+  })),
+];
+
+// Styles
+const ancestorStyle = {
+  padding: 12,
+  borderRadius: 12,
+  background: "#004aad",
+  color: "#fff",
+  fontWeight: "bold",
 };
 
-export default Lineage;
+const gen1Style = {
+  padding: 10,
+  borderRadius: 10,
+  background: "#e3f2fd",
+  border: "2px solid #1976d2",
+};
 
+const gen2Style = {
+  padding: 8,
+  borderRadius: 8,
+  background: "#f1f8e9",
+  border: "1px solid #689f38",
+};
+
+export default function Lineage() {
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
+  const [edges, , onEdgesChange] = useEdgesState(initialEdges);
+
+  const onNodeClick = useCallback((_, node) => {
+    alert(`Clicked: ${node.data.label}`);
+  }, []);
+
+  return (
+    <div style={{ width: "100%", height: "90vh" }}>
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        onNodesChange={onNodesChange}
+        onEdgesChange={onEdgesChange}
+        onNodeClick={onNodeClick}
+        fitView
+        panOnScroll
+        zoomOnScroll
+      >
+        <MiniMap />
+        <Controls />
+        <Background gap={16} />
+      </ReactFlow>
+    </div>
+  );
+}
