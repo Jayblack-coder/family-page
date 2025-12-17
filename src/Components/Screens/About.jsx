@@ -110,7 +110,7 @@ export default function About() {
             </em>{" "}
             This genealogy traces our roots from 1819 to 2004, connecting our
             ancestral home in <strong>Nise, Anambra State</strong> to{" "}
-            <strong>Arondizuogu, Imo State</strong>. The book, published by
+            <strong>Arondizuogu, Imo State</strong>. The book, written by Rev Fr.Prof. Asouzu, and published by
             Cheedal Global Prints, preserves the legacy of our forefather,
             <strong> Nmelonye</strong>, whose courage and journey laid the
             foundation for generations to come.
@@ -157,7 +157,7 @@ export default function About() {
               color: "#333",
             }}
           >
-            From his union came six remarkable offsprings, each forming the
+            From his union came six remarkable offsprings, five of which formed the
             roots of the families that carry our name today:
           </Typography>
 
