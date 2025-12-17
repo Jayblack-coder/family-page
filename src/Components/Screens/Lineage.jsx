@@ -31,82 +31,80 @@ export default function Lineage() {
   }, []);
 
   useEffect(() => {
-    const loadFamily = async () => {
-      try {
-        const res = await API.get("/api/user");
-        const family = res.data;
+  const loadFamily = async () => {
+    try {
+      const res = await API.get("/api/user");
+      const family = res.data;
 
-        const getChildren = (parentName) =>
-          family.filter((member) => member.parents === parentName);
+      // Ancestor node
+      const newNodes = [
+        {
+          id: "nmelonye",
+          position: { x: screenWidth / 2, y: 0 },
+          data: { label: "Nmelonye (Ancestor)" },
+          style: { ...baseStyles, background: "#004aad", color: "#fff" },
+        },
+      ];
 
-        // Calculate dynamic X positions based on screen width
-        const parentNames = ["nwankwo", "asouzu", "udorji", "okoli", "anyaga"];
-        const padding = 50; // padding from edges
-        const availableWidth = screenWidth - 2 * padding;
-        const spacingX = availableWidth / (parentNames.length + 1);
+      const parentNames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
+      const padding = 50;
+      const availableWidth = screenWidth - 2 * padding;
+      const spacingX = availableWidth / (parentNames.length + 1);
 
-        const firstGen = parentNames.map((name, i) => ({
-          id: name,
-          label: name.charAt(0).toUpperCase() + name.slice(1),
-          x: padding + (i + 1) * spacingX,
-        }));
-
-        const newNodes = [
-          {
-            id: "nmelonye",
-            position: { x: screenWidth / 2, y: 0 },
-            data: { label: "Nmelonye (Ancestor)" },
-            style: { ...baseStyles, background: "#004aad", color: "#fff" },
-          },
-          ...firstGen.map((f) => ({
-            id: f.id,
-            position: { x: f.x, y: 150 },
-            data: { label: f.label },
-            style: { ...baseStyles, background: "#e3f2fd" },
-          })),
-        ];
-
-        const newEdges = firstGen.map((f) => ({
-          id: `e-nmelonye-${f.id}`,
-          source: "nmelonye",
-          target: f.id,
-        }));
-
-        // Add children with dynamic vertical spacing
-        firstGen.forEach((parent) => {
-          const children = getChildren(parent.label);
-          if (!children.length) return;
-
-          const startY = 300;
-          const spacingY = Math.max(80, 600 / children.length);
-
-          children.forEach((child, i) => {
-            newNodes.push({
-              id: child._id,
-              position: {
-                x: parent.x,
-                y: startY + i * spacingY,
-              },
-              data: { label: child.firstName },
-              style: { ...baseStyles, background: "#f1f8e9" },
-            });
-            newEdges.push({
-              id: `e-${parent.id}-${child._id}`,
-              source: parent.id,
-              target: child._id,
-            });
-          });
+      // First Generation nodes
+      parentNames.forEach((name, i) => {
+        newNodes.push({
+          id: name.toLowerCase(),
+          position: { x: padding + (i + 1) * spacingX, y: 150 },
+          data: { label: name },
+          style: { ...baseStyles, background: "#e3f2fd" },
         });
+      });
 
-        setNodes(newNodes);
-        setEdges(newEdges);
-      } catch (err) {
-        console.error("Error loading family:", err);
-      }
-    };
+      const newEdges = parentNames.map((name) => ({
+        id: `e-nmelonye-${name.toLowerCase()}`,
+        source: "nmelonye",
+        target: name.toLowerCase(),
+      }));
 
-    loadFamily();
-  }, [screenWidth, setNodes, setEdges]);
+      // Add children
+      family.forEach((member) => {
+        if (member.parents) {
+          const parentId = member.parents.toLowerCase();
+          const parentNode = newNodes.find((n) => n.id === parentId);
+          if (!parentNode) return;
+
+          // Calculate dynamic Y position
+          const siblings = family.filter((m) => m.parents === member.parents);
+          const index = siblings.findIndex((s) => s._id === member._id);
+          const spacingY = Math.max(80, 600 / siblings.length);
+          const startY = 300;
+
+          newNodes.push({
+            id: member._id,
+            position: { x: parentNode.position.x, y: startY + index * spacingY },
+            data: { label: member.firstName },
+            style: { ...baseStyles, background: "#f1f8e9" },
+          });
+
+          newEdges.push({
+            id: `e-${parentId}-${member._id}`,
+            source: parentId,
+            target: member._id,
+          });
+        }
+      });
+
+      setNodes(newNodes);
+      setEdges(newEdges);
+    } catch (err) {
+      console.error("Error loading family:", err);
+    }
+  };
+
+  loadFamily();
+}, [screenWidth, setNodes, setEdges]);
+
 
   const onNodeClick = useCallback(
     (_, node) => {
