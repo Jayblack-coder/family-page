@@ -77,6 +77,10 @@ const GalleryUpload = () => {
   const { token } = useAuth();
 
   const uploadImage = async () => {
+    if (!token) {
+    toast.error("Session expired. Please login again.");
+    return;
+  }
     if (!file) return toast.error("Please choose an image");
 
     const formData = new FormData();
