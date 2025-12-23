@@ -77,11 +77,14 @@ const GalleryUpload = () => {
   const { token } = useAuth();
 
   const uploadImage = async () => {
+    console.log("UPLOAD TOKEN:", token);
     if (!file) return toast.error("Please choose an image");
 
     const formData = new FormData();
     formData.append("image", file);
     formData.append("caption", caption); // send caption to backend
+    
+
 
     try {
       setUploading(true);
