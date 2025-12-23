@@ -94,7 +94,11 @@ const GalleryUpload = () => {
     try {
       setUploading(true);
 
-      await API.post("/api/gallery/upload", formData,);
+      await API.post("/api/gallery/upload", formData,{
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
 
       toast.success("Image uploaded!");
       setFile(null);
