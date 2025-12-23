@@ -78,6 +78,11 @@ const GalleryUpload = () => {
 
   const uploadImage = async () => {
     console.log("UPLOAD TOKEN:", token);
+    if (!token) {
+    toast.error("Session expired. Please login again.");
+    return;
+  }
+
     if (!file) return toast.error("Please choose an image");
 
     const formData = new FormData();
@@ -89,12 +94,7 @@ const GalleryUpload = () => {
     try {
       setUploading(true);
 
-      await API.post("/api/gallery/upload", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data"
-        }
-      });
+      await API.post("/api/gallery/upload", formData,);
 
       toast.success("Image uploaded!");
       setFile(null);
