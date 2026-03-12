@@ -112,7 +112,7 @@ export default function Hero() {
             gutterBottom
             sx={{ textShadow: "2px 2px 4px rgba(0,0,0,0.6)" }}
           >
-            Preserving Our Family Legacy
+            Preserving Our Nmelonye Legacy
           </Typography>
           <Typography
             variant="h6"
