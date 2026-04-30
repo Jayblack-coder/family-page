@@ -168,9 +168,9 @@ const NwankwoGenFourProfiles = () => {
             ))
             ) : (
               <Box sx={{ width: "100%", textAlign: "center", py: { xs: 3, sm: 4, md: 5 } }}>
-                <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
+                {/* <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
                   No members found for Nwankwo Generation 4
-                </Typography>
+                </Typography> */}
               </Box>
             )}
           </Grid>
