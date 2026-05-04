@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from 'react-router-dom';
 import {
   Typography,
   Container,
@@ -10,13 +9,10 @@ import {
   Box,
   CircularProgress,
   Alert,
-  IconButton,
 } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import API from "../api.jsx";
+import API from "./api.jsx";
 
-const AsouzuGenThreeProfiles = () => {
-  const navigate = useNavigate();
+const UdorjiGenFourProfiles = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -51,14 +47,14 @@ const AsouzuGenThreeProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply filters: surname = Asouzu && generation = 3rd
+  // ✅ Apply filters: surname = Udorji && generation = 4th
   useEffect(() => {
     console.log("All data:", originalData);
-    console.log("Looking for: Asouzu with generation 3rd");
+    console.log("Looking for: Udorji with generation 4th");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasSurname = item.surname && item.surname.toLowerCase().includes("asouzu");
-      const hasGeneration = String(item.generation).trim() === "3rd";
+      const hasSurname = item.surname && item.surname.toLowerCase().includes("udorji");
+      const hasGeneration = String(item.generation).trim() === "4th";
       
       if (hasSurname && hasGeneration) {
         console.log("Match found:", item);
@@ -75,20 +71,16 @@ const AsouzuGenThreeProfiles = () => {
   return (
     <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: { xs: 3, sm: 4, md: 5 } }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-        {/* Page Title with Back Button */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-          <IconButton onClick={() => navigate(-1)} sx={{ mr: 2 }}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            textAlign="center"
-            sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
-          >
-            Asouzu Family (Generation 3)
-          </Typography>
-        </Box>
+        {/* Page Title */}
+        <Typography
+          variant="h4"
+          fontWeight="bold"
+          textAlign="center"
+          gutterBottom
+          sx={{ color: "#0d6efd", mb: 4, fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
+        >
+          Udorji Family (Generation 4)
+        </Typography>
 
         {/* Loading Spinner */}
         {isLoading && (
@@ -187,7 +179,7 @@ const AsouzuGenThreeProfiles = () => {
             ) : (
               <Box sx={{ width: "100%", textAlign: "center", py: { xs: 3, sm: 4, md: 5 } }}>
                 <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
-                  No members found for Asouzu Generation 3
+                  No members found for Udorji Generation 4
                 </Typography>
               </Box>
             )}
@@ -198,5 +190,4 @@ const AsouzuGenThreeProfiles = () => {
   );
 };
 
-export default AsouzuGenThreeProfiles;
-
+export default UdorjiGenFourProfiles;
