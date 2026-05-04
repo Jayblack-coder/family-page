@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Typography,
   Container,
@@ -7,10 +8,13 @@ import {
   CardContent,
   CardMedia,
   Box,
+  IconButton,
 } from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import API from "../api.jsx";
 
 const AsouzuGenFourProfiles = () => {
+  const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -45,16 +49,20 @@ const AsouzuGenFourProfiles = () => {
   return (
     <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: 5 }}>
       <Container maxWidth="xl">
-        {/* Page Title */}
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          sx={{ color: "#0d6efd", mb: 4 }}
-        >
-          Asouzu Family (Generation 4)
-        </Typography>
+        {/* Page Title with Back Button */}
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+          <IconButton onClick={() => navigate(-1)} sx={{ mr: 2 }}>
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
+          >
+            Asouzu Family (Generation 4)
+          </Typography>
+        </Box>
 
         {/* Grid of Cards */}
         <Grid container spacing={3}>

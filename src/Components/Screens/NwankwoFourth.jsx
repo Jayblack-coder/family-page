@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Typography,
   Container,
@@ -9,10 +10,13 @@ import {
   Box,
   CircularProgress,
   Alert,
+  IconButton,
 } from "@mui/material";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import API from "./api.jsx";
 
 const NwankwoGenFourProfiles = () => {
+  const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -71,16 +75,20 @@ const NwankwoGenFourProfiles = () => {
   return (
     <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: { xs: 3, sm: 4, md: 5 } }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
-        {/* Page Title */}
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          sx={{ color: "#0d6efd", mb: 4, fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
-        >
-          Nwankwo Family (Generation 4)
-        </Typography>
+        {/* Page Title with Back Button */}
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+          <IconButton onClick={() => navigate(-1)} sx={{ mr: 2 }}>
+            <ArrowBackIcon />
+          </IconButton>
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            textAlign="center"
+            sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
+          >
+            Nwankwo Family (Generation 4)
+          </Typography>
+        </Box>
 
         {/* Loading Spinner */}
         {isLoading && (
