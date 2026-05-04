@@ -86,7 +86,7 @@ const OkoliGenFiveProfiles = () => {
             textAlign="center"
             sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
           >
-            Ekkor Family (Generation 5)
+           Okoli Family (Generation 5)
           </Typography>
         </Box>
 

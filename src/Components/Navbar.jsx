@@ -8,13 +8,22 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false); 
   const navigate = useNavigate(); 
   const toggleDrawer = (state) => () => { setOpen(state); }; 
-  const handleLogout = () => { localStorage.removeItem("token"); 
-  localStorage.removeItem("userName"); navigate("/login"); }; 
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    localStorage.removeItem("userName");
+    navigate("/login");
+  };
  const isLoggedIn = Boolean(localStorage.getItem("token")); // ✅ check login status 
- const navLinks = [ { label: "About", path: "/about" }, 
-  { label: "Lineage", path: "/lineage" }, 
-  { label: "Family Gallery", path: "/gallery" }, 
-  { label: "Family Events", path: "/events" }, ]; 
+ const defaultLinks = [ 
+   { label: "About", path: "/about" }, 
+   { label: "Lineage", path: "/lineage" }, 
+   { label: "Family Gallery", path: "/gallery" }, 
+   { label: "Family Events", path: "/events" }, 
+ ]; 
+ const navLinks = isLoggedIn
+   ? [...defaultLinks, { label: "My Profile", path: "/profile" }]
+   : defaultLinks;
   
   return ( 
   <> 

@@ -32,6 +32,7 @@ import UdorjiGenFourProfiles from "./Components/Screens/Udorji/UdorjiFourth";
 import UdorjiGenThreeProfiles from "./Components/Screens/Udorji/UdorjiThird";
 import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
 import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
+import MyProfile from "./Components/Screens/MyProfile";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 // import AdminLogin from "./Components/AdminLogin.jsx";
 
@@ -62,6 +63,14 @@ function App() {
           element={
             <ProtectedRoute>
               <Hero />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <MyProfile />
             </ProtectedRoute>
           }
         />
