@@ -47,14 +47,24 @@ const NwankwoGenFourProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply filters: surname = Nwankwo && generation = 1
+  // ✅ Apply filters: surname = Nwankwo && generation = 4th
   useEffect(() => {
-    const newFilteredData = originalData.filter(
-      (item) =>
-        item.surname &&
-        item.surname.toLowerCase().includes("nwankwo") &&
-        String(item.generation)?.toLowerCase() === "4th"
-    );
+    console.log("All data:", originalData);
+    console.log("Looking for: Nwankwo with generation 4th");
+    
+    const newFilteredData = originalData.filter((item) => {
+      const hasSurname = item.surname && item.surname.toLowerCase().includes("nwankwo");
+      const hasGeneration = String(item.generation).trim() === "4th";
+      
+      if (hasSurname && hasGeneration) {
+        console.log("Match found:", item);
+      }
+      
+      return hasSurname && hasGeneration;
+    });
+    
+    console.log("Filtered result count:", newFilteredData.length);
+    console.log("Filtered Data:", newFilteredData);
     setFilteredData(newFilteredData);
   }, [originalData]);
 
