@@ -117,7 +117,7 @@ const NwankwoHome = () => {
                   "SURNAME",
                   "FIRSTNAME",
                   "MIDDLENAME",
-                  "USERNAME",
+                  // "USERNAME",
                   "PARENTS",
                   "FAMILY STATUS",
                   "GENERATION",
@@ -160,7 +160,7 @@ const NwankwoHome = () => {
                   <TableCell align="center">{d.surname}</TableCell>
                   <TableCell align="center">{d.firstName}</TableCell>
                   <TableCell align="center">{d.middleName}</TableCell>
-                  <TableCell align="center">{d.userName}</TableCell>
+                  {/* <TableCell align="center">{d.userName}</TableCell> */}
                   <TableCell align="center">{d.parents}</TableCell>
                   <TableCell align="center">{d.familyStatus}</TableCell>
                   <TableCell align="center">{d.generation}</TableCell>
