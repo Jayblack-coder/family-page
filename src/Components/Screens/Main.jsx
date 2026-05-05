@@ -17,7 +17,7 @@ const Main = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    API.get("/api/user")
+    API.get("/api/user/family-line/nwankwo")
     .then(res =>setData(res.data))
       // .then((res) => {
       //   console.log("API response:", res.data);

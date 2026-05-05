@@ -64,7 +64,7 @@ const UdorjiGenFiveProfiles = () => {
         console.log("Match found:", item);
       }
       
-      return hasSurname && hasGeneration;
+      return hasGeneration;
     });
     
     console.log("Filtered result count:", newFilteredData.length);

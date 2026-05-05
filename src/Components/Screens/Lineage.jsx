@@ -162,7 +162,7 @@ export default function Lineage() {
   useEffect(() => {
   const loadFamily = async () => {
     try {
-      const res = await API.get("/api/user");
+      const res = await API.get("/api/user/family-line/nwankwo");
       const family = res.data;
 
       // Ancestor node
@@ -175,53 +175,74 @@ export default function Lineage() {
         },
       ];
 
-      const parentNames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
-      const padding = 50;
-      const availableWidth = screenWidth - 2 * padding;
-      const spacingX = availableWidth / (parentNames.length + 1);
+      // Nwankwo as first generation
+      const nwankwoNode = {
+        id: "nwankwo",
+        position: { x: screenWidth / 2, y: 150 },
+        data: { label: "Nwankwo" },
+        style: { ...baseStyles, background: "#e3f2fd" },
+      };
+      newNodes.push(nwankwoNode);
 
-      // First Generation nodes
-      parentNames.forEach((name, i) => {
-        newNodes.push({
-          id: name.toLowerCase(),
-          position: { x: padding + (i + 1) * spacingX, y: 150 },
-          data: { label: name },
-          style: { ...baseStyles, background: "#e3f2fd" },
-        });
+      const newEdges = [{
+        id: `e-nmelonye-nwankwo`,
+        source: "nmelonye",
+        target: "nwankwo",
+      }];
+
+      // Group Nwankwo family by generation
+      const generations = {};
+      family.forEach((member) => {
+        const gen = member.generation;
+        if (!generations[gen]) generations[gen] = [];
+        generations[gen].push(member);
       });
 
-      const newEdges = parentNames.map((name) => ({
-        id: `e-nmelonye-${name.toLowerCase()}`,
-        source: "nmelonye",
-        target: name.toLowerCase(),
-      }));
+      // Sort generations
+      const genOrder = ["1st", "2nd", "3rd", "4th", "5th"];
+      const sortedGens = genOrder.filter(gen => generations[gen]);
 
-      // Add children
-      family.forEach((member) => {
-        if (member.parents) {
-          const parentId = member.parents.toLowerCase();
-          const parentNode = newNodes.find((n) => n.id === parentId);
-          if (!parentNode) return;
+      // Add generation nodes and member nodes
+      sortedGens.forEach((gen, genIndex) => {
+        const genY = 300 + genIndex * 200;
+        const genNodeId = `gen-${gen}`;
+        
+        // Add generation node
+        newNodes.push({
+          id: genNodeId,
+          position: { x: screenWidth / 2, y: genY },
+          data: { label: `Generation ${gen}` },
+          style: { ...baseStyles, background: "#fff3e0" },
+        });
 
-          // Calculate dynamic Y position
-          const siblings = family.filter((m) => m.parents === member.parents);
-          const index = siblings.findIndex((s) => s._id === member._id);
-          const spacingY = Math.max(80, 600 / siblings.length);
-          const startY = 300;
+        // Connect to Nwankwo or previous generation
+        const sourceId = genIndex === 0 ? "nwankwo" : `gen-${sortedGens[genIndex - 1]}`;
+        newEdges.push({
+          id: `e-${sourceId}-${genNodeId}`,
+          source: sourceId,
+          target: genNodeId,
+        });
 
+        // Add member nodes for this generation
+        const members = generations[gen];
+        const spacingX = Math.max(150, (screenWidth - 200) / members.length);
+        const startX = (screenWidth - (members.length - 1) * spacingX) / 2;
+
+        members.forEach((member, memberIndex) => {
+          const memberY = genY + 100;
           newNodes.push({
             id: member._id,
-            position: { x: parentNode.position.x, y: startY + index * spacingY },
+            position: { x: startX + memberIndex * spacingX, y: memberY },
             data: { label: member.firstName },
             style: { ...baseStyles, background: "#f1f8e9" },
           });
 
           newEdges.push({
-            id: `e-${parentId}-${member._id}`,
-            source: parentId,
+            id: `e-${genNodeId}-${member._id}`,
+            source: genNodeId,
             target: member._id,
           });
-        }
+        });
       });
 
       setNodes(newNodes);

@@ -40,8 +40,8 @@ const OkoliHome = () => {
         setFilteredData(data);
       })
       .catch((err) => console.error("API Error:", err));
-  }, [originalData]);
-
+  }, []);
+}, [originalData]);
 
 
   return (
@@ -217,6 +217,6 @@ const OkoliHome = () => {
         </Container>
     </Box>
   );
-}
+};
 
 export default OkoliHome;
