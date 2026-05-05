@@ -26,7 +26,7 @@ const UdorjiGenThreeProfiles = () => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user")
+    API.get("/api/user/family-line/udorji")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -51,16 +51,15 @@ const UdorjiGenThreeProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply filters: surname = Udorji && generation = 3rd
+  // ✅ Apply generation filter: generation = 3rd
   useEffect(() => {
     console.log("All data:", originalData);
-    console.log("Looking for: Udorji with generation 3rd");
+    console.log("Looking for: generation 3rd");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasSurname = item.surname && item.surname.toLowerCase().includes("udorji");
       const hasGeneration = String(item.generation).trim() === "3rd";
       
-      if (hasSurname && hasGeneration) {
+      if (hasGeneration) {
         console.log("Match found:", item);
       }
       

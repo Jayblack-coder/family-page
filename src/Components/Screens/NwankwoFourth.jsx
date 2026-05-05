@@ -22,11 +22,11 @@ const NwankwoGenFourProfiles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Fetch data
+  // ✅ Fetch Nwankwo family data
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user")
+    API.get("/api/user/family-line/nwankwo")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -51,16 +51,15 @@ const NwankwoGenFourProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply filters: surname = Nwankwo && generation = 4th
+  // ✅ Apply generation filter: generation = 4th
   useEffect(() => {
     console.log("All data:", originalData);
-    console.log("Looking for: Nwankwo with generation 4th");
+    console.log("Looking for: generation 4th");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasSurname = item.surname && item.surname.toLowerCase().includes("nwankwo");
       const hasGeneration = String(item.generation).trim() === "4th";
       
-      if (hasSurname && hasGeneration) {
+      if (hasGeneration) {
         console.log("Match found:", item);
       }
       

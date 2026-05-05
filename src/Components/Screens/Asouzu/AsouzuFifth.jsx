@@ -20,7 +20,7 @@ const AsouzuGenFiveProfiles = () => {
 
   // ✅ Fetch data
   useEffect(() => {
-    API.get("/api/user")
+    API.get("/api/user/family-line/asouzu")
       .then((res) => {
           console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -37,10 +37,10 @@ const AsouzuGenFiveProfiles = () => {
       .catch((err) => console.error("API Error:", err));
   }, []);
 
-  // ✅ Apply filters: surname = Nwankwo && generation = 1
+  // ✅ Apply generation filter: generation = 5th
   useEffect(() => {
     const newFilteredData = originalData.filter(
-     (item) => item.surname === "Asouzu" &&
+     (item) =>
         String(item.generation) === "5th"
     );
     setFilteredData(newFilteredData);

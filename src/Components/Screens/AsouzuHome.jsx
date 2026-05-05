@@ -20,9 +20,9 @@ const AsouzuHome = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  // Fetch data once
+  // Fetch Asouzu family data
   useEffect(() => {
-    API.get("/api/user")
+    API.get("/api/user/family-line/asouzu")
       .then((res) => {
         console.log("API Response:", res.data);
 
@@ -37,18 +37,10 @@ const AsouzuHome = () => {
         }
 
         setOriginalData(data);
+        setFilteredData(data);
       })
       .catch((err) => console.error("API Error:", err));
   }, []);
-
-  // Filter whenever originalData changes
-  useEffect(() => {
-  const newFilteredData = originalData.filter(
-  (item) => item.surname && item.surname.toLowerCase().includes("asouzu")
-);
-
-  setFilteredData(newFilteredData);
-}, [originalData]);
 
 
   return (

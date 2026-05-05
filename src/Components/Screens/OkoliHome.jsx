@@ -20,9 +20,9 @@ const OkoliHome = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  // Fetch data once
+  // Fetch Ekkor family data
   useEffect(() => {
-    API.get("/api/user")
+    API.get("/api/user/family-line/okoli")
       .then((res) => {
         console.log("API Response:", res.data);
 
@@ -37,18 +37,11 @@ const OkoliHome = () => {
         }
 
         setOriginalData(data);
+        setFilteredData(data);
       })
       .catch((err) => console.error("API Error:", err));
-  }, []);
+  }, [originalData]);
 
-  // Filter whenever originalData changes
-    useEffect(() => {
-  const newFilteredData = originalData.filter(
-  (item) => item.surname && item.surname.toLowerCase().includes("okoli")
-);
-
-  setFilteredData(newFilteredData);
-}, [originalData]);
 
 
   return (
@@ -224,6 +217,6 @@ const OkoliHome = () => {
         </Container>
     </Box>
   );
-};
+}
 
 export default OkoliHome;
