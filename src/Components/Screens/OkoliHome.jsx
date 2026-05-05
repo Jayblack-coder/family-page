@@ -41,7 +41,6 @@ const OkoliHome = () => {
       })
       .catch((err) => console.error("API Error:", err));
   }, []);
-}, [originalData]);
 
 
   return (
