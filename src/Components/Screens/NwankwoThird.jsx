@@ -22,11 +22,16 @@ const NwankwoGenThreeProfiles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const isThirdGeneration = (value) => {
+    const normalized = String(value || "").trim().toLowerCase();
+    return normalized === "3rd" || normalized === "3" || normalized === "third";
+  };
+
   // ✅ Fetch Nwankwo family data
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user/family-line/nwankwo")
+    API.get("/api/user")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -54,16 +59,18 @@ const NwankwoGenThreeProfiles = () => {
   // ✅ Apply generation filter: generation = 3rd
   useEffect(() => {
     console.log("All data:", originalData);
+    console.log("generation values:", originalData.map(item => item.generation));
     console.log("Looking for: generation 3rd");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasGeneration = String(item.generation).trim() === "3rd";
+      const isNwankwo = item.surname && item.surname.toLowerCase().includes("nwankwo");
+      const hasGeneration = isThirdGeneration(item.generation);
       
-      if (hasGeneration) {
+      if (hasGeneration && isNwankwo) {
         console.log("Match found:", item);
       }
       
-      return hasGeneration;
+      return hasGeneration && isNwankwo;
     });
     
     console.log("Filtered result count:", newFilteredData.length);

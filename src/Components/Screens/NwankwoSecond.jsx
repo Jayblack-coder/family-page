@@ -22,11 +22,16 @@ const NwankwoGenTwoProfiles = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const isSecondGeneration = (value) => {
+    const normalized = String(value || "").trim().toLowerCase();
+    return normalized === "2nd" || normalized === "2" || normalized === "second";
+  };
+
   // ✅ Fetch Nwankwo family data
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user/family-line/nwankwo")
+    API.get("/api/user")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -54,16 +59,18 @@ const NwankwoGenTwoProfiles = () => {
   // ✅ Apply generation filter: generation = 2nd
   useEffect(() => {
     console.log("All data:", originalData);
+    console.log("generation values:", originalData.map(item => item.generation));
     console.log("Looking for: generation 2nd");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasGeneration = String(item.generation).trim() === "2nd";
+      const isNwankwo = item.surname && item.surname.toLowerCase().includes("nwankwo");
+      const hasGeneration = isSecondGeneration(item.generation);
       
-      if (hasGeneration) {
+      if (hasGeneration && isNwankwo) {
         console.log("Match found:", item);
       }
       
-      return hasGeneration;
+      return hasGeneration && isNwankwo;
     });
     
     console.log("Filtered result count:", newFilteredData.length);
