@@ -117,7 +117,7 @@ const NwankwoHome = () => {
                   "SURNAME",
                   "FIRSTNAME",
                   "MIDDLENAME",
-                  // "USERNAME",
+                  "USERNAME",
                   "PARENTS",
                   "FAMILY STATUS",
                   "GENERATION",
