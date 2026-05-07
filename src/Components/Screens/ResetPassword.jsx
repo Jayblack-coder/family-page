@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import API from "./api";
 import {
   Box,
@@ -14,71 +14,65 @@ import {
 } from "@mui/material";
 import { ClipLoader } from "react-spinners";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import tree from "../../assets/tree.jpg"; // ✅ Use same background as hero page
+import tree from "../../assets/tree.jpg";
 
-const Login = () => {
+const ResetPassword = () => {
   const navigate = useNavigate();
-  const [userName, setUserName] = useState("");
+  const { token: tokenParam } = useParams();
+  const [searchParams] = useSearchParams();
+  const token = tokenParam || searchParams.get("token");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [forgotMode, setForgotMode] = useState(false);
-  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState("");
+
+  useEffect(() => {
+    if (!token) {
+      setError("Invalid reset link. Please request a new password reset.");
+    }
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters long.");
+      return;
+    }
+
     setLoading(true);
 
     try {
       const res = await API.post(
-        "/api/user/login",
-        { userName, password },
+        "/api/user/reset-password",
+        { token, newPassword: password },
         { headers: { "Content-Type": "application/json" } }
       );
       
       if (res.status === 200) {
-      // ✅ Save user + token
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user)); // store full user object
-
-      const user = res.data.user;
-
-      // ✅ Redirect logic
-      if (user.isAdmin === true ) {
-        alert(`Welcome back, Admin ${user.firstName}!`);
-        navigate("/admin");
-      } else {
-        navigate("/home");
+        setSuccess("Password reset successfully! Redirecting to login...");
+        setTimeout(() => navigate("/login"), 2000);
       }
+    } catch (err) {
+      setError(
+        err.response?.data?.message ||
+          err.response?.data?.error ||
+          "Failed to reset password. Please try again."
+      );
+    } finally {
+      setLoading(false);
     }
-  } catch (err) {
-    setError(
-      err.response?.data?.message ||
-        err.response?.data?.error ||
-        "Login failed. Please try again."
-    );
-  } finally {
-    setLoading(false);
-  }
-};
-
-  //     if (res.status === 200) {
-  //       localStorage.setItem("token", res.data.token);
-  //       localStorage.setItem("userName", res.data.userName);
-  //       setTimeout(() => navigate("/home"), 2000);
-  //     }
-  //   } catch (err) {
-  //     setError(
-  //       err.response?.data?.message ||
-  //         err.response?.data?.error ||
-  //         "Login failed. Please try again."
-  //     );
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  };
 
   return (
     <Box
@@ -99,8 +93,8 @@ const Login = () => {
         sx={{
           width: { xs: "100%", sm: "85%", md: "400px" },
           borderRadius: 4,
-          background: "rgba(255,255,255,0.15)", // ✅ translucent glass
-          backdropFilter: "blur(14px)", // ✅ glass effect
+          background: "rgba(255,255,255,0.15)",
+          backdropFilter: "blur(14px)",
           border: "1px solid rgba(255,255,255,0.2)",
           color: "#fff",
           boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
@@ -118,7 +112,7 @@ const Login = () => {
               mb: 3,
             }}
           >
-            Login Account
+            Reset Password
           </Typography>
 
           {error && (
@@ -133,28 +127,22 @@ const Login = () => {
             </Typography>
           )}
 
+          {success && (
+            <Typography
+              color="success"
+              variant="body2"
+              align="center"
+              gutterBottom
+              sx={{ backgroundColor: "rgba(0,255,0,0.15)", borderRadius: 1, py: 1 }}
+            >
+              {success}
+            </Typography>
+          )}
+
           <form onSubmit={handleSubmit}>
             <Stack spacing={4}>
               <TextField
-                label="User Name"
-                type="text"
-                variant="outlined"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                fullWidth
-                required
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: "#fff",
-                    "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
-                    "&:hover fieldset": { borderColor: "#fff" },
-                  },
-                  "& .MuiInputLabel-root": { color: "#fff" },
-                }}
-              />
-
-              <TextField
-                label="Password"
+                label="New Password"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -183,11 +171,41 @@ const Login = () => {
                 }}
               />
 
+              <TextField
+                label="Confirm New Password"
+                type={showConfirmPassword ? "text" : "password"}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                fullWidth
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        edge="end"
+                        sx={{ color: "#fff" }}
+                      >
+                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+                sx={{
+                  "& .MuiOutlinedInput-root": {
+                    color: "#fff",
+                    "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
+                    "&:hover fieldset": { borderColor: "#fff" },
+                  },
+                  "& .MuiInputLabel-root": { color: "#fff" },
+                }}
+              />
+
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={loading}
+                disabled={loading || !token}
                 sx={{
                   background:
                     "linear-gradient(135deg, #004aad, #1976d2)",
@@ -200,37 +218,21 @@ const Login = () => {
                   },
                 }}
               >
-                {loading ? <ClipLoader size={20} color="white" /> : "Login"}
+                {loading ? <ClipLoader size={20} color="white" /> : "Reset Password"}
               </Button>
 
               <Typography sx={{ textAlign: "center", color: "#fff" }}>
-                <Link
-                  to="/reset-password"
-                  style={{
+                <Button
+                  onClick={() => navigate("/login")}
+                  sx={{
                     textDecoration: "none",
-                    color: "#90caf9",
+                    color: "#ffd700",
                     fontWeight: "bold",
-                    display: "block",
-                    marginBottom: 8,
+                    textTransform: "none",
                   }}
-                  onMouseOver={(e) => (e.target.style.color = "#ffffff")}
-onMouseOut={(e) => (e.target.style.color = "#90caf9")}
                 >
-                  Forgot Password?
-                </Link>
-                Not Registered?{" "}
-                <Link
-                  to="/register"
-                  style={{
-                    textDecoration: "none",
-                   color: "#90caf9",
-                    fontWeight: "bold",
-                  }}
-                  onMouseOver={(e) => (e.target.style.color = "#ffffff")}
-onMouseOut={(e) => (e.target.style.color = "#90caf9")}
-                >
-                  Register Here
-                </Link>
+                  Back to Login
+                </Button>
               </Typography>
             </Stack>
           </form>
@@ -240,4 +242,4 @@ onMouseOut={(e) => (e.target.style.color = "#90caf9")}
   );
 };
 
-export default Login;
+export default ResetPassword;

@@ -3,6 +3,7 @@ import Navbar from "./Components/Navbar";
 import Hero from "./Components/Hero";
 import Register from "./Components/Screens/Register";
 import Login from "./Components/Screens/Login";
+import ResetPassword from "./Components/Screens/ResetPassword";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
 import UdorjiHome from "./Components/Screens/UdorjiHome";
@@ -46,6 +47,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         
 <Route
   path="/admin"
