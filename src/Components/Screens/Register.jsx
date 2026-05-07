@@ -32,6 +32,7 @@ const Register = () => {
   const [familyStatus, setFamilyStatus] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [parents, setParents] = useState("");
   const [generation, setGeneration] = useState("");
   const [dateOfBirth, setDateOfBirth] = useState(null);
@@ -67,6 +68,9 @@ const [loading, setLoading] = useState(false);
       formData.append("middleName", middleName);
       formData.append("userName", userName);
       formData.append("password", password);
+      if (email.trim()) {
+        formData.append("email", email.trim());
+      }
       formData.append("parents", parents);
       formData.append("familyStatus", familyStatus);
       formData.append("generation", generation);
@@ -190,6 +194,14 @@ const [loading, setLoading] = useState(false);
                 name="middleName"
                 value={middleName}
                 onChange={(e) => setMiddleName(e.target.value)}
+              />
+              <TextField
+                label="Email (optional)"
+                name="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                fullWidth
               />
               <TextField
                 select

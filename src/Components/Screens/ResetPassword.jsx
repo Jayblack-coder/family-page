@@ -21,6 +21,7 @@ const ResetPassword = () => {
   const { token: tokenParam } = useParams();
   const [searchParams] = useSearchParams();
   const token = tokenParam || searchParams.get("token");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -31,7 +32,7 @@ const ResetPassword = () => {
 
   useEffect(() => {
     if (!token) {
-      setError("Invalid reset link. Please request a new password reset.");
+      setError("");
     }
   }, [token]);
 
@@ -39,6 +40,34 @@ const ResetPassword = () => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    if (!token) {
+      if (!email.trim()) {
+        setError("Please enter your email address.");
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const res = await API.post(
+          "/api/user/forgot-password",
+          { email: email.trim() },
+          { headers: { "Content-Type": "application/json" } }
+        );
+        if (res.status === 200) {
+          setSuccess("Password reset instructions have been sent to your email.");
+        }
+      } catch (err) {
+        setError(
+          err.response?.data?.message ||
+            err.response?.data?.error ||
+            "Failed to send reset link. Please try again."
+        );
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
 
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
@@ -58,7 +87,6 @@ const ResetPassword = () => {
         { token, newPassword: password },
         { headers: { "Content-Type": "application/json" } }
       );
-      
       if (res.status === 200) {
         setSuccess("Password reset successfully! Redirecting to login...");
         setTimeout(() => navigate("/login"), 2000);
@@ -141,71 +169,100 @@ const ResetPassword = () => {
 
           <form onSubmit={handleSubmit}>
             <Stack spacing={4}>
-              <TextField
-                label="New Password"
-                type={showPassword ? "text" : "password"}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowPassword(!showPassword)}
-                        edge="end"
-                        sx={{ color: "#fff" }}
-                      >
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: "#fff",
-                    "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
-                    "&:hover fieldset": { borderColor: "#fff" },
-                  },
-                  "& .MuiInputLabel-root": { color: "#fff" },
-                }}
-              />
+              {!token ? (
+                <TextField
+                  label="Email address"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  fullWidth
+                  InputProps={{
+                    sx: {
+                      color: "#fff",
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderColor: "rgba(255,255,255,0.5)",
+                      },
+                    },
+                  }}
+                  sx={{
+                    "& .MuiOutlinedInput-root": {
+                      color: "#fff",
+                      "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
+                      "&:hover fieldset": { borderColor: "#fff" },
+                    },
+                    "& .MuiInputLabel-root": { color: "#fff" },
+                  }}
+                />
+              ) : (
+                <>
+                  <TextField
+                    label="New Password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowPassword(!showPassword)}
+                            edge="end"
+                            sx={{ color: "#fff" }}
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        color: "#fff",
+                        "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
 
-              <TextField
-                label="Confirm New Password"
-                type={showConfirmPassword ? "text" : "password"}
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-                fullWidth
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                        edge="end"
-                        sx={{ color: "#fff" }}
-                      >
-                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    color: "#fff",
-                    "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
-                    "&:hover fieldset": { borderColor: "#fff" },
-                  },
-                  "& .MuiInputLabel-root": { color: "#fff" },
-                }}
-              />
+                  <TextField
+                    label="Confirm New Password"
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    fullWidth
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                            edge="end"
+                            sx={{ color: "#fff" }}
+                          >
+                            {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        color: "#fff",
+                        "& fieldset": { borderColor: "rgba(255,255,255,0.5)" },
+                        "&:hover fieldset": { borderColor: "#fff" },
+                      },
+                      "& .MuiInputLabel-root": { color: "#fff" },
+                    }}
+                  />
+                </>
+              )}
 
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={loading || !token}
+                disabled={loading}
                 sx={{
                   background:
                     "linear-gradient(135deg, #004aad, #1976d2)",
@@ -218,7 +275,13 @@ const ResetPassword = () => {
                   },
                 }}
               >
-                {loading ? <ClipLoader size={20} color="white" /> : "Reset Password"}
+                {loading ? (
+                  <ClipLoader size={20} color="white" />
+                ) : token ? (
+                  "Reset Password"
+                ) : (
+                  "Send Reset Link"
+                )}
               </Button>
 
               <Typography sx={{ textAlign: "center", color: "#fff" }}>

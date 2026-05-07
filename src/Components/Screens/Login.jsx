@@ -205,7 +205,7 @@ const Login = () => {
 
               <Typography sx={{ textAlign: "center", color: "#fff" }}>
                 <Link
-                  to="/reset-password"
+                  to="/forgot-password"
                   style={{
                     textDecoration: "none",
                     color: "#90caf9",
@@ -214,7 +214,7 @@ const Login = () => {
                     marginBottom: 8,
                   }}
                   onMouseOver={(e) => (e.target.style.color = "#ffffff")}
-onMouseOut={(e) => (e.target.style.color = "#90caf9")}
+                  onMouseOut={(e) => (e.target.style.color = "#90caf9")}
                 >
                   Forgot Password?
                 </Link>
