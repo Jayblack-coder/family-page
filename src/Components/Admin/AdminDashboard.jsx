@@ -1,87 +1,221 @@
-import { useState } from "react";
-import { Container, Typography, Box, Button, Stack } from "@mui/material";
+// import { useState } from "react";
+import React, { useState } from "react";
+import {
+  Container,
+  Typography,
+  Box,
+  Button,
+  Stack,
+  Paper,
+} from "@mui/material";
+
+import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import EventIcon from "@mui/icons-material/Event";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import LogoutIcon from "@mui/icons-material/Logout";
+
 import GalleryUpload from "./GalleryUpload";
 import ProfilePictureUpdate from "./ProfileUpdate.jsx";
 import EventsManager from "./EventsManager.jsx";
-import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom"; // ✅ import navigate
-import { toast } from "react-toastify";
 import EventsCalendar from "./EventsCalendar.jsx";
+
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
+
   const { logout } = useAuth();
-  const navigate = useNavigate(); // ✅ initialize navigate
+  const navigate = useNavigate();
 
-   const handleLogout = () => {
+  const handleLogout = () => {
     logout();
-    toast.success("✅ You’ve been logged out successfully!");
-    setTimeout(() => navigate("/login"), 2000); // redirect after 2 seconds
-  };
 
- 
+    toast.success("✅ Logged out successfully!");
+
+    setTimeout(() => navigate("/login"), 1500);
+  };
 
   const renderContent = () => {
     switch (activeTab) {
       case "gallery":
         return <GalleryUpload />;
+
       case "profile":
         return <ProfilePictureUpdate />;
+
       case "events":
         return <EventsManager />;
-        case "calendar":
+
+      case "calendar":
         return <EventsCalendar />;
-       
+
       default:
         return null;
     }
   };
 
   return (
-    <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", py: 5 }}>
-      <Container maxWidth="lg">
-        <Typography
-          variant="h4"
-          fontWeight="bold"
-          textAlign="center"
-          gutterBottom
-          sx={{ color: "#004aad", mb: 3 }}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        bgcolor: "#f4f7fb",
+        py: { xs: 3, md: 5 },
+        px: 2,
+      }}
+    >
+      <Container maxWidth="xl">
+        {/* HEADER */}
+        <Paper
+          elevation={3}
+          sx={{
+            p: { xs: 3, md: 5 },
+            borderRadius: 4,
+            mb: 4,
+            background:
+              "linear-gradient(135deg, #004aad 0%, #1976d2 100%)",
+            color: "#fff",
+            textAlign: "center",
+          }}
         >
-          Family Admin Dashboard
-        </Typography>
-
-        <Stack direction="row" justifyContent="center" spacing={2} mb={4}>
-          <Button
-            variant={activeTab === "gallery" ? "contained" : "outlined"}
-            onClick={() => setActiveTab("gallery")}
+          <Typography
+            variant="h4"
+            fontWeight="bold"
+            sx={{
+              fontSize: {
+                xs: "1.8rem",
+                md: "2.5rem",
+              },
+            }}
           >
-            Gallery Upload
-          </Button>
-          <Button
-            variant={activeTab === "profile" ? "contained" : "outlined"}
-            onClick={() => setActiveTab("profile")}
-          >
-            Update Profile Pictures
-          </Button>
-          <Button
-            variant={activeTab === "events" ? "contained" : "outlined"}
-            onClick={() => setActiveTab("events")}
-          >
-            Post Events
-          </Button>
-          <Button
-  variant={activeTab === "calendar" ? "contained" : "outlined"}
-  onClick={() => setActiveTab("calendar")}
->
-  Calendar View
-</Button>
+            Family Admin Dashboard
+          </Typography>
 
-          <Button variant="outlined" color="error" onClick={handleLogout}>
-            Logout
-          </Button>
-        </Stack>
+          <Typography
+            variant="body1"
+            sx={{
+              mt: 1,
+              opacity: 0.9,
+              fontSize: {
+                xs: "0.95rem",
+                md: "1rem",
+              },
+            }}
+          >
+            Manage family gallery, profiles, events, and calendar updates.
+          </Typography>
+        </Paper>
 
-        {renderContent()}
+        {/* NAVIGATION BUTTONS */}
+        <Paper
+          elevation={2}
+          sx={{
+            p: 2,
+            borderRadius: 4,
+            mb: 4,
+            bgcolor: "#fff",
+          }}
+        >
+          <Stack
+            direction={{ xs: "column", sm: "row" }}
+            spacing={2}
+            justifyContent="center"
+            alignItems="center"
+            flexWrap="wrap"
+          >
+            <Button
+              fullWidth
+              startIcon={<PhotoLibraryIcon />}
+              variant={activeTab === "gallery" ? "contained" : "outlined"}
+              onClick={() => setActiveTab("gallery")}
+              sx={{
+                minWidth: 220,
+                py: 1.3,
+                borderRadius: 3,
+                fontWeight: "bold",
+              }}
+            >
+              Gallery Upload
+            </Button>
+
+            <Button
+              fullWidth
+              startIcon={<AccountCircleIcon />}
+              variant={activeTab === "profile" ? "contained" : "outlined"}
+              onClick={() => setActiveTab("profile")}
+              sx={{
+                minWidth: 220,
+                py: 1.3,
+                borderRadius: 3,
+                fontWeight: "bold",
+              }}
+            >
+              Profile Pictures
+            </Button>
+
+            <Button
+              fullWidth
+              startIcon={<EventIcon />}
+              variant={activeTab === "events" ? "contained" : "outlined"}
+              onClick={() => setActiveTab("events")}
+              sx={{
+                minWidth: 220,
+                py: 1.3,
+                borderRadius: 3,
+                fontWeight: "bold",
+              }}
+            >
+              Post Events
+            </Button>
+
+            <Button
+              fullWidth
+              startIcon={<CalendarMonthIcon />}
+              variant={activeTab === "calendar" ? "contained" : "outlined"}
+              onClick={() => setActiveTab("calendar")}
+              sx={{
+                minWidth: 220,
+                py: 1.3,
+                borderRadius: 3,
+                fontWeight: "bold",
+              }}
+            >
+              Calendar View
+            </Button>
+
+            <Button
+              fullWidth
+              startIcon={<LogoutIcon />}
+              variant="contained"
+              color="error"
+              onClick={handleLogout}
+              sx={{
+                minWidth: 220,
+                py: 1.3,
+                borderRadius: 3,
+                fontWeight: "bold",
+              }}
+            >
+              Logout
+            </Button>
+          </Stack>
+        </Paper>
+
+        {/* MAIN CONTENT */}
+        <Paper
+          elevation={2}
+          sx={{
+            p: { xs: 2, md: 4 },
+            borderRadius: 4,
+            bgcolor: "#fff",
+            minHeight: "500px",
+            overflowX: "auto",
+          }}
+        >
+          {renderContent()}
+        </Paper>
       </Container>
     </Box>
   );

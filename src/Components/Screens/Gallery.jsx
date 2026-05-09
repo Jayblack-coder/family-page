@@ -22,8 +22,9 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const { user, token } = useAuth();
 
-  const isAdmin = user?.familyStatus?.toLowerCase() === "admin";
-
+  const isAdmin =
+  user?.isAdmin === true ||
+  user?.familyStatus?.toLowerCase() === "admin";
   const fetchImages = async () => {
     try {
       const res = await API.get("/api/gallery");
@@ -87,28 +88,57 @@ const Gallery = () => {
                   }}
                 >
                   <Box sx={{ position: "relative" }}>
-                    <CardMedia
-                      component="img"
-                      height="220"
-                      image={item.imageUrl}
-                      alt={item.caption || "Family Event"}
-                      onClick={() => setSelectedImage(item.imageUrl)}
-                    />
-                    {isAdmin && (
-                      <IconButton
-                        onClick={() => deleteImage(item._id)}
-                        sx={{
-                          position: "absolute",
-                          top: 8,
-                          right: 8,
-                          bgcolor: "rgba(255,255,255,0.8)",
-                          "&:hover": { bgcolor: "rgba(255,255,255,1)" },
-                        }}
-                      >
-                        <DeleteIcon color="error" />
-                      </IconButton>
-                    )}
-                  </Box>
+  <CardMedia
+    component="img"
+    height="220"
+    image={item.imageUrl}
+    alt={item.caption || "Family Event"}
+    onClick={() => setSelectedImage(item.imageUrl)}
+    sx={{
+      objectFit: "cover",
+    }}
+  />
+
+  {/* EDIT BUTTON */}
+  {/* {isAdmin && (
+    <IconButton
+      onClick={() => openEditModal(item)}
+      sx={{
+        position: "absolute",
+        top: 10,
+        left: 10,
+        bgcolor: "#fff",
+        zIndex: 10,
+        boxShadow: 2,
+        "&:hover": {
+          bgcolor: "#f0f0f0",
+        },
+      }}
+    >
+      <EditIcon color="primary" />
+    </IconButton>
+  )} */}
+
+  {/* DELETE BUTTON */}
+  {isAdmin && (
+    <IconButton
+      onClick={() => deleteImage(item._id)}
+      sx={{
+        position: "absolute",
+        top: 10,
+        right: 10,
+        bgcolor: "#fff",
+        zIndex: 10,
+        boxShadow: 2,
+        "&:hover": {
+          bgcolor: "#f0f0f0",
+        },
+      }}
+    >
+      <DeleteIcon color="error" />
+    </IconButton>
+  )}
+</Box>
                   {item.caption && (
                     <CardContent sx={{ bgcolor: "#f1f5f9" }}>
                       <Typography
