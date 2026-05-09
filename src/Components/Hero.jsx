@@ -120,7 +120,7 @@ export default function Hero() {
             mx="auto"
             sx={{ textShadow: "1px 1px 3px rgba(0,0,0,0.5)" }}
           >
-            Discover the stories, traditions, and memories passed down through generations,
+            Discover the genealogy, traditions, and memories passed down through generations,
             celebrating the strength of our family roots.
           </Typography>
         </Container>
@@ -129,7 +129,7 @@ export default function Hero() {
       {/* Buttons Section */}
       <Container sx={{ py: 6 }}>
         <Typography variant="h4" align="center" fontWeight="bold" gutterBottom>
-          Explore Family Branches
+          Explore Our Family Branches
         </Typography>
         <Grid container spacing={3} justifyContent="center" mt={2}>
           {[

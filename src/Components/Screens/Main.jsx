@@ -82,7 +82,7 @@ const Main = () => {
             fontSize: { xs: "0.9rem", md: "1rem" },
           }}
         >
-          This section captures the history, traditions, and achievements of Family
+          This section captures the history, genealogy, and achievements of Family
           One. Explore their journey across generations and their contributions to
           our legacy.
         </Typography>
