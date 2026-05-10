@@ -82,20 +82,25 @@ const Login = () => {
 
   return (
     <Box
-      sx={{
-        width: "100vw",
-        height: "100vh",
-        backgroundImage: `linear-gradient(rgba(10,61,98,0.55), rgba(10,61,98,0.75)), url(${tree})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        px: 2,
-      }}
-    >
-      <Card
+  sx={{
+    width: "100vw",
+    minHeight: "100vh",
+    backgroundImage: `linear-gradient(rgba(10,61,98,0.55), rgba(10,61,98,0.78)), url(${tree})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+
+    px: 2,
+    py: 6,
+    gap: 4, // ✅ spacing between heading and card
+  }}
+>
+      {/* <Card
         sx={{
           width: { xs: "100%", sm: "85%", md: "400px" },
           borderRadius: 4,
@@ -104,8 +109,84 @@ const Login = () => {
           border: "1px solid rgba(255,255,255,0.2)",
           color: "#fff",
           boxShadow: "0 8px 32px rgba(0,0,0,0.25)",
-        }}
-      >
+        }} */}
+        <Box
+  sx={{
+    textAlign: "center",
+    color: "#fff",
+    mb: 5,
+    maxWidth: "850px",
+    px: 2,
+  }}
+>
+  <Typography
+    variant="h2"
+    sx={{
+      fontWeight: 800,
+      letterSpacing: 2,
+      mb: 2,
+      textShadow: "3px 3px 12px rgba(0,0,0,0.5)",
+      fontSize: {
+        xs: "2.2rem",
+        sm: "3rem",
+        md: "4rem",
+      },
+      fontFamily: "'Playfair Display', serif",
+    }}
+  >
+    Nmelonye Dynasty
+  </Typography>
+
+  <Typography
+    variant="h6"
+    sx={{
+      lineHeight: 1.8,
+      color: "rgba(255,255,255,0.92)",
+      fontWeight: 300,
+      textShadow: "1px 1px 6px rgba(0,0,0,0.4)",
+      maxWidth: "760px",
+      mx: "auto",
+      fontSize: {
+        xs: "0.95rem",
+        sm: "1.1rem",
+        md: "1.25rem",
+      },
+    }}
+  >
+    A hub of our genealogy, starting from Nmelonye our ancestor in
+    Arondizuogu, to our present generation all over the world.
+    A rich heritage preserved for those yet to come.
+  </Typography>
+</Box>
+
+<Card
+  sx={{
+    width: { xs: "100%", sm: "85%", md: "420px" },
+    borderRadius: "24px",
+
+    // ✅ Stronger glass effect
+    background: "rgba(255, 255, 255, 0.12)",
+    backdropFilter: "blur(18px)",
+    WebkitBackdropFilter: "blur(18px)",
+
+    // ✅ subtle transparent border
+    border: "1px solid rgba(255,255,255,0.25)",
+
+    // ✅ modern floating shadow
+    boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+
+    // ✅ preserve visibility
+    color: "#fff",
+
+    // ✅ smooth hover animation
+    transition: "all 0.3s ease",
+
+    "&:hover": {
+      transform: "translateY(-4px)",
+      boxShadow: "0 12px 40px rgba(0,0,0,0.45)",
+    },
+  }}
+>
         <CardContent sx={{ p: { xs: 4, sm: 5 } }}>
           <Typography
             variant="h4"
