@@ -153,9 +153,9 @@ const Login = () => {
       },
     }}
   >
-    A hub of our genealogy, starting from Nmelonye our ancestor in
+    A chronicle of our genealogy and traditions, starting from Nmelonye our ancestor in
     Arondizuogu, to our present generation all over the world.
-    A rich heritage preserved for those yet to come.
+    A rich heritage preserved for those yet unborn.
   </Typography>
 </Box>
 
