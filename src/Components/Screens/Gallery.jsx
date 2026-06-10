@@ -57,7 +57,9 @@ const Gallery = () => {
   };
 
   return (
-    <Box sx={{ bgcolor: "#f5f5f5", minHeight: "100vh", py: 5 }}>
+    <Box sx={{ bgcolor: "#f5f5f5", 
+    // minHeight: "100vh", 
+    py: 5 }}>
       <Container maxWidth="lg">
         <Typography
           variant="h4"

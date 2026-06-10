@@ -36,13 +36,21 @@ import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
 import MyProfile from "./Components/Screens/MyProfile";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 import Footer from "./Components/Footer";
+import { Box } from "@mui/material";
 // import AdminLogin from "./Components/AdminLogin.jsx";
 
 function App() {
   return (
+    <Box
+  sx={{
+    minHeight: "100vh",
+    display: "flex",
+    flexDirection: "column",
+  }}
+>
     <Router>
       <Navbar />
-      
+        <Box sx={{ flex: 1 }}>
       <Routes>
         {/* Public routes */}
         <Route path="/" element={<Login />} />
@@ -306,8 +314,10 @@ function App() {
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+      </Box>
             <Footer />
     </Router>
+    </Box>
   );
 }
 

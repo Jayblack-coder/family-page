@@ -175,7 +175,7 @@ const MyProfile = () => {
     <Box
       sx={{
         width: "100vw",
-        minHeight: "100vh",
+        // minHeight: "100vh",
         pt: "100px",
         pb: 5,
         backgroundColor: "#f3f6fb",

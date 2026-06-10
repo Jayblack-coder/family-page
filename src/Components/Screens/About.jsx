@@ -14,7 +14,7 @@ export default function About() {
     <Box
       sx={{
         backgroundColor: "#f9f9f9",
-        minHeight: "100vh",
+        // minHeight: "100vh",
         py: { xs: 4, md: 8 },
       }}
     >

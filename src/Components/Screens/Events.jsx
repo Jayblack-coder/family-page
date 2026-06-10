@@ -49,7 +49,10 @@ export default function Events() {
   });
 
   return (
-    <Box sx={{ minHeight: "100vh", background: "#f5f6fa", py: 6 }}>
+    <Box sx={{ 
+      // minHeight: "100vh", 
+    background: "#f5f6fa", 
+    py: 6 }}>
       <Container maxWidth="lg">
         {/* Filters */}
         <Grid container spacing={3} justifyContent="center" sx={{ mb: 5 }}>

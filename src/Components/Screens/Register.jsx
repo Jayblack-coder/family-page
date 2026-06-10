@@ -126,7 +126,7 @@ const [loading, setLoading] = useState(false);
    <Box
   sx={{
     width: "100vw",
-    minHeight: "100vh", // ✅ allow scroll if needed
+    // minHeight: "100vh", // ✅ allow scroll if needed
     pt: "100px", // ✅ creates space below navbar
     pb: 5,
     backgroundImage: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${tree})`,

@@ -79,7 +79,9 @@ const NwankwoGenFiveProfiles = () => {
   }, [originalData]);
 
   return (
-    <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: { xs: 3, sm: 4, md: 5 } }}>
+    <Box sx={{ bgcolor: "#f9f9f9", 
+    // minHeight: "100vh", 
+    py: { xs: 3, sm: 4, md: 5 } }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* Page Title with Back Button */}
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>

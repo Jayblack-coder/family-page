@@ -49,7 +49,9 @@ const AsouzuGenOneProfiles = () => {
   }, [originalData]);
 
   return (
-    <Box sx={{ bgcolor: "#f9f9f9", minHeight: "100vh", py: 5 }}>
+    <Box sx={{ bgcolor: "#f9f9f9", 
+    // minHeight: "100vh", 
+    py: 5 }}>
       <Container maxWidth="xl">
         {/* Page Title with Back Button */}
         <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>

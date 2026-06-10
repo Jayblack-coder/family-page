@@ -93,7 +93,7 @@ export default function Hero() {
       <Box
         className="hero-section"
         sx={{
-          minHeight: "80vh",
+          // minHeight: "80vh",
           backgroundImage: `url(${tree})`, // ✅ use the imported image
           backgroundSize: "cover",
           backgroundPosition: "center",

@@ -47,7 +47,7 @@ const OkoliHome = () => {
     <Box
       sx={{
         bgcolor: "#f9f9f9",
-        minHeight: "100vh",
+        // minHeight: "100vh",
         py: { xs: 2, sm: 3, md: 5 },
       }}
     >
