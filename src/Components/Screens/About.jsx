@@ -171,7 +171,7 @@ export default function About() {
               lineHeight: 1.8,
             }}
           >
-            Nmelonye, originally from Nise, migrated to Arondizuogu due to a
+            Nmelonye, born originally to the family of Mazi Ezenweneke of the larger Adojii family of Umugbulu quarters in Ngodo Nise, Awka south, in present day Anambra State, migrated to Arondizuogu due to a
             family dispute and the natural search for a better life. There, he found a new home, got married to his wife Mmaku from Neni, and built a
             lineage that continues to grow in unity and strength. His story is a
             testament to resilience, adaptability, and the enduring spirit of
