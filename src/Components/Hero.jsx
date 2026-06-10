@@ -81,11 +81,11 @@
 //     </>
 //   );
 // }
-import { Box, Typography, Button, Grid, Container } from "@mui/material";
+import { Box, Typography, Button, Grid, Container, Card, CardContent } from "@mui/material";
 import { Link } from "react-router-dom";
 // import "./Hero.css";
 import tree from "../assets/tree.jpg"; // ✅ import the image
-
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 export default function Hero() {
   return (
     <>
@@ -153,6 +153,51 @@ export default function Hero() {
           ))}
         </Grid>
       </Container>
+      <Card
+  sx={{
+    maxWidth: 500,
+    mx: "auto",
+    mt: 4,
+    textAlign: "center",
+    borderRadius: 3,
+    boxShadow: 4,
+  }}
+>
+  <CardContent>
+    <WhatsAppIcon
+      sx={{
+        fontSize: 60,
+        color: "#25D366",
+        mb: 1,
+      }}
+    />
+
+    <Typography variant="h5" fontWeight="bold" gutterBottom>
+      Family WhatsApp Community
+    </Typography>
+
+    <Typography variant="body1" color="text.secondary" mb={3}>
+      Connect with family members, receive announcements,
+      and stay updated on family events.
+    </Typography>
+
+    <Button
+      variant="contained"
+      startIcon={<WhatsAppIcon />}
+      href="https://chat.whatsapp.com/YOUR_INVITE_LINK"
+      target="_blank"
+      rel="noopener noreferrer"
+      sx={{
+        bgcolor: "#25D366",
+        "&:hover": {
+          bgcolor: "#1EBE57",
+        },
+      }}
+    >
+      Join Community
+    </Button>
+  </CardContent>
+</Card>
     </>
   );
 }

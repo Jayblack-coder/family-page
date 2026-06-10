@@ -81,25 +81,82 @@ const NwankwoHome = () => {
           fontWeight="bold"
           gutterBottom
           sx={{
+             color: "#004aad",
             textAlign: { xs: "center", md: "left" },
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
-          Family One
+        Brief History of the Nwankwo Lineage
         </Typography>
 
         {/* Description */}
         <Typography
-          variant="body1"
-          sx={{
-            mb: { xs: 2, md: 4 },
-            textAlign: { xs: "center", md: "left" },
-            fontSize: { xs: "0.9rem", md: "1rem" },
-          }}
-        >
-          This section captures the entire genealogy of Nwankwo Nmelonye's lineage.
-        </Typography>
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Nwankwo became the first son of Nmelonye, the patriarch of our family,
+  following the death of Agosi. This entitled him to occupy the Obi (the
+  main family compound), as is customary among the Igbo people.
+</Typography>
 
+<Typography
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Nwankwo was married to Akumbu from the family of Okoli at Isieke Ndi
+  Akanwanta Uno, Arondizuogu. They were blessed with six children in the
+  following order of seniority:
+</Typography>
+
+<Box
+  component="ol"
+  sx={{
+    pl: 4,
+    mb: 2,
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  <li>Moses Nwankwo (Aku wu Mmadu)</li>
+  <li>Godwin Nwankwo (Omenanya Oha)</li>
+  <li>Luke Nwankwo (Ome Nyiri)</li>
+  <li>Patrick Nwankwo (Okwubie)</li>
+  <li>Donatus Nwankwo (Onye isi ya na awu aja)</li>
+  <li>Nwaobiala (their only daughter)</li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    fontStyle: "italic",
+  }}
+>
+  These offspring constitute the First Generation of the Nwankwo family
+  line and laid the foundation for the generations that followed.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: { xs: 2, md: 4 },
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Nwankwo was a very successful farmer and businessman. He passed away
+  early in 1918 during the influenza pandemic.
+</Typography>
         {/* Responsive Table */}
         <TableContainer
           component={Paper}

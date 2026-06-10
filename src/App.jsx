@@ -35,6 +35,7 @@ import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
 import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
 import MyProfile from "./Components/Screens/MyProfile";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
+import Footer from "./Components/Footer";
 // import AdminLogin from "./Components/AdminLogin.jsx";
 
 function App() {
@@ -305,6 +306,7 @@ function App() {
         {/* Catch-all redirect */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
+            <Footer />
     </Router>
   );
 }
