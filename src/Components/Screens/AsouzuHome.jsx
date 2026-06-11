@@ -67,7 +67,7 @@ const AsouzuHome = () => {
           gutterBottom
           textAlign="center"
           sx={{
-            color: "#0d6efd",
+               color: "#004aad",
             mb: { xs: 2, md: 4 },
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
@@ -81,6 +81,7 @@ const AsouzuHome = () => {
           fontWeight="bold"
           gutterBottom
           sx={{
+             color: "#004aad",
             textAlign: { xs: "center", md: "left" },
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
@@ -175,7 +176,7 @@ const AsouzuHome = () => {
                     sx={{
                       fontWeight: "bold",
                       color: "#fff",
-                      backgroundColor: "#0d6efd",
+                      backgroundColor: "#004aad",
                       fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
                     }}
                   >

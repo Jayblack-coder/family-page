@@ -111,7 +111,7 @@ const NwankwoHome = () => {
     fontSize: { xs: "0.9rem", md: "1rem" },
   }}
 >
-  Nwankwo was married to Akumbu from the family of Okoli at Isieke Ndi
+  Nwankwo was born in 1854 and married to Akumbu from the family of Okoli at Isieke Ndi
   Akanwanta Uno, Arondizuogu. They were blessed with six children in the
   following order of seniority:
 </Typography>

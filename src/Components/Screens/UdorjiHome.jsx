@@ -59,7 +59,7 @@ const UdorjiHome = () => {
           gutterBottom
           textAlign="center"
           sx={{
-            color: "#0d6efd",
+                 color: "#004aad",
             mb: { xs: 2, md: 4 },
             fontSize: { xs: "1.6rem", sm: "2rem", md: "2.5rem" },
           }}
@@ -73,25 +73,136 @@ const UdorjiHome = () => {
           fontWeight="bold"
           gutterBottom
           sx={{
+             color: "#004aad",
             textAlign: { xs: "center", md: "left" },
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
-          Family One
+          Brief History of the Udorji Lineage
         </Typography>
 
         {/* Description */}
         <Typography
-          variant="body1"
-          sx={{
-            mb: { xs: 2, md: 4 },
-            textAlign: { xs: "center", md: "left" },
-            fontSize: { xs: "0.9rem", md: "1rem" },
-          }}
-        >
-          This section captures the entire genealogy of Udorji Nmelonye's lineage.
-        </Typography>
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Udorji Mmaku was born in 1858 as the third son of Nmelonye and
+  Mmaku. He married three wives. His first wife was Oduagu; his
+  second wife was Ihudiye from Okeke Ogbukiyi's family in
+  Ndiakunwanta; and his third wife was Igbomba from the family of
+  Nnabugwu, also of Ndiakunwanta.
+</Typography>
 
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    fontWeight: "bold",
+    color: "#004aad",
+    fontSize: { xs: "0.95rem", md: "1.05rem" },
+  }}
+>
+  Children of Oduagu
+</Typography>
+
+<Box component="ol" sx={{ pl: 4, mb: 3 }}>
+  <li>Fredrich Udorji</li>
+  <li>Samuel Udorji</li>
+  <li>Joshua Udorji</li>
+  <li>Ejiagha Udorji</li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    fontWeight: "bold",
+    color: "#004aad",
+    fontSize: { xs: "0.95rem", md: "1.05rem" },
+  }}
+>
+  Children of Ihudiye
+</Typography>
+
+<Box component="ol" sx={{ pl: 4, mb: 3 }}>
+  <li>Peter Udorji (Ezenaguoha)</li>
+  <li>Elizabeth Udorji</li>
+  <li>Ugekwe Udorji</li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    fontWeight: "bold",
+    color: "#004aad",
+    fontSize: { xs: "0.95rem", md: "1.05rem" },
+  }}
+>
+  Children of Igbomba
+</Typography>
+
+<Box component="ol" sx={{ pl: 4, mb: 3 }}>
+  <li>Simeon Udorji</li>
+  <li>Priscilla Anyakoha Udorji</li>
+  <li>Agnes Okonkwo Udorji (Udime)</li>
+  <li>Maria Arodiogbu Udorji</li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  These children constitute the first generation of the Udorji family
+  lineage. Udorji was instrumental in bringing Catholicism to
+  Ndiakunwanta Idozuka. Together with his family and the support of
+  the surrounding community, he helped build the first church in the
+  area, which later evolved into the present-day St. Joseph's Catholic
+  Church, Ndiakunwanta Idozuka.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mt: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  He never tired of encouraging his children, grandchildren, nephews,
+  and grandnephews to excel and distinguish themselves in life. He
+  strongly condemned all forms of mediocrity, lukewarmness, and lack
+  of love. As the last surviving son of Nmelonye Ezenweneke, he bore
+  the responsibility of defending his brothers, sisters, and their
+  descendants against injustice and oppression.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mt: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  A highly respected community leader, his words carried great weight
+  in matters of policy and communal decision-making. A man of
+  exceptional brilliance, courage, and integrity, Mazi Udorji died in
+  1983 at the remarkable age of 125, making him the longest-living
+  child of Mazi Nmelonye. He was laid to rest in the family compound
+  at Ndiakunwanta Idozuka, where his legacy continues to inspire
+  generations.
+</Typography>
         {/* Responsive Table */}
         <TableContainer
           component={Paper}
@@ -123,7 +234,7 @@ const UdorjiHome = () => {
                     sx={{
                       fontWeight: "bold",
                       color: "#fff",
-                      backgroundColor: "#0d6efd",
+                      backgroundColor: "#004aad",
                       fontSize: { xs: "0.7rem", sm: "0.85rem", md: "1rem" },
                     }}
                   >
