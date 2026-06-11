@@ -78,11 +78,11 @@ const OkoliHome = () => {
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
-          Family One
+           Brief History of the Okoli Lineage
         </Typography>
 
         {/* Description */}
-        <Typography
+        {/* <Typography
           variant="body1"
           sx={{
             mb: { xs: 2, md: 4 },
@@ -90,8 +90,99 @@ const OkoliHome = () => {
             fontSize: { xs: "0.9rem", md: "1rem" },
           }}
         >
-          This section captures the entire genealogy of Okoli Nmelonye's lineage.
-        </Typography>
+          Okoli Mmaku was born in 1860 as the last son of Nmelonye Ezenweneke. He had a very strong personality and was married to Mgbeke, a lady from
+          the family of Obi ako nwa of Isuofia in Anambra state. He was a stammerer with an impressive stature. 
+          He was a tall, dark, and very strong man with an intimidating image. Though afflicted early with leprosy, he was highly enterprising
+          and was able to amass a lot of land more tha any single individual in the whole of Ndiakunwanta Uno, Arondizuogu.
+          He was blessed with four children in the following order of seniority: Jeni Ogboneneye, married to Abel Anyogu, Mgbafor Bridget(Mgbafor gharighari), married to Gabriel Ugbaja Asoanya, Raphael Okoli and Udokwu Okoli.
+
+        </Typography> */}
+        <Typography
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  Okoli Mmaku was born in 1860 as the youngest son of Nmelonye
+  Ezenweneke. He possessed a strong personality and was married to
+  Mgbeke, a lady from the family of Obi Ako Nwa of Isuofia in present-day
+  Anambra State.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  Although he was a stammerer, Okoli was known for his impressive
+  stature. He was tall, dark-complexioned, exceptionally strong, and
+  carried an intimidating presence. Despite suffering from leprosy at an
+  early age, he remained highly enterprising and industrious. Through
+  hard work and determination, he acquired more land than any other
+  individual in the whole of Ndiakunwanta Uno, Arondizuogu.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    fontWeight: "bold",
+    color: "#004aad",
+    fontSize: { xs: "0.95rem", md: "1.05rem" },
+  }}
+>
+  Children of Okoli Mmaku
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  He was blessed with four children in the following order of seniority:
+</Typography>
+
+<Box component="ol" sx={{ pl: 4, mb: 3 }}>
+  <li>
+    Jeni Ogboneneye — married to Abel Anyogu
+  </li>
+  <li>
+    Mgbafor Bridget (Mgbafor Gharighari) — married to Gabriel Ugbaja
+    Asoanya
+  </li>
+  <li>
+    Raphael Okoli
+  </li>
+  <li>
+    Udokwu Okoli
+  </li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+    lineHeight: 1.8,
+  }}
+>
+  These children constitute the first generation of the Okoli family
+  lineage. Okoli's life remains a remarkable example of resilience,
+  determination, and enterprise. Despite personal challenges, he built a
+  lasting legacy through his industry, strength of character, and the
+  family he established, whose descendants continue to preserve and
+  expand the heritage of the Nmelonye dynasty.
+</Typography>
 
         {/* Responsive Table */}
         <TableContainer
