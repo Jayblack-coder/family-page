@@ -85,20 +85,64 @@ const AsouzuHome = () => {
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
-          Family One
+          Brief History of the Asouzu Lineage
         </Typography>
 
         {/* Description */}
         <Typography
-          variant="body1"
-          sx={{
-            mb: { xs: 2, md: 4 },
-            textAlign: { xs: "center", md: "left" },
-            fontSize: { xs: "0.9rem", md: "1rem" },
-          }}
-        >
-          This section captures the entire genealogy of Asouzu Nmelonye's lineage.
-        </Typography>
+  variant="body1"
+  sx={{
+    mb: 2,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Asouzu Mmaku was born in 1856 as the second child of Nmelonye
+  Ezenweneke. He was married to Amanso Okeke, a lady from Agba
+  Village in Ekwulobia, Aguata Local Government Area of Anambra
+  State.
+</Typography>
+
+<Typography
+  variant="body1"
+  sx={{
+    mb: 1,
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  Their union was blessed with four children in the following order
+  of seniority:
+</Typography>
+
+<Box
+  component="ol"
+  sx={{
+    pl: 4,
+    mb: 2,
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  <li>Charles Ijeoma Asouzu</li>
+  <li>Gabriel Asouzu</li>
+  <li>Regina Asouzu</li>
+  <li>Michael Asouzu</li>
+</Box>
+
+<Typography
+  variant="body1"
+  sx={{
+    textAlign: { xs: "center", md: "left" },
+    fontSize: { xs: "0.9rem", md: "1rem" },
+  }}
+>
+  These children constitute the first generation of the Asouzu family
+  line. Asouzu was a jovial and kind-hearted man known for his
+  consistency of character. He lived happily with his wife, Amanso,
+  and maintained a very close relationship with his younger brother,
+  Udorji. Asouzu died in 1936 at the age of 80 and was given a
+  befitting burial by his eldest son, Charles.
+</Typography>
 
         {/* Responsive Table */}
         <TableContainer
