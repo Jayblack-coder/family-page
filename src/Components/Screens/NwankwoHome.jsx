@@ -166,7 +166,19 @@ const NwankwoHome = () => {
             maxHeight: { xs: "60vh", md: "70vh" },
           }}
         >
-          <Table stickyHeader sx={{ minWidth: 800, border: "1px solid #ddd" }}>
+          <Table
+  stickyHeader
+  sx={{
+    minWidth: 1200,
+    border: "1px solid #ddd",
+    "& .MuiTableCell-root": {
+      whiteSpace: "nowrap",
+      padding: "10px 14px",
+      textAlign: "center",
+      verticalAlign: "middle",
+    },
+  }}
+>
             <TableHead>
               <TableRow>
 

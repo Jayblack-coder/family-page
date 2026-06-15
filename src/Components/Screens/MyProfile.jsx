@@ -56,7 +56,9 @@ const MyProfile = () => {
         : [""]
     );
     setPreview(user.image || "");
+     console.log("Logged in user:", user);
   }, [user]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
