@@ -56,7 +56,7 @@ const MyProfile = () => {
         : [""]
     );
     setPreview(user.image || "");
-     console.log("Logged in user:", user);
+    //  console.log("Logged in user:", user);
   }, [user]);
 
 
@@ -144,6 +144,11 @@ const MyProfile = () => {
         offspring: updated.offspring,
         image: updated.image,
         isAdmin: updated.isAdmin,
+        isDeceased: updated.isDeceased,
+dateOfDeath: updated.dateOfDeath,
+obituaryPhoto: updated.obituaryPhoto,
+burialInformation: updated.burialInformation,
+memorialNotes: updated.memorialNotes,
       };
 
       updateUser(updatedAuthUser);
@@ -352,6 +357,83 @@ const MyProfile = () => {
               </Box>
             </Box>
           </Box>
+          <Box
+  sx={{
+    mt: 4,
+    p: 3,
+    borderRadius: 3,
+    bgcolor: "#f8fafc",
+    border: "1px solid #e2e8f0",
+  }}
+>
+  <Typography
+    variant="h5"
+    fontWeight="bold"
+    gutterBottom
+    color="#0E63D3"
+  >
+    Family Record Status
+  </Typography>
+
+  <Typography>
+    <strong>Status:</strong>{" "}
+    {user?.isDeceased ? (
+      <Typography
+        component="span"
+        sx={{
+          color: "error.main",
+          fontWeight: "bold",
+           mt: 1,
+        }}
+      >
+        ✝ Deceased
+      </Typography>
+    ) : (
+      <Typography
+        component="span"
+        sx={{
+          color: "success.main",
+          fontWeight: "bold",
+        }}
+      >
+        Living
+      </Typography>
+    )}
+  </Typography>
+
+  {user?.isDeceased && (
+    <>
+      <Typography sx={{ mt: 1 }}>
+        <strong>Date of Death:</strong>{" "}
+        {new Date(user.dateOfDeath).toLocaleDateString("en-GB")}
+      </Typography>
+
+      {user?.burialInformation && (
+        <Typography sx={{ mt: 1 }}>
+          <strong>Burial Information:</strong>{" "}
+          {user.burialInformation}
+        </Typography>
+      )}
+
+      {user?.memorialNotes && (
+        <Typography sx={{ mt: 1 }}>
+          <strong>Memorial Notes:</strong>{" "}
+          {user.memorialNotes}
+        </Typography>
+      )}
+
+      {user?.obituaryPhoto && (
+        <Card sx={{ mt: 2, maxWidth: 300 }}>
+          <CardMedia
+            component="img"
+            image={user.obituaryPhoto}
+            alt="Obituary"
+          />
+        </Card>
+      )}
+    </>
+  )}
+</Box>
         </CardContent>
       </Card>
 

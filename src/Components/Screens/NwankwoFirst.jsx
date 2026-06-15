@@ -151,6 +151,7 @@ const NwankwoGenOneProfiles = () => {
                         gutterBottom
                         sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" } }}
                       >
+                          {member.isDeceased && "✝ "}
                         {member.firstName} {member.middleName} {member.surname}
                       </Typography>
 
@@ -167,6 +168,26 @@ const NwankwoGenOneProfiles = () => {
                       {/* <Typography variant="body2" color="text.secondary">
                         <strong>USERNAME:</strong> {member.userName}
                       </Typography> */}
+                       {/* Status goes here */}
+  <Typography textAlign="center" sx={{ mb: 1 }}>
+    <strong>Status:</strong>{" "}
+    {member.isDeceased ? (
+      <span style={{ color: "#d32f2f", fontWeight: "bold" }}>
+        ✝ Deceased
+      </span>
+    ) : (
+      <span style={{ color: "#2e7d32", fontWeight: "bold" }}>
+        Living
+      </span>
+    )}
+  </Typography>
+
+  {member.isDeceased && member.dateOfDeath && (
+    <Typography textAlign="center" sx={{ mb: 2 }}>
+      <strong>Date of Death:</strong>{" "}
+      {new Date(member.dateOfDeath).toLocaleDateString("en-GB")}
+    </Typography>
+  )}
                       <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: "0.75rem", sm: "0.875rem" } }}>
                         <strong>PARENTS:</strong> {member.parents}
                       </Typography>

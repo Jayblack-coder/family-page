@@ -13,6 +13,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import API from "../api.jsx";
 
+
 const AsouzuGenFiveProfiles = () => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);

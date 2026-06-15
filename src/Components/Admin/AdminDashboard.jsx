@@ -14,15 +14,16 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import EventIcon from "@mui/icons-material/Event";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LogoutIcon from "@mui/icons-material/Logout";
-
 import GalleryUpload from "./GalleryUpload";
 import ProfilePictureUpdate from "./ProfileUpdate.jsx";
 import EventsManager from "./EventsManager.jsx";
 import EventsCalendar from "./EventsCalendar.jsx";
-
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import HistoryEduIcon from "@mui/icons-material/HistoryEdu";
+import FamilyRecordsManager from "./FamilyRecordsManager.jsx";
+
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("gallery");
@@ -51,6 +52,9 @@ const AdminDashboard = () => {
 
       case "calendar":
         return <EventsCalendar />;
+
+      case "records":
+  return <FamilyRecordsManager />;
 
       default:
         return null;
@@ -104,7 +108,7 @@ const AdminDashboard = () => {
               },
             }}
           >
-            Manage family gallery, profiles, events, and calendar updates.
+            Manage family gallery, profiles, events, calendar updates, and family historical records.
           </Typography>
         </Paper>
 
@@ -184,7 +188,29 @@ const AdminDashboard = () => {
             >
               Calendar View
             </Button>
-
+<Button
+  fullWidth
+  startIcon={<HistoryEduIcon />}
+  variant={activeTab === "records" ? "contained" : "outlined"}
+  onClick={() => setActiveTab("records")}
+  sx={{
+    minWidth: 220,
+    py: 1.3,
+    borderRadius: 3,
+    fontWeight: "bold",
+    bgcolor:
+      activeTab === "records"
+        ? "#6A1B9A"
+        : "transparent",
+    borderColor: "#6A1B9A",
+    color:
+      activeTab === "records"
+        ? "#fff"
+        : "#6A1B9A",
+  }}
+>
+  Family Records
+</Button>
             <Button
               fullWidth
               startIcon={<LogoutIcon />}
