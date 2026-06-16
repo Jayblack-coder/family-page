@@ -94,9 +94,27 @@ const AsouzuGenFourProfiles = () => {
                     textAlign="center"
                     gutterBottom
                   >
-                    {member.firstName} {member.middleName} {member.surname}
+                    {member.isDeceased && "✝ "} {member.firstName} {member.middleName} {member.surname}
                   </Typography>
+<Typography textAlign="center" sx={{ mb: 1 }}>
+  <strong>Status:</strong>{" "}
+  {member.isDeceased ? (
+    <span style={{ color: "#d32f2f", fontWeight: "bold" }}>
+      ✝ Deceased
+    </span>
+  ) : (
+    <span style={{ color: "#2e7d32", fontWeight: "bold" }}>
+      Living
+    </span>
+  )}
+</Typography>
 
+{member.isDeceased && member.dateOfDeath && (
+  <Typography textAlign="center" sx={{ mb: 2 }}>
+    <strong>Date of Death:</strong>{" "}
+    {new Date(member.dateOfDeath).toLocaleDateString("en-GB")}
+  </Typography>
+)}
                   {/* Profile Details */}
                   <Typography variant="body2" color="text.secondary">
                     <strong>SURNAME:</strong> {member.surname}

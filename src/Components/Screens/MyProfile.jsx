@@ -59,7 +59,20 @@ const MyProfile = () => {
     //  console.log("Logged in user:", user);
   }, [user]);
 
+ useEffect(() => {
+    const fetchLatestUser = async () => {
+      try {
+        const res = await API.get(`/api/user/${user.id}`);
+        updateUser(res.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
 
+    if (user?.id) {
+      fetchLatestUser();
+    }
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -146,7 +159,7 @@ const MyProfile = () => {
         isAdmin: updated.isAdmin,
         isDeceased: updated.isDeceased,
 dateOfDeath: updated.dateOfDeath,
-obituaryPhoto: updated.obituaryPhoto,
+obituaryImage: updated.obituaryImage,
 burialInformation: updated.burialInformation,
 memorialNotes: updated.memorialNotes,
       };
@@ -422,11 +435,11 @@ memorialNotes: updated.memorialNotes,
         </Typography>
       )}
 
-      {user?.obituaryPhoto && (
+      {user?.obituaryImage && (
         <Card sx={{ mt: 2, maxWidth: 300 }}>
           <CardMedia
             component="img"
-            image={user.obituaryPhoto}
+            image={user.obituaryImage}
             alt="Obituary"
           />
         </Card>
