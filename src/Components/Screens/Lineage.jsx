@@ -52,32 +52,41 @@ export default function Lineage() {
 
     // Descendants
     const descendants = [
-      {
-        id: "nwankwo",
-        label: "Nwankwo",
-        route: "/nwankwo",
-        color: "#e3f2fd",
-      },
-      {
-        id: "asouzu",
-        label: "Asouzu",
-        route: "/asouzu",
-        color: "#f3e5f5",
-      },
-      {
-        id: "udorji",
-        label: "Udorji",
-        route: "/udorji",
-        color: "#e8f5e9",
-      },
-      {
-        id: "okoli",
-        label: "Okoli",
-        route: "/okoli",
-        color: "#fff3e0",
-      },
-    ];
-
+  {
+    id: "agosi",
+    label: "Agosi\n(No Issue)",
+    color: "#eeeeee",
+  },
+  {
+    id: "nwankwo",
+    label: "Nwankwo",
+    route: "/nwankwo",
+    color: "#e3f2fd",
+  },
+  {
+    id: "asouzu",
+    label: "Asouzu",
+    route: "/asouzu",
+    color: "#f3e5f5",
+  },
+  {
+    id: "udorji",
+    label: "Udorji",
+    route: "/udorji",
+    color: "#e8f5e9",
+  },
+  {
+    id: "okoli",
+    label: "Okoli",
+    route: "/okoli",
+    color: "#fff3e0",
+  },
+  {
+    id: "anyaga",
+    label: "Anyaga\n(No Issue)",
+    color: "#eeeeee",
+  },
+];
     // Dynamic horizontal alignment
     const startX =
       centerX - ((descendants.length - 1) * spacing) / 2;
@@ -112,10 +121,14 @@ export default function Lineage() {
         label: desc.label,
       },
       style: {
-        ...baseStyles,
-        background: desc.color,
-        color: "#111",
-      },
+  ...baseStyles,
+  background: desc.color,
+  color: "#111",
+  opacity: desc.route ? 1 : 0.75,
+  border: desc.route
+    ? "2px solid transparent"
+    : "2px dashed #999",
+},
     }));
 
     // Edges
@@ -141,15 +154,19 @@ export default function Lineage() {
   const onNodeClick = useCallback(
     (_, node) => {
       const routes = {
-        nwankwo: "/nwankwo",
-        asouzu: "/asouzu",
-        udorji: "/udorji",
-        okoli: "/okoli",
-      };
+  nwankwo: "/nwankwo",
+  asouzu: "/asouzu",
+  udorji: "/udorji",
+  okoli: "/okoli",
+  // agosi: "/agosi",
+  // anyaga: "/anyaga",
+};
 
-      if (routes[node.id]) {
-        navigate(routes[node.id]);
-      }
+const route = routes[node.id];
+
+if (route) {
+  navigate(route);
+}
     },
     [navigate]
   );
