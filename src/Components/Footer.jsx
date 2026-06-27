@@ -89,7 +89,7 @@ const Footer = () => {
               © {new Date().getFullYear()} Nmelonye Family. All Rights Reserved.
             </Typography>
           </Box>
-{showWhatsapp && (
+{/* {showWhatsapp && (
  <Button
   href="https://chat.whatsapp.com/YOUR_INVITE_LINK"
   target="_blank"
@@ -113,7 +113,7 @@ const Footer = () => {
 >
   Join Family WhatsApp
 </Button>
-)}
+)} */}
           {/* WhatsApp Group */}
           {/* <Box textAlign="center">
             <Link

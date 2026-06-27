@@ -181,7 +181,7 @@ export default function Hero() {
       and stay updated on family events.
     </Typography>
 
-    <Button
+    {/* <Button
       variant="contained"
       startIcon={<WhatsAppIcon />}
       href="https://chat.whatsapp.com/YOUR_INVITE_LINK"
@@ -195,7 +195,7 @@ export default function Hero() {
       }}
     >
       Join Community
-    </Button>
+    </Button> */}
   </CardContent>
 </Card>
     </>
