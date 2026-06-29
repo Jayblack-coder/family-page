@@ -204,7 +204,7 @@ export default function About() {
               "Agosi Nmelonye – who died in battle in his youth, without any offspring.",
               "Nwankwo Nmelonye – the progenitor of the Nwankwo family.",
               "Asouzu Nmelonye – the progenitor of the Asouzu lineage.",
-              "Udorji Nmelonye – the progenitor of the Udorji family.",
+              "Udoji Nmelonye – the progenitor of the Udoji family.",
               "Okoli Nmelonye – the progenitor of the Okoli family.",
               "Anyaga Nmelonye – a daughter, who married a Chief from Kalabari in present-day Rivers State.",
             ].map((desc, index) => (

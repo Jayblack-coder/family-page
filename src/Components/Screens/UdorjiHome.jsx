@@ -78,7 +78,7 @@ const UdorjiHome = () => {
             fontSize: { xs: "1.2rem", md: "1.6rem" },
           }}
         >
-          Brief History of the Udorji Lineage
+          Brief History of the Udoji Lineage
         </Typography>
 
         {/* Description */}
@@ -90,7 +90,7 @@ const UdorjiHome = () => {
     fontSize: { xs: "0.9rem", md: "1rem" },
   }}
 >
-  Udorji Mmaku was born in 1858 as the third son of Nmelonye and
+  Udoji Mmaku was born in 1858 as the third son of Nmelonye and
   Mmaku. He married three wives. His first wife was Oduagu; his
   second wife was Ihudiye from Okeke Ogbukiyi's family in
   Ndiakunwanta; and his third wife was Igbomba from the family of
@@ -110,10 +110,10 @@ const UdorjiHome = () => {
 </Typography>
 
 <Box component="ol" sx={{ pl: 4, mb: 3 }}>
-  <li>Fredrich Udorji</li>
-  <li>Samuel Udorji</li>
-  <li>Joshua Udorji</li>
-  <li>Ejiagha Udorji</li>
+  <li>Fredrich Udoji</li>
+  <li>Samuel Udoji</li>
+  <li>Joshua Udoji</li>
+  <li>Ejiagha Udoji</li>
 </Box>
 
 <Typography
@@ -129,9 +129,9 @@ const UdorjiHome = () => {
 </Typography>
 
 <Box component="ol" sx={{ pl: 4, mb: 3 }}>
-  <li>Peter Udorji (Ezenaguoha)</li>
-  <li>Elizabeth Udorji</li>
-  <li>Ugekwe Udorji</li>
+  <li>Peter Udoji (Ezenaguoha)</li>
+  <li>Elizabeth Udoji</li>
+  <li>Ugekwe Udoji</li>
 </Box>
 
 <Typography
@@ -147,10 +147,10 @@ const UdorjiHome = () => {
 </Typography>
 
 <Box component="ol" sx={{ pl: 4, mb: 3 }}>
-  <li>Simeon Udorji</li>
-  <li>Priscilla Anyakoha Udorji</li>
-  <li>Agnes Okonkwo Udorji (Udime)</li>
-  <li>Maria Arodiogbu Udorji</li>
+  <li>Simeon Udoji</li>
+  <li>Priscilla Anyakoha Udoji</li>
+  <li>Agnes Okonkwo Udoji (Udime)</li>
+  <li>Maria Arodiogbu Udoji</li>
 </Box>
 
 <Typography
@@ -161,8 +161,8 @@ const UdorjiHome = () => {
     lineHeight: 1.8,
   }}
 >
-  These children constitute the first generation of the Udorji family
-  lineage. Udorji was instrumental in bringing Catholicism to
+  These children constitute the first generation of the Udoji family
+  lineage. Udoji was instrumental in bringing Catholicism to
   Ndiakunwanta Idozuka. Together with his family and the support of
   the surrounding community, he helped build the first church in the
   area, which later evolved into the present-day St. Joseph's Catholic
@@ -197,7 +197,7 @@ const UdorjiHome = () => {
 >
   A highly respected community leader, his words carried great weight
   in matters of policy and communal decision-making. A man of
-  exceptional brilliance, courage, and integrity, Mazi Udorji died in
+  exceptional brilliance, courage, and integrity, Mazi Udoji died in
   1983 at the remarkable age of 125, making him the longest-living
   child of Mazi Nmelonye. He was laid to rest in the family compound
   at Ndiakunwanta Idozuka, where his legacy continues to inspire

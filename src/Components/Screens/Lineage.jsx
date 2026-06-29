@@ -70,8 +70,8 @@ export default function Lineage() {
     color: "#f3e5f5",
   },
   {
-    id: "udorji",
-    label: "Udorji",
+    id: "udoji",
+    label: "Udoji",
     route: "/udorji",
     color: "#e8f5e9",
   },
@@ -156,7 +156,7 @@ export default function Lineage() {
       const routes = {
   nwankwo: "/nwankwo",
   asouzu: "/asouzu",
-  udorji: "/udorji",
+  udoji: "/udorji",
   okoli: "/okoli",
   // agosi: "/agosi",
   // anyaga: "/anyaga",
