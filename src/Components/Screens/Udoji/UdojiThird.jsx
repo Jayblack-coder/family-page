@@ -15,7 +15,7 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import API from "../api.jsx";
 
-const UdorjiGenTwoProfiles = () => {
+const UdojiGenThreeProfiles = () => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
@@ -26,7 +26,7 @@ const UdorjiGenTwoProfiles = () => {
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user/family-line/udorji")
+    API.get("/api/user/family-line/udoji")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -51,13 +51,13 @@ const UdorjiGenTwoProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply generation filter: generation = 2nd
+  // ✅ Apply generation filter: generation = 3rd
   useEffect(() => {
     console.log("All data:", originalData);
-    console.log("Looking for: generation 2nd");
+    console.log("Looking for: generation 3rd");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasGeneration = String(item.generation).trim() === "2nd";
+      const hasGeneration = String(item.generation).trim() === "3rd";
       
       if (hasGeneration) {
         console.log("Match found:", item);
@@ -87,7 +87,7 @@ const UdorjiGenTwoProfiles = () => {
             textAlign="center"
             sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
           >
-             Udoji Family (Generation 2)
+            Udoji Family (Generation 3)
           </Typography>
         </Box>
 
@@ -207,7 +207,7 @@ const UdorjiGenTwoProfiles = () => {
             ) : (
               <Box sx={{ width: "100%", textAlign: "center", py: { xs: 3, sm: 4, md: 5 } }}>
                 <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
-                  No members found for Udoji Generation 2
+                  No members found for Udoji Generation 3
                 </Typography>
               </Box>
             )}
@@ -218,4 +218,4 @@ const UdorjiGenTwoProfiles = () => {
   );
 };
 
-export default UdorjiGenTwoProfiles;
+export default UdojiGenThreeProfiles;

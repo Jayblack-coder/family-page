@@ -16,13 +16,13 @@ import {
 } from "@mui/material";
 import API from "./api.jsx";
 
-const UdorjiHome = () => {
+const UdojiHome = () => {
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
   // Fetch Udorji family data
   useEffect(() => {
-    API.get("/api/user/family-line/udorji")
+    API.get("/api/user/family-line/udoji")
       .then((res) => {
         console.log("API Response:", res.data);
 
@@ -269,7 +269,7 @@ const UdorjiHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/udorji-one"
+              to="/udoji-one"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
               generation One
@@ -281,7 +281,7 @@ const UdorjiHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/udorji-two"
+              to="/udoji-two"
               sx={{ bgcolor: "#9c27b0", py: 2, borderRadius: 2 }}
             >
             generation Two
@@ -293,7 +293,7 @@ const UdorjiHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/udorji-three"
+              to="/udoji-three"
               sx={{ bgcolor: "#2e7d32", py: 2, borderRadius: 2 }}
             >
             generation Three
@@ -305,7 +305,7 @@ const UdorjiHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/udorji-four"
+              to="/udoji-four"
               sx={{ bgcolor: "#ff9800", py: 2, borderRadius: 2 }}
             >
             generation Four
@@ -317,7 +317,7 @@ const UdorjiHome = () => {
               variant="contained"
               size="large"
               component={Link}
-              to="/udorji-five"
+              to="/udoji-five"
               sx={{ bgcolor: "#1976d2", py: 2, borderRadius: 2 }}
             >
             generation Five
@@ -329,4 +329,4 @@ const UdorjiHome = () => {
   );
 
 }
-export default UdorjiHome;
+export default UdojiHome;

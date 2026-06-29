@@ -15,18 +15,18 @@ import {
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import API from "../api.jsx";
 
-const UdorjiGenFourProfiles = () => {
+const UdojiGenOneProfiles = () => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // ✅ Fetch data
+  // ✅ Fetch Udorji family data
   useEffect(() => {
     setIsLoading(true);
     setError(null);
-    API.get("/api/user/family-line/udorji")
+    API.get("/api/user/family-line/udoji")
       .then((res) => {
         console.log("API Response:", res.data);
         // Handle different possible API shapes
@@ -51,13 +51,13 @@ const UdorjiGenFourProfiles = () => {
       });
   }, []);
 
-  // ✅ Apply generation filter: generation = 4th
+  // ✅ Apply generation filter: generation = 1st
   useEffect(() => {
     console.log("All data:", originalData);
-    console.log("Looking for: generation 4th");
+    console.log("Looking for: generation 1st");
     
     const newFilteredData = originalData.filter((item) => {
-      const hasGeneration = String(item.generation).trim() === "4th";
+      const hasGeneration = String(item.generation).trim() === "1st";
       
       if (hasGeneration) {
         console.log("Match found:", item);
@@ -87,7 +87,7 @@ const UdorjiGenFourProfiles = () => {
             textAlign="center"
             sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
           >
-            Udoji Family (Generation 4)
+            Udoji Family (Generation 1)
           </Typography>
         </Box>
 
@@ -207,7 +207,7 @@ const UdorjiGenFourProfiles = () => {
             ) : (
               <Box sx={{ width: "100%", textAlign: "center", py: { xs: 3, sm: 4, md: 5 } }}>
                 <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
-                  No members found for Udoji Generation 4
+                  No members found for Udoji Generation 1
                 </Typography>
               </Box>
             )}
@@ -218,4 +218,4 @@ const UdorjiGenFourProfiles = () => {
   );
 };
 
-export default UdorjiGenFourProfiles;
+export default UdojiGenOneProfiles;

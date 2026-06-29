@@ -6,7 +6,7 @@ import Login from "./Components/Screens/Login";
 import ResetPassword from "./Components/Screens/ResetPassword";
 import NwankwoHome from "./Components/Screens/NwankwoHome";
 import AsouzuHome from "./Components/Screens/AsouzuHome";
-import UdorjiHome from "./Components/Screens/UdorjiHome";
+import UdorjiHome from "./Components/Screens/UdojiHome";
 import OkoliHome from "./Components/Screens/OkoliHome";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import NwankwoGenTwoProfiles from "./Components/Screens/NwankwoSecond";
@@ -28,11 +28,11 @@ import OkoliGenFourProfiles from "./Components/Screens/Okoli/OkoliFourth";
 import OkoliGenThreeProfiles from "./Components/Screens/Okoli/OkoliThird";
 import OkoliGenTwoProfiles from "./Components/Screens/Okoli/OkoliSecond";
 import OkoliGenOneProfiles from "./Components/Screens/Okoli/OkoliFirst";
-import UdorjiGenFiveProfiles from "./Components/Screens/Udorji/UdorjiFifth";
-import UdorjiGenFourProfiles from "./Components/Screens/Udorji/UdorjiFourth";
-import UdorjiGenThreeProfiles from "./Components/Screens/Udorji/UdorjiThird";
-import UdorjiGenTwoProfiles from "./Components/Screens/Udorji/UdorjiSecond";
-import UdorjiGenOneProfiles from "./Components/Screens/Udorji/UdorjiFirst";
+import UdojiGenFiveProfiles from "./Components/Screens/Udoji/UdojiFifth";
+import UdojiGenFourProfiles from "./Components/Screens/Udoji/UdojiFourth";
+import UdojiGenThreeProfiles from "./Components/Screens/Udoji/UdojiThird";
+import UdojiGenTwoProfiles from "./Components/Screens/Udoji/UdojiSecond";
+import UdojiGenOneProfiles from "./Components/Screens/Udoji/UdojiFirst";
 import MyProfile from "./Components/Screens/MyProfile";
 import AdminDashboard from "./Components/Admin/AdminDashboard";
 import Footer from "./Components/Footer";
@@ -200,42 +200,42 @@ function App() {
           }
         />
         <Route
-          path="/udorji-one"
+          path="/udoji-one"
           element={
             <ProtectedRoute>
-              <UdorjiGenOneProfiles />
+              <UdojiGenOneProfiles />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/udorji-two"
+          path="/udoji-two"
           element={
             <ProtectedRoute>
-              <UdorjiGenTwoProfiles />
+              <UdojiGenTwoProfiles />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/udorji-three"
+          path="/udoji-three"
           element={
             <ProtectedRoute>
-              <UdorjiGenThreeProfiles />
+              <UdojiGenThreeProfiles />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/udorji-four"
+          path="/udoji-four"
           element={
             <ProtectedRoute>
-              <UdorjiGenFourProfiles />
+              <UdojiGenFourProfiles />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/udorji-five"
+          path="/udoji-five"
           element={
             <ProtectedRoute>
-              <UdorjiGenFiveProfiles />
+              <UdojiGenFiveProfiles />
             </ProtectedRoute>
           }
         />
