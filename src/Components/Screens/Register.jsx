@@ -22,7 +22,7 @@ import tree from "../../assets/tree.jpg"; // ✅ same background as login
 import { ClipLoader } from "react-spinners";
 
 
-const allowedSurnames = ["Nwankwo", "Asouzu", "Udorji", "Okoli", "Anyaga"];
+const allowedSurnames = ["Nwankwo", "Asouzu", "Udoji", "Okoli", "Anyaga"];
 
 const Register = () => {
   const navigate = useNavigate();

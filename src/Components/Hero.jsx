@@ -135,7 +135,7 @@ export default function Hero() {
           {[
             { label: "Nwankwo Family", color: "#1976d2", to: "/nwankwo" },
             { label: "Asouzu Family", color: "#9c27b0", to: "/asouzu" },
-            { label: "Udorji Family", color: "#2e7d32", to: "/udorji" },
+            { label: "Udoji Family", color: "#2e7d32", to: "/udorji" },
             { label: "Okoli Family", color: "#ff9800", to: "/okoli" },
           ].map((btn) => (
             <Grid item xs={12} sm={6} md={3} key={btn.to}>

@@ -88,7 +88,7 @@ const UdorjiGenFiveProfiles = () => {
             textAlign="center"
             sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
           >
-            Udorji Family (Generation 5)
+            Udoji Family (Generation 5)
           </Typography>
         </Box>
 
@@ -208,7 +208,7 @@ const UdorjiGenFiveProfiles = () => {
             ) : (
               <Box sx={{ width: "100%", textAlign: "center", py: { xs: 3, sm: 4, md: 5 } }}>
                 <Typography variant="body1" color="text.secondary" sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.1rem" } }}>
-                  No members found for Udorji Generation 5
+                  No members found for Udoji Generation 5
                 </Typography>
               </Box>
             )}
