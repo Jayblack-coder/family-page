@@ -76,51 +76,67 @@ const Gallery = () => {
             <CircularProgress />
           </Box>
         ) : (
-          <Grid container spacing={3}>
+          <Grid
+  container
+  spacing={3}
+  justifyContent="center"
+  alignItems="stretch"
+>
             {images.map((item) => (
-              <Grid item xs={12} sm={6} md={4} key={item._id}>
-                <Card
-                  sx={{
-                    borderRadius: 3,
-                    overflow: "hidden",
-                    boxShadow: 3,
-                    cursor: "pointer",
-                    transition: "transform 0.2s",
-                    "&:hover": { transform: "scale(1.03)" },
-                  }}
-                >
-                  <Box sx={{ position: "relative" }}>
+             <Grid
+  item
+  xs={12}
+  sm={6}
+  md={4}
+  lg={4}
+  key={item._id}
+  sx={{
+    display: "flex",
+    justifyContent: "center",
+  }}
+>
+  <Card
+  sx={{
+    width: "100%",
+    maxWidth: 360,
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: 3,
+    overflow: "hidden",
+    boxShadow: 3,
+    transition: "0.25s",
+    "&:hover": {
+      transform: "translateY(-5px)",
+      boxShadow: 8,
+    },
+  }}
+>
+                  <Box
+  sx={{
+    height: 280,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fafafa",
+    position: "relative",
+    p: 1,
+  }}
+>
   <CardMedia
     component="img"
-    height="220"
     image={item.imageUrl}
     alt={item.caption || "Family Event"}
     onClick={() => setSelectedImage(item.imageUrl)}
     sx={{
-      objectFit: "cover",
+      maxWidth: "100%",
+      maxHeight: "100%",
+      width: "auto",
+      height: "auto",
+      objectFit: "contain",
+      cursor: "pointer",
     }}
   />
-
-  {/* EDIT BUTTON */}
-  {/* {isAdmin && (
-    <IconButton
-      onClick={() => openEditModal(item)}
-      sx={{
-        position: "absolute",
-        top: 10,
-        left: 10,
-        bgcolor: "#fff",
-        zIndex: 10,
-        boxShadow: 2,
-        "&:hover": {
-          bgcolor: "#f0f0f0",
-        },
-      }}
-    >
-      <EditIcon color="primary" />
-    </IconButton>
-  )} */}
-
+  
   {/* DELETE BUTTON */}
   {isAdmin && (
     <IconButton
@@ -142,15 +158,29 @@ const Gallery = () => {
   )}
 </Box>
                   {item.caption && (
-                    <CardContent sx={{ bgcolor: "#f1f5f9" }}>
-                      <Typography
-                        variant="body1"
-                        color="textPrimary"
-                        sx={{ textAlign: "center" }}
-                      >
-                        {item.caption}
-                      </Typography>
-                    </CardContent>
+                   <CardContent
+  sx={{
+    height: 90,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+    bgcolor: "#f1f5f9",
+    px: 2,
+  }}
+>
+  <Typography
+    variant="body2"
+    sx={{
+      overflow: "hidden",
+      display: "-webkit-box",
+      WebkitLineClamp: 3,
+      WebkitBoxOrient: "vertical",
+    }}
+  >
+    {item.caption}
+  </Typography>
+</CardContent>
                   )}
                 </Card>
               </Grid>
