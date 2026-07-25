@@ -18,12 +18,21 @@ const AsouzuGenFiveProfiles = () => {
   const navigate = useNavigate();
   const [originalData, setOriginalData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // ✅ Fetch data
+  const isFifthGeneration = (value) => {
+    const normalized = String(value || "").trim().toLowerCase();
+    return normalized === "5th" || normalized === "5" || normalized === "fifth";
+  };
+
+  // ✅ Fetch Asouzu family data
   useEffect(() => {
-    API.get("/api/user/family-line/asouzu")
+    setIsLoading(true);
+    setError(null);
+    API.get("/api/user")
       .then((res) => {
-          console.log("API Response:", res.data);
+        console.log("API Response:", res.data);
         // Handle different possible API shapes
         let data = [];
         if (Array.isArray(res.data)) {
@@ -34,18 +43,40 @@ const AsouzuGenFiveProfiles = () => {
           data = res.data.data;
         }
         setOriginalData(data);
+        setError(null);
       })
-      .catch((err) => console.error("API Error:", err));
+      .catch((err) => {
+        const errorMessage = err.response?.data?.message || err.message || "Failed to fetch data";
+        console.error("API Error:", err);
+        setError(errorMessage);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, []);
 
   // ✅ Apply generation filter: generation = 5th
   useEffect(() => {
-    const newFilteredData = originalData.filter(
-     (item) =>
-        String(item.generation) === "5th"
-    );
+    console.log("All data:", originalData);
+    console.log("generation values:", originalData.map(item => item.generation));
+    console.log("Looking for: generation 5th");
+    
+    const newFilteredData = originalData.filter((item) => {
+      const isAsouzu = item.surname && item.surname.toLowerCase().includes("asouzu");
+      const hasGeneration = isFifthGeneration(item.generation);
+      
+      if (hasGeneration && isAsouzu) {
+        console.log("Match found:", item);
+      }
+      
+      return hasGeneration && isAsouzu;
+    });
+    
+    console.log("Filtered result count:", newFilteredData.length);
+    console.log("Filtered Data:", newFilteredData);
     setFilteredData(newFilteredData);
   }, [originalData]);
+
 
   return (
     <Box sx={{ bgcolor: "#f9f9f9", 
