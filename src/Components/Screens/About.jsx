@@ -171,11 +171,15 @@ export default function About() {
               lineHeight: 1.8,
             }}
           >
-            Nmelonye, born originally to the family of Mazi Ezenweneke of the larger Adojii family of Umugbulu quarters in Ngodo Nise, Awka south, in present day Anambra State, migrated to Arondizuogu due to a
+            <b>Mazi Nmelonye,</b> born originally to the family of Mazi Ezenweneke of the larger Adojii family of Umugbulu quarters in Ngodo Nise, Awka south, in present day Anambra State, migrated to Arondizuogu due to a
             family dispute and the natural search for a better life. There, he found a new home, got married to his wife Mmaku from Neni, and built a
             lineage that continues to grow in unity and strength. His story is a
             testament to resilience, adaptability, and the enduring spirit of
-            family.
+            family.<br/>
+            Mazi Ezenweneke, Nmelonye's father, was the first son of Okpana who was also the first son of <i>Adojii</i>. <i>Okpana</i> had  three wives and one of the wives gave birth to Ezenweneke. On his part, Ezenweneke has three
+            sons, the first was <i>Abonoghu</i>(meaning: Abo na obo- "you should not seek revenge"), the second was <i>Nwaegbo</i> while Nmelonye was the third son. Aboghu gave birth to Adojii etc. Nwaegbo gave birth to Ezenwaka. 
+            Nmelonye himself took refuge
+            at Arondizuogu.
           </Typography>
 
           <Divider sx={{ my: 4 }} />
