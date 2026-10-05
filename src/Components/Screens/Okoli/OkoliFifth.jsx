@@ -78,19 +78,40 @@ const OkoliGenFiveProfiles = () => {
     py: { xs: 3, sm: 4, md: 5 } }}>
       <Container maxWidth="lg" sx={{ px: { xs: 2, sm: 3, md: 4 } }}>
         {/* Page Title with Back Button */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-          <IconButton onClick={() => navigate(-1)} sx={{ mr: 2 }}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            textAlign="center"
-            sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
-          >
-           Okoli Family (Generation 5)
-          </Typography>
-        </Box>
+        <Box
+  sx={{
+    display: "grid",
+    gridTemplateColumns: "48px 1fr 48px",
+    alignItems: "center",
+    mb: 4,
+    width: "100%",
+  }}
+>
+  <IconButton onClick={() => navigate(-1)}>
+    <ArrowBackIcon />
+  </IconButton>
+
+  <Typography
+    variant="h4"
+    fontWeight="bold"
+    textAlign="center"
+    sx={{
+      color: "#0d6efd",
+      fontSize: {
+        xs: "1.5rem",
+        sm: "2rem",
+        md: "2.5rem",
+      },
+      lineHeight: 1.2,
+    }}
+  >
+    Okoli Family
+    <br />
+    (Generation 5)
+  </Typography>
+
+  <Box />
+</Box>
 
         {/* Loading Spinner */}
         {isLoading && (
