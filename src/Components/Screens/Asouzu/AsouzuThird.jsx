@@ -135,27 +135,7 @@ const AsouzuGenThreeProfiles = () => {
 
         {/* Grid of Cards */}
         {!isLoading && !error && (
-//          <Grid
-//   container
-//   spacing={{ xs: 2, sm: 3, md: 4 }}
-//   justifyContent="center"
-//   alignItems="stretch"
-// >
-//   {filteredData.length > 0 ? (
-//     filteredData.map((member, i) => (
-//       <Grid
-//         item
-//         xs={12}
-//         sm={6}
-//         md={4}
-//         lg={3}
-//         key={member._id || member.id || i}
-//         sx={{
-//           display: "flex",
-//           justifyContent: "center",
-//         }}
-//       >
- <Grid 
+          <Grid 
             container 
             spacing={{ xs: 2, sm: 3, md: 4 }}
             sx={{ justifyContent: "center" }}
@@ -163,74 +143,35 @@ const AsouzuGenThreeProfiles = () => {
             {filteredData.length > 0 ? (
               filteredData.map((member, i) => (
                 <Grid item xs={12} sm={6} md={4} lg={3} key={i} sx={{ display: "flex", justifyContent: "center" }}>
-                <Card
-                  sx={{
-                    borderRadius: 3,
-                    boxShadow: 3,
-                    transition: "0.3s",
-                    "&:hover": { boxShadow: 6 },
-                    width: "100%",
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-        {/* <Card
-          sx={{
-            width: "100%",
-            maxWidth: { xs: "360px", sm: "100%" },
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            borderRadius: 3,
-            boxShadow: 3,
-            transition: "0.3s",
-            "&:hover": {
-              boxShadow: 6,
-            },
-          }}
-        > */}
-          {/* <CardMedia
-            component="img"
-            image={member.image || "https://via.placeholder.com/200"}
-            alt={`${member.firstName} ${member.surname}`}
-            sx={{
-              width: "100%",
-              height: { xs: 180, sm: 200, md: 220 },
-              objectFit: "cover",
-            }}
-          />
+                  <Card
+                    sx={{
+                      borderRadius: 3,
+                      boxShadow: 3,
+                      transition: "0.3s",
+                      "&:hover": { boxShadow: 6 },
+                      width: "100%",
+                      height: "100%",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    {/* Profile Image */}
+                    <CardMedia
+                      component="img"
+                      height={{ xs: 150, sm: 180, md: 200 }}
+                      image={member.image || "https://via.placeholder.com/200"}
+                      alt={`${member.firstName} ${member.surname}`}
+                      sx={{ objectFit: "cover" }}
+                    />
 
-                     <CardContent
-            sx={{
-              flexGrow: 1,
-              overflowWrap: "break-word",
-              wordBreak: "break-word",
-            }}
-          > */}
-           <CardMedia
-                    component="img"
-                    height={{ xs: 150, sm: 180, md: 200 }}
-                    image={member.image || "https://via.placeholder.com/200"}
-                    alt={`${member.firstName} ${member.surname}`}
-                    sx={{ objectFit: "cover" }}
-                  />
-
-                  <CardContent>
-                    <Typography
-                      variant="h6"
-                      fontWeight="bold"
-                      textAlign="center"
-                      gutterBottom
-                      sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" } }}
-                    >
-                      {/* <Typography
+                    <CardContent>
+                      <Typography
                         variant="h6"
                         fontWeight="bold"
                         textAlign="center"
                         gutterBottom
                         sx={{ fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" } }}
-                      > */}
+                      >
                         {member.isDeceased && "✝ "} {member.firstName} {member.middleName} {member.surname}
                       </Typography>
 <Typography textAlign="center" sx={{ mb: 1 }}>
