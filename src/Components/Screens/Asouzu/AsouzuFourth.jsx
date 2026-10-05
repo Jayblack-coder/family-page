@@ -84,20 +84,40 @@ const AsouzuGenFourProfiles = () => {
     py: 5 }}>
       <Container maxWidth="xl">
         {/* Page Title with Back Button */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-          <IconButton onClick={() => navigate(-1)} sx={{ mr: 2 }}>
-            <ArrowBackIcon />
-          </IconButton>
-          <Typography
-            variant="h4"
-            fontWeight="bold"
-            textAlign="center"
-            sx={{ color: "#0d6efd", fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" } }}
-          >
-            Asouzu Family (Generation 4)
-          </Typography>
-        </Box>
+         <Box
+  sx={{
+    display: "grid",
+    gridTemplateColumns: "48px 1fr 48px",
+    alignItems: "center",
+    mb: 4,
+    width: "100%",
+  }}
+>
+  <IconButton onClick={() => navigate(-1)}>
+    <ArrowBackIcon />
+  </IconButton>
 
+  <Typography
+    variant="h4"
+    fontWeight="bold"
+    textAlign="center"
+    sx={{
+      color: "#0d6efd",
+      fontSize: {
+        xs: "1.5rem",
+        sm: "2rem",
+        md: "2.5rem",
+      },
+      lineHeight: 1.2,
+    }}
+  >
+    Asouzu Family
+    <br />
+    (Generation 4)
+  </Typography>
+
+  <Box />
+</Box>
         {/* Grid of Cards */}
         <Grid container spacing={3}>
           {filteredData.map((member, i) => (
