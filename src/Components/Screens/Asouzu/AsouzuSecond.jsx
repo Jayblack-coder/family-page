@@ -132,14 +132,20 @@ const AsouzuGenTwoProfiles = () => {
                 }}
               >
                 {/* Profile Image */}
-                <CardMedia
+                {/* <CardMedia
                   component="img"
                   height="200"
                   image={member.image || "https://via.placeholder.com/200"}
                   alt={`${member.firstName} ${member.surname}`}
                   sx={{ objectFit: "cover" }}
-                />
-
+                /> */}
+ <CardMedia
+                    component="img"
+                    height={{ xs: 150, sm: 180, md: 200 }}
+                    image={member.image || "https://via.placeholder.com/200"}
+                    alt={`${member.firstName} ${member.surname}`}
+                    sx={{ objectFit: "cover" }}
+                  />
                 <CardContent>
                   <Typography
   variant="h6"
