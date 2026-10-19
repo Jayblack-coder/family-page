@@ -199,7 +199,7 @@ export default function About() {
               color: "#333",
             }}
           >
-            From his union came six remarkable offsprings, five of which formed the
+            From his marriage to Mmaku came six remarkable offsprings, five of which formed the
             roots of the families that carry our name today:
           </Typography>
 
