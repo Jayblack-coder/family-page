@@ -153,7 +153,7 @@ const Login = () => {
       },
     }}
   >
-    A chronicle of our genealogy and traditions, starting from Mazi Nmelonye our ancestor in
+    A chronicle of our genealogy and traditions, starting from Mazi Nmelonye, our ancestor in
     Arondizuogu, to our present generation all over the world.
     A rich heritage preserved for those yet unborn.
   </Typography>
