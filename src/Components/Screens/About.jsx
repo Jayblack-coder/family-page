@@ -176,10 +176,10 @@ export default function About() {
             lineage that continues to grow in unity and strength. His story is a
             testament to resilience, adaptability, and the enduring spirit of
             family.<br/>
-            Mazi Ezenweneke, Nmelonye's father, was the first son of Okpana who was also the first son of <i>Adojii</i>. <i>Okpana</i> had  three wives and one of the wives gave birth to Ezenweneke. On his part, Ezenweneke has three
-            sons, the first was <i>Abonoghu</i>(meaning: Abo na obo- "you should not seek revenge"), the second was <i>Nwaegbo</i> while Nmelonye was the third son. Aboghu gave birth to Adojii etc. Nwaegbo gave birth to Ezenwaka. 
+            Mazi Ezenweneke, Nmelonye's father, was the first son of Okpana who in turn, was the first son of <i>Adojii</i>. <i>Okpana</i> had  three wives and one of the wives gave birth to Ezenweneke. On his part, Ezenweneke had three
+            sons, the first was <i>Abonoghu</i>(meaning: Abo na obo- "you should not seek revenge"), the second was <i>Nwaegbo</i>, while Nmelonye was the third son. Abonoghu gave birth to Adojii etc. Nwaegbo gave birth to Ezenwaka. 
             Nmelonye himself took refuge
-            at Arondizuogu.
+            at Arondizuogu before giving birth to his own offsprings.
           </Typography>
 
           <Divider sx={{ my: 4 }} />
